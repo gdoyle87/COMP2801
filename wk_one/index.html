@@ -57,6 +57,28 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#strings-and-characters-review">Strings and Characters (Review)</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pointers">Pointers</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#field-width">Field Width</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#negative-values">Negative Values</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dynamic-widths">Dynamic Widths</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#format-flags">Format Flags</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#alignment">Alignment</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sign-control-for-numbers">Sign Control (for numbers)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#alternate-form-flag">Alternate Form (# Flag)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example">Example</a>
+    </li>
         </ul>
     </li>
     </ul>
@@ -247,6 +269,131 @@ int main(void) {
 runtime. </p>
 </li>
 </ul>
+<h3 id="pointers">Pointers</h3>
+<table>
+<thead>
+<tr>
+<th>Specifier</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>%p</code></td>
+<td>Displays a pointer (address) in an implementation-defined way (commonly hexadecimal)</td>
+</tr>
+</tbody>
+</table>
+<p><code>%p</code> expects a pointer argument (e.g., <code>&amp;x</code>, or a <code>char*</code>, <code>int*</code>, etc.).<br />
+The exact format of the address depends on the system, but is typically hexadecimal.<br />
+Useful for debugging to confirm memory addresses.  </p>
+<hr />
+<h2 id="field-width">Field Width</h2>
+<p>You can control the minimum number of characters used when printing a value by
+specifying a <strong>field width</strong>.</p>
+<p>If the value has fewer characters than the field width then it is padded 
+(by default with spaces).  </p>
+<p><strong>Note</strong>: If the value has <em>more</em> characters than the field width then the 
+full value is printed (field width is ignored). That is to say, it does <strong><em>not</em></strong>
+truncate the output.</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main(void) {
+    printf(&quot;%4d\n&quot;, 1);       //    1
+    printf(&quot;%4d\n&quot;, 12);      //   12
+    printf(&quot;%4d\n&quot;, 123);     //  123
+    printf(&quot;%4d\n&quot;, 1234);    // 1234
+    printf(&quot;%4d\n&quot;, 12345);   // 12345 (too wide, prints fully)
+
+    printf(&quot;%4d\n&quot;, -1);      //   -1
+    printf(&quot;%4d\n&quot;, -12);     //  -12
+    printf(&quot;%4d\n&quot;, -123);    // -123
+    printf(&quot;%4d\n&quot;, -1234);   // -1234
+    printf(&quot;%4d\n&quot;, -12345);  // -12345
+}
+</code></pre>
+<h3 id="negative-values">Negative Values</h3>
+<p>If the value has a negative sign, it will use up one of the field width characters:</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main(void) {
+    printf(&quot;BEFORE%4dAFTER\n&quot;, 1);        //BEFORE   1AFTER
+    printf(&quot;BEFORE%4dAFTER\n&quot;, -1);       //BEFORE  -1AFTER
+    // In the second example, there are only 2 spaces.
+}
+</code></pre>
+<h3 id="dynamic-widths">Dynamic Widths</h3>
+<p>Instead of providing a number, you can pass <code>*</code> instead and then supply the width
+as one of the values passed instead.</p>
+<p>This works for <em>precision</em> as well.</p>
+<pre><code class="language-c">printf(&quot;BEFORE%*.*fAFTER&quot;, 7, 2, 98.736); // BEFORE  98.74AFTER
+// 7 → total field width (minimum size, includes digits, decimal point, and padding)
+// 2 → precision (number of digits after the decimal point)
+</code></pre>
+<h2 id="format-flags">Format Flags</h2>
+<h3 id="alignment">Alignment</h3>
+<p>By default, values are <strong>right-aligned</strong> in the field. To make them <strong>left-aligned</strong>,
+add a <code>-</code> before the field width:</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main(void) {
+    printf(&quot;BEFORE%4dAFTER\n&quot;, 1);        //BEFORE   1AFTER
+    printf(&quot;BEFORE%-4dAFTER\n&quot;, 1);       //BEFORE1   AFTER
+}
+</code></pre>
+<h3 id="sign-control-for-numbers">Sign Control (for numbers)</h3>
+<p>By default, only negative numbers are printed with a sign (<code>-</code>).<br />
+You can control how positive numbers appear using flags:</p>
+<ul>
+<li><code>+</code>: always print a sign (<code>+</code> for positive, <code>-</code> for negative).  </li>
+<li>space (<code>' '</code>): print a space in front of positive numbers 
+(negative numbers still get <code>-</code>).  </li>
+</ul>
+<p>This can be useful for aligning columns of positive and negative numbers.  </p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main(void) {
+    printf(&quot;%d\n&quot;, 42);     // 42
+    printf(&quot;%+d\n&quot;, 42);    // +42
+    printf(&quot;% d\n&quot;, 42);    //  42 (leading space)
+    printf(&quot;%d\n&quot;, -42);    // -42
+    printf(&quot;%+d\n&quot;, -42);   // -42
+    printf(&quot;% d\n&quot;, -42);   // -42
+}
+
+</code></pre>
+<h3 id="alternate-form-flag">Alternate Form (# Flag)</h3>
+<p>The <code>#</code> flag modifies how certain values are displayed:</p>
+<ul>
+<li><strong>Octal (<code>%o</code>)</strong>: prefixes the value with <code>0</code>.  </li>
+<li><strong>Hexadecimal (<code>%x</code> / <code>%X</code>)</strong>: prefixes the value with <code>0x</code> or <code>0X</code>.  </li>
+<li><strong>Floating-point (<code>%f</code>, <code>%e</code>, <code>%E</code>, <code>%g</code>, <code>%G</code>)</strong>: forces a decimal point to appear,<br />
+  even if the fractional part is zero.  <ul>
+<li>For <code>%g</code> / <code>%G</code>, it also prevents trailing zeros from being removed.  </li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="example">Example</h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main(void) {
+    int c = 1427;
+    double p = 1427.0;
+
+    printf(&quot;%o\n&quot;, c);    // 2623
+    printf(&quot;%#o\n&quot;, c);   // 02623
+
+    printf(&quot;%x\n&quot;, c);    // 593
+    printf(&quot;%#x\n&quot;, c);   // 0x593
+
+    printf(&quot;%X\n&quot;, c);    // 593
+    printf(&quot;%#X\n&quot;, c);   // 0X593
+
+    printf(&quot;%g\n&quot;, p);    // 1427
+    printf(&quot;%#g\n&quot;, p);   // 1427.00 (decimal point forced, trailing zeros kept)
+}
+</code></pre>
               
             </div>
           </div><footer>
