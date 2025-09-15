@@ -1,1 +1,15 @@
-site_name: My Docs
+site_name: COMP2801
+site_url: https://gdoyle87.github.io/COMP2801/
+nav:
+  - Home: index.md
+  - Week 1 - Introduction to C & Data Types: wk_one.md
+
+theme: readthedocs
+markdown_extensions:
+  - md_in_html
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.js
+
+extra_css:
+  - https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.css
