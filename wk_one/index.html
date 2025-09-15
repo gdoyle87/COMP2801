@@ -499,15 +499,24 @@ int main(void) {
 }
 </code></pre>
 <details>
-<summary> Why `%%` isn’t like `\n`</summary>
+<summary><strong> Why <code>%%</code> isn’t like <code>\n</code></strong></summary>
 
-Backslash escapes (like `\n`, `\t`, `\?`) are **language features** handled at compile time,  
-because they solve parsing or representation issues in string literals.  
+<p>
+Backslash escapes (like <code>\n</code>, <code>\t</code>, <code>\?</code>) are 
+<strong>language features</strong> handled at compile time, because they solve 
+parsing or representation issues in string literals.
+</p>
 
-Percent escapes (`%d`, `%%`, etc.) are **library features**, defined only for functions like  
-`printf`/`scanf` and interpreted at runtime.  
+<p>
+Percent escapes (like <code>%d</code>, <code>%%</code>) are 
+<strong>library features</strong>, defined only for functions such as 
+<code>printf</code>/<code>scanf</code> and interpreted at runtime.
+</p>
 
-**In short:** `\n` is replaced by the compiler, `%%` is handled later by `printf`.  
+<p>
+<strong>In short:</strong> <code>\n</code> is replaced by the compiler, 
+while <code>%%</code> is handled later by <code>printf</code>.
+</p>
 </details>
               
             </div>
