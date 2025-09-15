@@ -51,13 +51,17 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#printf-formatting">printf Formatting</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#integers">Integers</a>
+    <li class="toctree-l3"><a class="reference internal" href="#type-specifiers">Type Specifiers</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#integers">Integers</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#floating-point-numbers">Floating-Point Numbers</a>
+    <li class="toctree-l4"><a class="reference internal" href="#floating-point-numbers">Floating-Point Numbers</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#strings-and-characters-review">Strings and Characters (Review)</a>
+    <li class="toctree-l4"><a class="reference internal" href="#strings-and-characters">Strings and Characters</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#pointers">Pointers</a>
+    <li class="toctree-l4"><a class="reference internal" href="#pointers">Pointers</a>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
@@ -129,8 +133,8 @@ other devices or files.</p>
 <h2 id="printf-formatting"><code>printf</code> Formatting</h2>
 <p>As we learned in the previous course, <code>printf</code> can be used to format output to
 <code>stdout</code> using <em>conversion specifications</em>. </p>
-<p>We will now take a deeper look at some of the tools available to us.</p>
-<h3 id="integers">Integers</h3>
+<h3 id="type-specifiers">Type Specifiers</h3>
+<h4 id="integers">Integers</h4>
 <p>There are a number of different conversion specifiers for integers.</p>
 <table>
 <thead>
@@ -178,7 +182,7 @@ literal suffix (<code>L</code>, <code>LL</code>) to the value that you pass to <
 printf(&quot;%lld\n&quot;, 9000000000000LL); // long long (suffix LL required)
 </code></pre>
 <hr />
-<h3 id="floating-point-numbers">Floating-Point Numbers</h3>
+<h4 id="floating-point-numbers">Floating-Point Numbers</h4>
 <table>
 <thead>
 <tr>
@@ -250,7 +254,7 @@ int main(void) {
 }
 </code></pre>
 <hr />
-<h3 id="strings-and-characters-review">Strings and Characters (Review)</h3>
+<h4 id="strings-and-characters">Strings and Characters</h4>
 <ul>
 <li>
 <p><code>%c</code> prints a single <code>char</code>  </p>
@@ -267,7 +271,7 @@ int main(void) {
 runtime. </p>
 </li>
 </ul>
-<h3 id="pointers">Pointers</h3>
+<h4 id="pointers">Pointers</h4>
 <table>
 <thead>
 <tr>
