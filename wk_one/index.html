@@ -79,7 +79,13 @@
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#alternate-form-flag">Alternate Form (# Flag)</a>
     </li>
+    <li class="toctree-l4"><a class="reference internal" href="#zero-padding-0-flag">Zero Padding (0 Flag)</a>
+    </li>
         </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example">Example</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#literals-and-escape-sequences">Literals and Escape Sequences</a>
     </li>
         </ul>
     </li>
@@ -393,6 +399,112 @@ int main(void) {
     printf(&quot;%g\n&quot;, p);    // 1427
     printf(&quot;%#g\n&quot;, p);   // 1427.00 (decimal point forced, trailing zeros kept)
 }
+</code></pre>
+<hr />
+<h4 id="zero-padding-0-flag">Zero Padding (0 Flag)</h4>
+<p>By default, extra space in a field width is filled with spaces.<br />
+<br>The <code>0</code> flag changes this so that extra space is filled with <strong>leading zeros</strong>.  </p>
+<ul>
+<li>Works with integers and floating-point numbers.  </li>
+<li>Often combined with the <code>+</code> flag to show signs with padded numbers.  </li>
+<li>Padding occurs <strong>after</strong> the sign, not before.  </li>
+</ul>
+<hr />
+<h3 id="example">Example</h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main(void) {
+    printf(&quot;%9d\n&quot;, 452);     // &quot;      452&quot; (spaces)
+    printf(&quot;%09d\n&quot;, 452);    // &quot;000000452&quot; (zeros)
+
+    printf(&quot;%+09d\n&quot;, 452);   // &quot;+00000452&quot;
+    printf(&quot;%09d\n&quot;, -452);   // &quot;-00000452&quot;
+}
+</code></pre>
+<h3 id="literals-and-escape-sequences">Literals and Escape Sequences</h3>
+<p>Characters in a format string that are not part of a conversion specification are
+printed literally.  </p>
+<p>Escape sequences allow you to include special characters in strings that cannot be
+typed directly or would otherwise be ambiguous.</p>
+<table>
+<thead>
+<tr>
+<th>Escape</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\'</code></td>
+<td>Single quote (<code>'</code>)</td>
+</tr>
+<tr>
+<td><code>\"</code></td>
+<td>Double quote (<code>"</code>)</td>
+</tr>
+<tr>
+<td><code>\?</code></td>
+<td>Question mark (<code>?</code>)</td>
+</tr>
+<tr>
+<td><code>\\</code></td>
+<td>Backslash (<code>\</code>)</td>
+</tr>
+<tr>
+<td><code>\a</code></td>
+<td>Alert (bell/flash)</td>
+</tr>
+<tr>
+<td><code>\b</code></td>
+<td>Backspace</td>
+</tr>
+<tr>
+<td><code>\f</code></td>
+<td>Form feed (new page)</td>
+</tr>
+<tr>
+<td><code>\n</code></td>
+<td>Newline</td>
+</tr>
+<tr>
+<td><code>\r</code></td>
+<td>Carriage return</td>
+</tr>
+<tr>
+<td><code>\t</code></td>
+<td>Horizontal tab</td>
+</tr>
+<tr>
+<td><code>\v</code></td>
+<td>Vertical tab</td>
+</tr>
+<tr>
+<td><code>%%</code></td>
+<td>Percent symbol (<code>%</code>)</td>
+</tr>
+<tr>
+<td>---</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int main(void) {
+    printf(&quot;Hello\tWorld\n&quot;);     // tab between words, newline at end
+    printf(&quot;Path: C:\\temp\n&quot;);  // prints: Path: C:\temp
+    printf(&quot;Beep!\a\n&quot;);          // may cause a sound or window flash
+    printf(&quot;CPU usage: 95%%\n&quot;); // CPU usage: 95%
+}
+</code></pre>
+<p>!!! note "Why <code>%%</code> isn’t like <code>\n</code>"
+    Backslash escapes (like <code>\n</code>, <code>\t</code>, <code>\?</code>) are <strong>language features</strong> handled by the compiler,<br />
+    because they solve parsing or representation problems in string literals.  </p>
+<pre><code>Percent escapes (`%d`, `%%`, etc.) are **library features**, defined only for functions like  
+`printf`/`scanf` and interpreted at runtime.
+
+In short: `\n` is replaced by the compiler, `%%` is handled later by `printf`.
 </code></pre>
               
             </div>
