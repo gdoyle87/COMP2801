@@ -55,6 +55,8 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#floating-point-numbers">Floating-Point Numbers</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#strings-and-characters-review">Strings and Characters (Review)</a>
+    </li>
         </ul>
     </li>
     </ul>
@@ -228,6 +230,23 @@ int main(void) {
 }
 </code></pre>
 <hr />
+<h3 id="strings-and-characters-review">Strings and Characters (Review)</h3>
+<ul>
+<li>
+<p><code>%c</code> → prints a single <code>char</code>  </p>
+</li>
+<li>
+<p><code>%s</code> → prints a null-terminated string (<code>char*</code>), stops at <code>'\0'</code>  </p>
+</li>
+<li>
+<p>Missing null terminator or wrong format specifier (e.g., <code>%s</code> with a <code>char</code>)
+→ undefined behavior, often a crash  </p>
+</li>
+<li>
+<p>Compilers usually don’t catch format string errors — they show up only at 
+runtime. </p>
+</li>
+</ul>
               
             </div>
           </div><footer>
