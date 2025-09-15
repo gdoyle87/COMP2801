@@ -490,13 +490,13 @@ typed directly or would otherwise be ambiguous.</p>
 
 int main(void) {
     printf(&quot;Hello\tWorld\n&quot;);     // tab between words, newline at end
-    printf(&quot;Path: C:\\temp\n&quot;);  // prints: Path: C:\temp
+    printf(&quot;Path: C:\\temp\n&quot;);   // prints: Path: C:\temp
     printf(&quot;Beep!\a\n&quot;);          // may cause a sound or window flash
-    printf(&quot;CPU usage: 95%%\n&quot;); // CPU usage: 95%
+    printf(&quot;CPU usage: 95%%\n&quot;);  // CPU usage: 95%
 }
 </code></pre>
 <details>
-<summary><strong>NOTE: Why <code>%%</code> isn’t like <code>\n</code> (click to expand)</strong></summary>
+<summary><strong>Why <code>%%</code> isn’t like <code>\n</code></strong> (click to expand)</summary>
 
 <p>
 Backslash escapes (like <code>\n</code>, <code>\t</code>, <code>\?</code>) are 
