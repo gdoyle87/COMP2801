@@ -77,8 +77,6 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#alternate-form-flag">Alternate Form (# Flag)</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#example">Example</a>
-    </li>
         </ul>
     </li>
     </ul>
@@ -255,14 +253,14 @@ int main(void) {
 <h3 id="strings-and-characters-review">Strings and Characters (Review)</h3>
 <ul>
 <li>
-<p><code>%c</code> → prints a single <code>char</code>  </p>
+<p><code>%c</code> prints a single <code>char</code>  </p>
 </li>
 <li>
-<p><code>%s</code> → prints a null-terminated string (<code>char*</code>), stops at <code>'\0'</code>  </p>
+<p><code>%s</code> prints a null-terminated string (<code>char*</code>), stops at <code>'\0'</code>  </p>
 </li>
 <li>
 <p>Missing null terminator or wrong format specifier (e.g., <code>%s</code> with a <code>char</code>)
-→ undefined behavior, often a crash  </p>
+ undefined behavior, often a crash  </p>
 </li>
 <li>
 <p>Compilers usually don’t catch format string errors — they show up only at 
@@ -373,8 +371,6 @@ int main(void) {
 </ul>
 </li>
 </ul>
-<hr />
-<h3 id="example">Example</h3>
 <pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main(void) {
