@@ -86,9 +86,9 @@
                 <h1 id="week-1">Week 1</h1>
 <h2 id="streams">Streams</h2>
 <p><strong>Streams</strong> are sequences of bytes used for input and output.</p>
-<p>Input: Data flows from a device (keyboard, disk, network, etc.) into main
+<p><strong>Input</strong>: Data flows <em>from</em> a device (keyboard, disk, network, etc.) <em>into</em> main
 memory.
-<br>Output: Data flows from main memory to a device (screen, printer, disk,
+<br><strong>Output</strong>: Data flows <em>from</em> main memory <em>to</em> a device (screen, printer, disk,
 network, etc.).</p>
 <p>At program start, three standard streams are available:</p>
 <ol>
@@ -148,7 +148,6 @@ other devices or files.</p>
 </tr>
 </tbody>
 </table>
-<hr />
 <p>Note: if you are using any of the <strong>unsigned</strong> specifiers, don't pass it any 
 negative numbers.</p>
 <p>If you are using any of the long <em>length modifiers</em> you should add a corresponding 
@@ -156,6 +155,7 @@ literal suffix (<code>L</code>, <code>LL</code>) to the value that you pass to <
 <pre><code class="language-c">printf(&quot;%ld\n&quot;, 5000000000L); // long (suffix L required)
 printf(&quot;%lld\n&quot;, 9000000000000LL); // long long (suffix LL required)
 </code></pre>
+<hr />
 <h3 id="floating-point-numbers">Floating-Point Numbers</h3>
 <table>
 <thead>
@@ -184,7 +184,8 @@ printf(&quot;%lld\n&quot;, 9000000000000LL); // long long (suffix LL required)
 </tbody>
 </table>
 <hr />
-<p>The default precision is <strong>6 digits</strong> after the decimal (for <code>%f</code>) or <strong>6 significant digits</strong> (for <code>%g</code>/<code>%G</code>).  </p>
+<p>The default precision is <strong>6 digits</strong> after the decimal (for <code>%f</code>) or 
+ <strong>6 <em>significant</em> digits</strong> (for <code>%g</code>/<code>%G</code>).  </p>
 <p><strong>Rounding</strong>: <code>%e</code>, <code>%E</code>, and <code>%g</code> perform rounding; <code>%f</code> shows exact decimals.  </p>
 <p><code>%g</code>/<code>%G</code> automatically chooses the <em>shortest</em> visual representation for a given 
 number:  </p>
