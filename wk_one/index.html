@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://gdoyle87.github.io/COMP2801/wk_one/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Week 1 - Introduction to C & Data Types - COMP2801</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Week 1 - Introduction to C \u0026 Data Types";
+        var mkdocs_page_input_path = "wk_one.md";
+        var mkdocs_page_url = "/COMP2801/wk_one/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> COMP2801
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Week 1 - Introduction to C & Data Types</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#streams">Streams</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#printf-formatting">printf Formatting</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#integers">Integers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#floating-point-numbers">Floating-Point Numbers</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">COMP2801</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Week 1 - Introduction to C & Data Types</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="week-1">Week 1</h1>
+<h2 id="streams">Streams</h2>
+<p><strong>Streams</strong> are sequences of bytes used for input and output.</p>
+<p>Input: Data flows from a device (keyboard, disk, network, etc.) into main
+memory.
+<br>Output: Data flows from main memory to a device (screen, printer, disk,
+network, etc.).</p>
+<p>At program start, three standard streams are available:</p>
+<ol>
+<li>
+<p>Standard input (<code>stdin</code>) – usually from the keyboard.</p>
+</li>
+<li>
+<p>Standard output (<code>stdout</code>) – usually to the screen.</p>
+</li>
+<li>
+<p>Standard error (<code>stderr</code>) – also to the screen, for error messages.</p>
+</li>
+</ol>
+<p><strong>Redirection</strong>: Operating systems allow these streams to be redirected to 
+other devices or files.</p>
+<h2 id="printf-formatting"><code>printf</code> Formatting</h2>
+<p>As we learned in the previous course, <code>printf</code> can be used to format output to
+<code>stdout</code> using <em>conversion specifications</em>. </p>
+<p>We will now take a deeper look at some of the tools available to us.</p>
+<h3 id="integers">Integers</h3>
+<p>There are a number of different conversion specifiers for integers.</p>
+<table>
+<thead>
+<tr>
+<th>Specifier</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>%d</code></td>
+<td>Signed decimal integer</td>
+</tr>
+<tr>
+<td><code>%i</code></td>
+<td>Signed decimal integer (same as <code>%d</code>)</td>
+</tr>
+<tr>
+<td><code>%o</code></td>
+<td>Unsigned octal integer</td>
+</tr>
+<tr>
+<td><code>%u</code></td>
+<td>Unsigned decimal integer</td>
+</tr>
+<tr>
+<td><code>%x</code></td>
+<td>Unsigned hexadecimal integer (lowercase a–f)</td>
+</tr>
+<tr>
+<td><code>%X</code></td>
+<td>Unsigned hexadecimal integer (uppercase A–F)</td>
+</tr>
+<tr>
+<td><code>%hd</code> / <code>%ld</code> / <code>%lld</code></td>
+<td>Short, long, or long long integers (length modifiers)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Note: if you are using any of the <strong>unsigned</strong> specifiers, don't pass it any 
+negative numbers.</p>
+<p>If you are using any of the long <em>length modifiers</em> you should add a corresponding 
+literal suffix (<code>L</code>, <code>LL</code>) to the value that you pass to <code>printf</code>.  </p>
+<pre><code class="language-c">printf(&quot;%ld\n&quot;, 5000000000L); // long (suffix L required)
+printf(&quot;%lld\n&quot;, 9000000000000LL); // long long (suffix LL required)
+</code></pre>
+<h3 id="floating-point-numbers">Floating-Point Numbers</h3>
+<table>
+<thead>
+<tr>
+<th>Specifier</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>%e</code> / <code>%E</code></td>
+<td>Exponential (scientific) notation (e.g., <code>1.23e+02</code> or <code>1.23E+02</code>)</td>
+</tr>
+<tr>
+<td><code>%f</code> / <code>%F</code></td>
+<td>Fixed-point notation</td>
+</tr>
+<tr>
+<td><code>%g</code> / <code>%G</code></td>
+<td>Uses either <code>%f</code> or <code>%e</code> (<code>%E</code>) depending on value’s magnitude, with no trailing zeros</td>
+</tr>
+<tr>
+<td><code>%Lf</code> / <code>%Le</code> / <code>%Lg</code></td>
+<td>Long double (length modifier <code>L</code>)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>The default precision is <strong>6 digits</strong> after the decimal (for <code>%f</code>) or <strong>6 significant digits</strong> (for <code>%g</code>/<code>%G</code>).  </p>
+<p><strong>Rounding</strong>: <code>%e</code>, <code>%E</code>, and <code>%g</code> perform rounding; <code>%f</code> shows exact decimals.  </p>
+<p><code>%g</code>/<code>%G</code> automatically chooses the <em>shortest</em> visual representation for a given 
+number:  </p>
+<ul>
+<li>
+<p>Chooses <code>%e</code> if the exponent is &lt; -4 or ≥ precision.  </p>
+</li>
+<li>
+<p>Otherwise chooses <code>%f</code>.  </p>
+</li>
+<li>
+<p>Removes trailing zeros.</p>
+</li>
+<li>
+<p>Omits the decimal point if the fractional part is zero.</p>
+</li>
+</ul>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main(void) {
+    printf(&quot;%g\n&quot;, 87.0);        // 87
+    // whole number, fractional part is zero so &quot;.0&quot; is suppressed
+
+    printf(&quot;%g\n&quot;, 87.50);       // 87.5
+    // fractional part kept, trailing zero removed
+
+    printf(&quot;%g\n&quot;, 87.25);       // 87.25
+    // fractional part kept, no trailing zeros to remove
+
+    printf(&quot;%g\n&quot;, 0.0000875);   // 8.75e-05
+    // exponent &lt; -4, so %e format is chosen
+
+    printf(&quot;%g\n&quot;, 8750000.0);   // 8.75e+06
+    // exponent ≥ precision (6), so %e format is chosen
+
+    printf(&quot;%#g\n&quot;, 87.0);       // 87.0000
+    // '#' flag forces decimal point and trailing zeros up to precision
+
+    return 0;
+}
+</code></pre>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
