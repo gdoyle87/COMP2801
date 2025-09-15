@@ -1,5 +1,8 @@
 # Week 1
 
+This week covers the first half of Chapter 9 in the text. We look in depth at 
+`printf` formatting including **specifiers**, **field widths**, **formatting 
+flags**, and **escape sequences** which all help control how output is displayed.
 
 ## Streams
 
@@ -313,6 +316,7 @@ typed directly or would otherwise be ambiguous.
 | `\t`   | Horizontal tab |
 | `\v`   | Vertical tab |
 | `%%`   | Percent symbol (`%`) |
+
 ---
 
 
@@ -322,14 +326,14 @@ typed directly or would otherwise be ambiguous.
 
 int main(void) {
 	printf("Hello\tWorld\n");     // tab between words, newline at end
-	printf("Path: C:\\temp\n");  // prints: Path: C:\temp
+	printf("Path: C:\\temp\n");   // prints: Path: C:\temp
 	printf("Beep!\a\n");          // may cause a sound or window flash
-	printf("CPU usage: 95%%\n"); // CPU usage: 95%
+	printf("CPU usage: 95%%\n");  // CPU usage: 95%
 }
 ```
 
 <details>
-<summary><strong> Why <code>%%</code> isn’t like <code>\n</code></strong></summary>
+<summary><strong>Why <code>%%</code> isn’t like <code>\n</code></strong> (click to expand)</summary>
 
 <p>
 Backslash escapes (like <code>\n</code>, <code>\t</code>, <code>\?</code>) are 
@@ -348,4 +352,6 @@ Percent escapes (like <code>%d</code>, <code>%%</code>) are
 while <code>%%</code> is handled later by <code>printf</code>.
 </p>
 </details>
+<br>
+<br>
 

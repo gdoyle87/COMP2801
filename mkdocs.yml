@@ -2,7 +2,9 @@ site_name: COMP2801
 site_url: https://gdoyle87.github.io/COMP2801/
 nav:
   - Home: index.md
-  - Week 1 - Introduction to C & Data Types: wk_one.md
+  - Week 1 - Formatted Output in C: wk_one.md
+  - COMP 2701: https://gdoyle87.github.io/COMP2701
+  - Other Notes: https://gdoyle87.github.io/
 
 theme: readthedocs
 markdown_extensions:
