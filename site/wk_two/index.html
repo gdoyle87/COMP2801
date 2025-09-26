@@ -82,8 +82,10 @@
     <li class="toctree-l3"><a class="reference internal" href="#returning-results">Returning Results</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#example-factorial">Example: Factorial</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#stack-visualization">Stack Visualization</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#stack-visualization">Stack Visualization</a>
+        </ul>
     </li>
         </ul>
     </li>
@@ -383,8 +385,7 @@ int main(void) {
 }
 </code></pre>
 <p>Input: <code>5</code> → Output: <code>120</code></p>
-<hr />
-<h3 id="stack-visualization">Stack Visualization</h3>
+<h4 id="stack-visualization">Stack Visualization</h4>
 <p>Recursive calls can be visualized as a stack. Each new call is <strong>pushed</strong> onto the stack showing the pending computation, and results are <strong>popped</strong> once the base case is reached.</p>
 <p><strong>Factorial(5):</strong></p>
 <pre><code>Push (calls):

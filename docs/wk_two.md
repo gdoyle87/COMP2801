@@ -233,9 +233,8 @@ int main(void) {
 
 Input: `5` → Output: `120`
 
----
 
-### Stack Visualization
+#### Stack Visualization
 
 Recursive calls can be visualized as a stack. Each new call is **pushed** onto the stack showing the pending computation, and results are **popped** once the base case is reached.
 
