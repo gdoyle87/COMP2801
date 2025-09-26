@@ -3,6 +3,7 @@ site_url: https://gdoyle87.github.io/COMP2801/
 nav:
   - Home: index.md
   - Week 1 - Formatted Output in C: wk_one.md
+  - Week 2 - scanf and Recursion: wk_two.md
   - COMP 2701: https://gdoyle87.github.io/COMP2701
   - Other Notes: https://gdoyle87.github.io/
 
