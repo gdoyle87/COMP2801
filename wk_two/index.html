@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://gdoyle87.github.io/COMP2801/wk_two/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Week 2 - scanf and Recursion - COMP2801</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Week 2 - scanf and Recursion";
+        var mkdocs_page_input_path = "wk_two.md";
+        var mkdocs_page_url = "/COMP2801/wk_two/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> COMP2801
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../wk_one/">Week 1 - Formatted Output in C</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Week 2 - scanf and Recursion</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#formatted-input-with-scanf">Formatted Input with scanf</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#scanf-syntax">scanf Syntax</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#conversion-specifiers">Conversion Specifiers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example">Example</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="https://gdoyle87.github.io/COMP2701">COMP 2701</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="https://gdoyle87.github.io/">Other Notes</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">COMP2801</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Week 2 - scanf and Recursion</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="week-2">Week 2</h1>
+<p>This week covers <strong>formatted input</strong> using <code>scanf</code> and recursion.</p>
+<h2 id="formatted-input-with-scanf">Formatted Input with <code>scanf</code></h2>
+<p><code>scanf</code> statements contain a <strong>format control string</strong> that specifies how input
+should be read, followed by pointers to variables where the input will be stored.</p>
+<p>Key capabilities:</p>
+<ol>
+<li>Inputting all types of data.</li>
+<li>Inputting specific characters from an input stream.</li>
+<li>Skipping specific characters in an input stream.</li>
+</ol>
+<hr />
+<h3 id="scanf-syntax"><code>scanf</code> Syntax</h3>
+<pre><code class="language-c">scanf(format-control-string, other-arguments);
+</code></pre>
+<ul>
+<li><strong>format-control-string</strong> – describes input formats using conversion specifiers.</li>
+<li>
+<p><strong>other-arguments</strong> – pointers to variables that will receive the input.</p>
+</li>
+<li>
+<p>Prompt the user for one (or a few) items at a time.</p>
+</li>
+<li>Avoid asking for many inputs in one statement.</li>
+<li>Always handle the possibility of incorrect data (e.g., invalid integers or
+  strings with missing punctuation).</li>
+</ul>
+<hr />
+<h3 id="conversion-specifiers">Conversion Specifiers</h3>
+<p>Like <code>printf</code>, <code>scanf</code> uses conversion specifiers to handle different data types.
+Some specifiers differ between input (<code>scanf</code>) and output (<code>printf</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Specifier</th>
+<th>Description</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Integers</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%d</code></td>
+<td>Reads a signed decimal integer  <code>int*</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%i</code></td>
+<td>Reads signed decimal, octal, or hexadecimal  <code>int*</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%o</code></td>
+<td>Reads an octal integer  <code>unsigned int*</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%u</code></td>
+<td>Reads an unsigned decimal integer  <code>unsigned int*</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%x</code> / <code>%X</code></td>
+<td>Reads a hexadecimal integer  <code>unsigned int*</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>h</code>, <code>l</code>, <code>ll</code></td>
+<td>Length modifiers (<code>short</code>, <code>long</code>, <code>long long</code>) for integers</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Floating-point</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%e</code>, <code>%E</code>, <code>%f</code>, <code>%F</code>, <code>%g</code>, <code>%G</code></td>
+<td>Reads a floating-point value  <code>float*</code> / <code>double*</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>l</code> or <code>L</code></td>
+<td>Length modifiers for <code>double</code> or <code>long double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Characters &amp; Strings</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%c</code></td>
+<td>Reads a single character  <code>char*</code> (no <code>\0</code> added)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>%s</code></td>
+<td>Reads a string  <code>char[]</code> (terminates with <code>\0</code>)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Scan set</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%[...]</code></td>
+<td>Reads a set of characters into a string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Miscellaneous</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%p</code></td>
+<td>Reads an address (pointer format)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>%n</code></td>
+<td>Stores number of characters read so far  <code>int*</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%%</code></td>
+<td>Skips a literal <code>%</code> in input</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="example">Example</h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main(void) {
+    int x;
+    float y;
+    char c;
+    char str[20];
+
+    scanf(&quot;%d %f %c %s&quot;, &amp;x, &amp;y, &amp;c, str);
+
+    printf(&quot;x=%d, y=%f, c=%c, str=%s\n&quot;, x, y, c, str);
+    return 0;
+}
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../wk_one/" class="btn btn-neutral float-left" title="Week 1 - Formatted Output in C"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../wk_one/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
