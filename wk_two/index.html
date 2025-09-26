@@ -73,6 +73,20 @@
     </li>
         </ul>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#recursion">Recursion</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#base-cases-and-recursive-calls">Base Cases and Recursive Calls</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#recursive-step">Recursive Step</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#returning-results">Returning Results</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-factorial">Example: Factorial</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#stack-visualization">Stack Visualization</a>
+    </li>
+        </ul>
+    </li>
     </ul>
                 </li>
               </ul>
@@ -326,6 +340,68 @@ int main(void) {
 </code></pre>
 <p>Input: <code>07-04-2021</code> → output: <code>7 4 2021</code>
 Input: <code>01/01/2021</code> → output: <code>1 1 2021</code></p>
+<h2 id="recursion">Recursion</h2>
+<p>A <strong>recursive function</strong> is one that calls itself, either directly or indirectly through another function. Recursion is a common but complex topic; here we look at its basic structure.</p>
+<h3 id="base-cases-and-recursive-calls">Base Cases and Recursive Calls</h3>
+<p>A recursive function solves problems by dividing them into:</p>
+<ul>
+<li>A <strong>base case</strong> – the simplest case the function knows how to solve directly.</li>
+<li>A <strong>recursive case</strong> – a more complex problem broken down into smaller versions of itself.</li>
+</ul>
+<p>The recursive case must resemble the original problem but be simpler or smaller, ensuring progress toward the base case. Each recursive call works on the reduced problem until the base case is reached.</p>
+<h3 id="recursive-step">Recursive Step</h3>
+<p>When a recursive call is made:</p>
+<ul>
+<li>The function pauses its current execution and launches a fresh copy of itself to handle the smaller problem.</li>
+<li>This process can repeat many times, generating multiple recursive calls.</li>
+<li>Each call must eventually converge on the base case, where recursion stops.</li>
+</ul>
+<h3 id="returning-results">Returning Results</h3>
+<p>Each recursive call includes a <code>return</code> statement. When the base case is reached, the result is returned back to the previous call. This chain of returns continues until the result reaches the original caller.</p>
+<p>In summary:</p>
+<ul>
+<li>Base case: directly solvable, no further recursion.</li>
+<li>Recursive step: reduces the problem and calls the function again.</li>
+<li>Convergence: repeated recursion eventually reaches the base case, then unwinds with results.</li>
+</ul>
+<hr />
+<h3 id="example-factorial">Example: Factorial</h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int factorial(int n) {
+    if (n == 0) {           // base case
+        return 1;
+    } else {
+        return n * factorial(n - 1); // recursive case
+    }
+}
+
+int main(void) {
+    int num = 5;
+    printf(&quot;Factorial of %d is %d\n&quot;, num, factorial(num));
+    return 0;
+}
+</code></pre>
+<p>Input: <code>5</code> → Output: <code>120</code></p>
+<hr />
+<h3 id="stack-visualization">Stack Visualization</h3>
+<p>Recursive calls can be visualized as a stack. Each new call is <strong>pushed</strong> onto the stack showing the pending computation, and results are <strong>popped</strong> once the base case is reached.</p>
+<p><strong>Factorial(5):</strong></p>
+<pre><code>Push (calls):
+Factorial(5) -&gt; 5 * Factorial(4)
+  Factorial(4) -&gt; 4 * Factorial(3)
+    Factorial(3) -&gt; 3 * Factorial(2)
+      Factorial(2) -&gt; 2 * Factorial(1)
+        Factorial(1) -&gt; 1 * Factorial(0)
+          Factorial(0) -&gt; 1  (base case)
+
+Pop (returns):
+        Factorial(1) = 1 * Factorial(0) = 1 * 1 = 1
+      Factorial(2) = 2 * Factorial(1) = 2 * 1 = 2
+    Factorial(3) = 3 * Factorial(2) = 3 * 2 = 6
+  Factorial(4) = 4 * Factorial(3) = 4 * 6 = 24
+Factorial(5) = 5 * Factorial(4) = 5 * 24 = 120
+</code></pre>
               
             </div>
           </div><footer>
