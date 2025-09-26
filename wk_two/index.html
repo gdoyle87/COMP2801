@@ -57,7 +57,19 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#conversion-specifiers">Conversion Specifiers</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#example">Example</a>
+    <li class="toctree-l3"><a class="reference internal" href="#using-scan-sets">Using Scan Sets</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#inverting-the-scan-set">Inverting the Scan Set</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#using-field-widths">Using Field Widths</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#skipping-characters-in-an-input-stream">Skipping Characters in an Input Stream</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#assignment-suppression-character">Assignment Suppression Character</a>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
@@ -228,21 +240,92 @@ Some specifiers differ between input (<code>scanf</code>) and output (<code>prin
 </tbody>
 </table>
 <hr />
-<h3 id="example">Example</h3>
+<h3 id="using-scan-sets">Using Scan Sets</h3>
+<p>A <strong>scan set</strong> allows input of only certain characters, defined inside square
+brackets <code>[]</code> after a <code>%</code> in the format string. Input continues until a character
+not in the scan set is encountered.</p>
+<p>Example: using <code>%[aeiou]</code> reads only vowels.</p>
 <pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main(void) {
-    int x;
-    float y;
-    char c;
-    char str[20];
-
-    scanf(&quot;%d %f %c %s&quot;, &amp;x, &amp;y, &amp;c, str);
-
-    printf(&quot;x=%d, y=%f, c=%c, str=%s\n&quot;, x, y, c, str);
+    char z[9] = &quot;&quot;;
+    printf(&quot;%s&quot;, &quot;Enter string: &quot;);
+    scanf(&quot;%8[aeiou]&quot;, z); // only vowels
+    printf(&quot;The input was \&quot;%s\&quot;\n&quot;, z);
     return 0;
 }
 </code></pre>
+<p>Input: <code>oeeeooahah</code> → stops at <code>h</code>, outputs <code>oeeeooa</code>.</p>
+<hr />
+<h4 id="inverting-the-scan-set">Inverting the Scan Set</h4>
+<p>An <strong>inverted scan set</strong> matches characters <em>not</em> in the given set. Use a <code>^</code>
+inside the brackets to invert.</p>
+<p>Example: <code>%[^aeiou]</code> reads only consonants and other non-vowels.</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main(void) {
+    char z[9] = &quot;&quot;;
+    printf(&quot;%s&quot;, &quot;Enter a string: &quot;);
+    scanf(&quot;%8[^aeiou]&quot;, z); // non-vowels
+    printf(&quot;The input was \&quot;%s\&quot;\n&quot;, z);
+    return 0;
+}
+</code></pre>
+<p>Input: <code>String</code> → stops at vowel <code>i</code>, outputs <code>Str</code>.</p>
+<h3 id="using-field-widths">Using Field Widths</h3>
+<p>A <strong>field width</strong> can be applied in a <code>scanf</code> conversion specifier to control how many characters are read from the input stream.</p>
+<ul>
+<li>Input is read as groups of digits/characters of the specified width.</li>
+<li>Useful when parsing fixed-length data such as IDs, phone numbers, or formatted strings.</li>
+</ul>
+<p>Example: <code>%2d</code> reads exactly 2 digits into one variable, then <code>%d</code> reads the rest.</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main(void) {
+    int x = 0;
+    int y = 0;
+
+    printf(&quot;%s&quot;, &quot;Enter a six digit integer: &quot;);
+    scanf(&quot;%2d%d&quot;, &amp;x, &amp;y); // first 2 digits go to x, remaining go to y
+
+    printf(&quot;The integers input were %d and %d\n&quot;, x, y);
+    return 0;
+}
+</code></pre>
+<p>Input: <code>123456</code> → output: <code>12</code> and <code>3456</code>.</p>
+<h3 id="skipping-characters-in-an-input-stream">Skipping Characters in an Input Stream</h3>
+<p><code>scanf</code> can skip unnecessary characters in the input stream:</p>
+<ul>
+<li><strong>Whitespace characters</strong> (space, tab, newline) are skipped automatically at the beginning of most format specifiers.</li>
+<li><strong>Literal characters</strong> in the format string (like <code>-</code> or <code>/</code>) must match in the input and are discarded.</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-c">scanf(&quot;%d-%d-%d&quot;, &amp;month, &amp;day, &amp;year);
+</code></pre>
+<p>Input: <code>11-10-1999</code> → assigns 11, 10, 1999 while skipping the dashes.</p>
+<hr />
+<h4 id="assignment-suppression-character">Assignment Suppression Character</h4>
+<p>The <strong><code>*</code> assignment suppression character</strong> allows <code>scanf</code> to read and discard input without storing it in a variable.</p>
+<p>Example: <code>%*c</code> reads and discards a single character.</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main(void) {
+    int month = 0;
+    int day = 0;
+    int year = 0;
+
+    printf(&quot;%s&quot;, &quot;Enter a date in the form mm-dd-yyyy: &quot;);
+    scanf(&quot;%d%*c%d%*c%d&quot;, &amp;month, &amp;day, &amp;year); // ignores separators
+    printf(&quot;month = %d day = %d year = %d\n&quot;, month, day, year);
+
+    printf(&quot;%s&quot;, &quot;Enter a date in the form mm/dd/yyyy: &quot;);
+    scanf(&quot;%d%*c%d%*c%d&quot;, &amp;month, &amp;day, &amp;year); // works with /
+    printf(&quot;month = %d day = %d year = %d\n&quot;, month, day, year);
+    return 0;
+}
+</code></pre>
+<p>Input: <code>07-04-2021</code> → output: <code>7 4 2021</code>
+Input: <code>01/01/2021</code> → output: <code>1 1 2021</code></p>
               
             </div>
           </div><footer>
