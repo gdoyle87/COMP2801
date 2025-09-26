@@ -110,18 +110,13 @@ should be read, followed by pointers to variables where the input will be stored
 <h3 id="scanf-syntax"><code>scanf</code> Syntax</h3>
 <pre><code class="language-c">scanf(format-control-string, other-arguments);
 </code></pre>
-<ul>
-<li><strong>format-control-string</strong> – describes input formats using conversion specifiers.</li>
-<li>
-<p><strong>other-arguments</strong> – pointers to variables that will receive the input.</p>
-</li>
-<li>
-<p>Prompt the user for one (or a few) items at a time.</p>
-</li>
-<li>Avoid asking for many inputs in one statement.</li>
-<li>Always handle the possibility of incorrect data (e.g., invalid integers or
-  strings with missing punctuation).</li>
-</ul>
+<p><strong>format-control-string</strong> – describes input formats using conversion specifiers.
+<strong>other-arguments</strong> – pointers to variables that will receive the input.</p>
+<p><br><br>
+* Prompt the user for one (or a few) items at a time.
+* Avoid asking for many inputs in one statement.
+* Always handle the possibility of incorrect data (e.g., invalid integers or
+  strings with missing punctuation).</p>
 <hr />
 <h3 id="conversion-specifiers">Conversion Specifiers</h3>
 <p>Like <code>printf</code>, <code>scanf</code> uses conversion specifiers to handle different data types.
