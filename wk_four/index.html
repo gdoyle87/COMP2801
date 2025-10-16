@@ -11,6 +11,8 @@
         <link rel="canonical" href="https://gdoyle87.github.io/COMP2801/wk_four/">
       
       
+        <link rel="prev" href="../wk_three/">
+      
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -18,7 +20,7 @@
     
     
       
-        <title>Wk four - COMP2801</title>
+        <title>Week 4 - Unions, Bit manipulations - COMP2801</title>
       
     
     
@@ -71,6 +73,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#week-4" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -103,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Wk four
+              Week 4 - Unions, Bit manipulations
             
           </span>
         </div>
@@ -312,6 +319,94 @@
       
   
   
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Week 4 - Unions, Bit manipulations
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 4 - Unions, Bit manipulations
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#unions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#declaring-a-union" class="md-nav__link">
+    <span class="md-ellipsis">
+      Declaring a union
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
   
   
     <li class="md-nav__item">
@@ -368,9 +463,41 @@
 
 
 
-  <h1>Wk four</h1>
+<h1 id="week-4">Week 4</h1>
+<p>This week continued Chapter 10 and covered <strong>unions</strong>, <strong>bit manipulations</strong>, 
+and a review on <strong>enums</strong>.</p>
+<hr>
 
+<h2 id="unions">Unions</h2>
+<p>Like a <code>struct</code>, a <code>union</code> is a derived data type. The difference is that <strong>all
+members of a union occupy the same memory space</strong>.</p>
+<p>This is helpful when different variables are only relevant at different times
+during program execution. By combining them in a <code>union</code>, you can <strong>save
+memory</strong> rather than allocating space for all members simultaneously.</p>
+<p>In most cases, a <code>union</code> contains two or more items of <em>different</em> types. You
+can access only <strong>one member (and therefore one type)</strong> at a time. It is the
+programmer’s responsibility to reference the data with the proper type — using
+the wrong one results in a logic error.</p>
+<p>The <code>sizeof</code> a <code>union</code> is always equal to the size of its <strong>largest member
+type</strong>.</p>
+<hr>
 
+<h3 id="declaring-a-union">Declaring a <code>union</code></h3>
+<p>The declaration of a <code>union</code> is very similar to that of a <code>struct</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">union</span><span class="w"> </span><span class="nc">number</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span>
+<span class="p">};</span>
+</code></pre></div>
+<p>As with a <code>struct</code>, defining a <code>union</code> only creates a new type; it does not
+reserve memory until you declare variables of that type.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Union definitions are often placed in header files so they can be
+reused across multiple source files that require access to the same type
+definition.</p>
+</div>
+<hr>
 
 
 
