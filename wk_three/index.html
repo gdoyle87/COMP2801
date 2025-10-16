@@ -26,6 +26,9 @@
     
       <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
       
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
       
 
 
@@ -55,7 +58,14 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -106,6 +116,32 @@
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -176,7 +212,9 @@
 
 
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="COMP2801" class="md-nav__button md-logo" aria-label="COMP2801" data-md-component="logo">
       
@@ -357,8 +395,26 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#using-sizeof-with-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using sizeof with Structures
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typedef" class="md-nav__link">
+    <span class="md-ellipsis">
+      typedef
+    </span>
+  </a>
   
 </li>
       
@@ -421,83 +477,6 @@
               </div>
             
             
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#structures" class="md-nav__link">
-    <span class="md-ellipsis">
-      Structures
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Structures">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#member-types" class="md-nav__link">
-    <span class="md-ellipsis">
-      Member Types
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#defining-variables-of-structure-types" class="md-nav__link">
-    <span class="md-ellipsis">
-      Defining Variables of Structure Types
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#structures-without-tag-names" class="md-nav__link">
-    <span class="md-ellipsis">
-      Structures without Tag Names
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comparing-structure-objects" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comparing Structure Objects
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           
             <div class="md-content" data-md-component="content">
@@ -513,150 +492,143 @@
 <p>A <strong>structure</strong> is a collection of related variables grouped under one name.
 In the C standard, structures are referred to as <em>aggregates</em>.</p>
 <p>The <code>struct</code> keyword is used to define a structure type:</p>
-<pre><code class="language-c">// A structure for representing a playing card.
-struct card {
-    const char *face;
-    const char *suit;
-};  // Note: a semicolon is required after the closing brace.
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// A structure for representing a playing card.</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">face</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">suit</span><span class="p">;</span>
+<span class="p">};</span><span class="w">  </span><span class="c1">// Note: a semicolon is required after the closing brace.</span>
+</code></pre></div>
 <p>The example above defines a new structure type named <code>card</code>.
 The variables declared inside the braces (<code>face</code> and <code>suit</code>) are called <em>members</em>.</p>
 <p>Since this type definition is a <em>declaration</em>, a semicolon must follow the 
 closing brace.</p>
+<hr>
+
 <h3 id="member-types">Member Types</h3>
 <p>Structures can contain members of different types.
 However, a structure cannot contain a member that is an instance of its own type.
 For example, the following is invalid:</p>
-<pre><code class="language-c">// Invalid: a structure cannot contain an instance of itself.
-struct card {
-    const char *face;
-    const char *suit;
-    struct card nextCard;  // Invalid
-};
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// Invalid: a structure cannot contain an instance of itself.</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">face</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">suit</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">card</span><span class="w"> </span><span class="n">nextCard</span><span class="p">;</span><span class="w">  </span><span class="c1">// Invalid</span>
+<span class="p">};</span>
+</code></pre></div>
 <p>To work around this, use a pointer to the same type:</p>
-<pre><code class="language-c">// Valid: a structure can contain a pointer to its own type.
-struct card {
-    const char *face;
-    const char *suit;
-    struct card *nextCard;  // Valid
-};
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// Valid: a structure can contain a pointer to its own type.</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">face</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">suit</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">card</span><span class="w"> </span><span class="o">*</span><span class="n">nextCard</span><span class="p">;</span><span class="w">  </span><span class="c1">// Valid</span>
+<span class="p">};</span>
+</code></pre></div>
 <p>This pattern is commonly used for creating nodes in a linked list.</p>
+<hr>
+
 <h3 id="defining-variables-of-structure-types">Defining Variables of Structure Types</h3>
 <p>Structure definitions alone only create a new <em>type</em> that can be used later in 
 code; they do not reserve any space in memory. A structure definition is 
 essentially a blueprint. To begin reserving memory for variables, use the 
 following syntax:</p>
-<pre><code class="language-c">// create a new card struct
-struct card myCard;
+<div class="highlight"><pre><span></span><code><span class="c1">// create a new card struct</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">card</span><span class="w"> </span><span class="n">myCard</span><span class="p">;</span>
 
-// or create an array of card structs
-struct card deck[52];
+<span class="c1">// or create an array of card structs</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">card</span><span class="w"> </span><span class="n">deck</span><span class="p">[</span><span class="mi">52</span><span class="p">];</span>
 
-// or create a pointer to a card struct
-struct card *cardPtr;
-</code></pre>
+<span class="c1">// or create a pointer to a card struct</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">card</span><span class="w"> </span><span class="o">*</span><span class="n">cardPtr</span><span class="p">;</span>
+</code></pre></div>
 <p>You can also create variables of a struct during the definition of the struct 
 by providing a comma-separated list of variable names after the closing 
 brace of the struct but before the ending semicolon of the declaration:</p>
-<pre><code class="language-c">struct card {
-    const char *face;
-    const char *suit;
-} myCard, deck[52], *cardPtr;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">face</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">suit</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">myCard</span><span class="p">,</span><span class="w"> </span><span class="n">deck</span><span class="p">[</span><span class="mi">52</span><span class="p">],</span><span class="w"> </span><span class="o">*</span><span class="n">cardPtr</span><span class="p">;</span>
+</code></pre></div>
+<hr>
+
 <h3 id="structures-without-tag-names">Structures without Tag Names</h3>
 <p>You can define a struct without a tag name:</p>
-<pre><code class="language-c">struct {    // NOTE: no &quot;card&quot; tag name
-    const char *face;
-    const char *suit;
-} exampleCard;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w">    </span><span class="c1">// NOTE: no &quot;card&quot; tag name</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">face</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">suit</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">exampleCard</span><span class="p">;</span>
+</code></pre></div>
 <p>However, without a tag name, you cannot declare additional variables of this 
 type later in the program. Therefore, you <em>must</em> provide variable names <em>during</em>
 the declaration to use them.</p>
-<hr>
-<details><summary>Example</summary>
-
-
-<pre><code class="language-c">// This defines and declares two variables immediately.
-struct {
-    int x;
-    int y;
-} point1, point2;
-</code></pre>
-
-
-</details>
+<div class="highlight"><pre><span></span><code><span class="c1">// This defines and declares two variables immediately.</span>
+<span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">point1</span><span class="p">,</span><span class="w"> </span><span class="n">point2</span><span class="p">;</span>
+</code></pre></div>
 <hr>
 
 <h3 id="comparing-structure-objects">Comparing Structure Objects</h3>
-<p>Structures <strong>cannot</strong> be compared using the operators <code>==</code> or <code>!=</code> because structure members may not be stored in consecutive bytes of memory. Compilers often insert padding bytes (known as <em>holes</em>) to align data members according to their type’s alignment requirements.</p>
-<p>These holes can contain garbage values, which would cause comparisons between two otherwise identical structures to fail.</p>
-<hr>
-
-<details><summary>Example of holes</summary>
-
-Suppose we have a struct defined as follows, with two variables of that type named <code>sample1</code> and <code>sample2</code>.
-
-
-<pre><code class="language-c">struct example {
-    char c;
-    int i;
-} sample1, sample2;
-</code></pre>
-
-
-Initially, the variables contain garbage values:
-
-<img src="images/struct_gap1.png" alt="Initial garbage values" />
-
-We then assign values to the members of <code>sample1</code>:
-
-
-<pre><code class="language-c">sample1.c = 'G';
-sample1.i = 42069;
-</code></pre>
-
-
-<img src="images/struct_gap2.png" alt="Assigned values in sample1" />
-
-Notice that the <code>int</code> portion begins at byte 4. This is because integers *must* align on a 4-byte boundary, leaving a gap in bytes 1–3.
-
-Next, we assign the same values to the members of <code>sample2</code>:
-
-
-<pre><code class="language-c">sample2.c = 'G';
-sample2.i = 42069;
-</code></pre>
-
-
-<img src="images/struct_gap3.png" alt="Assigned values in sample2" />
-
-When comparing the two, the visible members appear equivalent, but the hidden padding bytes contain different values. Therefore, the two structs are **not** equal when compared byte-for-byte.
-
-<img src="images/struct_gap4.png" alt="Mismatched padding bytes" />
-
+<p>Structures <strong>cannot</strong> be compared using the operators <code>==</code> or <code>!=</code> because 
+structure members may not be stored in consecutive bytes of memory. Compilers 
+often insert padding bytes (known as <em>holes</em>) to align data members according 
+to their type’s alignment requirements.</p>
+<p>These holes can contain garbage values, which would cause comparisons between 
+two otherwise identical structures to fail.</p>
+<details class="example">
+<summary>Detailed example</summary>
+<p>Suppose we have a struct defined as follows, with two variables of that type named <code>sample1</code> and <code>sample2</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">example</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">sample1</span><span class="p">,</span><span class="w"> </span><span class="n">sample2</span><span class="p">;</span>
+</code></pre></div>
+<p>Initially, the variables contain garbage values:</p>
+<p><img src="../images/struct_gap1.png" alt="Initial garbage values" /></p>
+<p>We then assign values to the members of <code>sample1</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">sample1</span><span class="p">.</span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;G&#39;</span><span class="p">;</span>
+<span class="n">sample1</span><span class="p">.</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42069</span><span class="p">;</span>
+</code></pre></div>
+<p><img src="../images/struct_gap2.png" alt="Assigned values in sample1" /></p>
+<p>Notice that the <code>int</code> portion begins at byte 4. This is because integers <em>must</em> align on a 4-byte boundary, leaving a gap in bytes 1–3.</p>
+<p>Next, we assign the same values to the members of <code>sample2</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">sample2</span><span class="p">.</span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;G&#39;</span><span class="p">;</span>
+<span class="n">sample2</span><span class="p">.</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42069</span><span class="p">;</span>
+</code></pre></div>
+<p><img src="../images/struct_gap3.png" alt="Assigned values in sample2" /></p>
+<p>When comparing the two, the visible members appear equivalent, but the hidden padding bytes contain different values. Therefore, the two structs are <strong>not</strong> equal when compared byte-for-byte.</p>
+<p><img src="../images/struct_gap4.png" alt="Mismatched padding bytes" /></p>
 </details>
-
 <p><br></p>
 <hr>
 
+<h3 id="using-sizeof-with-structures">Using <code>sizeof</code> with Structures</h3>
+<p>The <code>sizeof</code> operator can be used to determine the amount of memory a structure occupies. However, the value returned by <code>sizeof</code> a structure often exceeds the sum of its members' sizes due to <strong>padding and alignment</strong>.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">example</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%zu</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">example</span><span class="p">));</span><span class="w">  </span><span class="c1">// Likely prints 8, not 5</span>
+</code></pre></div>
+<p>The <code>sizeof</code> value includes both the member data and any extra bytes the compiler adds to satisfy memory alignment requirements.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Test note!.</p>
+<p class="admonition-title">Structure packing and alignment</p>
+<p>When structures are stored in memory, the compiler may insert <strong>padding bytes</strong> 
+between members to align data according to hardware requirements. This 
+improves access performance but can waste space.</p>
+<p>You can minimize wasted space by ordering structure members from largest to 
+smallest type (for example, <code>double</code> then <code>int</code> then <code>char</code>).</p>
+<p>Some compilers provide directives like <code>#pragma pack</code> to override default 
+alignment and reduce padding. However, this is <strong>compiler-specific</strong> and 
+may lead to portability or performance issues. </p>
+<p>It is generally recommended to <strong>avoid using <code>#pragma pack</code></strong> unless you 
+have a clear and justified need, such as matching external binary data formats.</p>
 </div>
-<details><summary>More about structure packing</summary>
+<hr>
 
-When structures are stored in memory, the compiler may insert padding bytes
-between members to align data according to hardware requirements.
-This can improve performance but may waste space.
-
-You can minimize wasted space by ordering structure members from largest to smallest type (for example, `double` -> `int` -> `char`).
-Some compilers also support pragmas such as `#pragma pack` to control alignment,
-though this is compiler-specific and should be used with caution.
-
-</details>
+<h2 id="typedef"><code>typedef</code></h2>
 
 
 
@@ -705,7 +677,7 @@ though this is compiler-specific and should be used with caution.
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["toc.integrate", "navigation.expand", "navigation.sections"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>

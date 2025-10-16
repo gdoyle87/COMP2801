@@ -28,6 +28,9 @@
     
       <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
       
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
       
 
 
@@ -57,7 +60,14 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -108,6 +118,32 @@
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -178,7 +214,9 @@
 
 
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="COMP2801" class="md-nav__button md-logo" aria-label="COMP2801" data-md-component="logo">
       
@@ -528,188 +566,6 @@
               </div>
             
             
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#formatted-input-with-scanf" class="md-nav__link">
-    <span class="md-ellipsis">
-      Formatted Input with scanf
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Formatted Input with scanf">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#scanf-syntax" class="md-nav__link">
-    <span class="md-ellipsis">
-      scanf Syntax
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#conversion-specifiers" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conversion Specifiers
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#using-scan-sets" class="md-nav__link">
-    <span class="md-ellipsis">
-      Using Scan Sets
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Using Scan Sets">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#inverting-the-scan-set" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inverting the Scan Set
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#using-field-widths" class="md-nav__link">
-    <span class="md-ellipsis">
-      Using Field Widths
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#skipping-characters-in-an-input-stream" class="md-nav__link">
-    <span class="md-ellipsis">
-      Skipping Characters in an Input Stream
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Skipping Characters in an Input Stream">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#assignment-suppression-character" class="md-nav__link">
-    <span class="md-ellipsis">
-      Assignment Suppression Character
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recursion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Recursion
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Recursion">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#base-cases-and-recursive-calls" class="md-nav__link">
-    <span class="md-ellipsis">
-      Base Cases and Recursive Calls
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#recursive-step" class="md-nav__link">
-    <span class="md-ellipsis">
-      Recursive Step
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#returning-results" class="md-nav__link">
-    <span class="md-ellipsis">
-      Returning Results
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-factorial" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example: Factorial
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Example: Factorial">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#stack-visualization" class="md-nav__link">
-    <span class="md-ellipsis">
-      Stack Visualization
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           
             <div class="md-content" data-md-component="content">
@@ -732,8 +588,8 @@ should be read, followed by pointers to variables where the input will be stored
 </ol>
 <hr />
 <h3 id="scanf-syntax"><code>scanf</code> Syntax</h3>
-<pre><code class="language-c">scanf(format-control-string, other-arguments);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">scanf</span><span class="p">(</span><span class="n">format</span><span class="o">-</span><span class="n">control</span><span class="o">-</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">other</span><span class="o">-</span><span class="n">arguments</span><span class="p">);</span>
+</code></pre></div>
 <p><strong>format-control-string</strong> – describes input formats using conversion specifiers.
 <strong>other-arguments</strong> – pointers to variables that will receive the input.</p>
 <p><br><br>
@@ -857,32 +713,32 @@ Some specifiers differ between input (<code>scanf</code>) and output (<code>prin
 brackets <code>[]</code> after a <code>%</code> in the format string. Input continues until a character
 not in the scan set is encountered.</p>
 <p>Example: using <code>%[aeiou]</code> reads only vowels.</p>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 
-int main(void) {
-    char z[9] = &quot;&quot;;
-    printf(&quot;%s&quot;, &quot;Enter string: &quot;);
-    scanf(&quot;%8[aeiou]&quot;, z); // only vowels
-    printf(&quot;The input was \&quot;%s\&quot;\n&quot;, z);
-    return 0;
-}
-</code></pre>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">z</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Enter string: &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%8[aeiou]&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">);</span><span class="w"> </span><span class="c1">// only vowels</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The input was </span><span class="se">\&quot;</span><span class="s">%s</span><span class="se">\&quot;\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>Input: <code>oeeeooahah</code> → stops at <code>h</code>, outputs <code>oeeeooa</code>.</p>
 <hr />
 <h4 id="inverting-the-scan-set">Inverting the Scan Set</h4>
 <p>An <strong>inverted scan set</strong> matches characters <em>not</em> in the given set. Use a <code>^</code>
 inside the brackets to invert.</p>
 <p>Example: <code>%[^aeiou]</code> reads only consonants and other non-vowels.</p>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 
-int main(void) {
-    char z[9] = &quot;&quot;;
-    printf(&quot;%s&quot;, &quot;Enter a string: &quot;);
-    scanf(&quot;%8[^aeiou]&quot;, z); // non-vowels
-    printf(&quot;The input was \&quot;%s\&quot;\n&quot;, z);
-    return 0;
-}
-</code></pre>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">z</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Enter a string: &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%8[^aeiou]&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">);</span><span class="w"> </span><span class="c1">// non-vowels</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The input was </span><span class="se">\&quot;</span><span class="s">%s</span><span class="se">\&quot;\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>Input: <code>String</code> → stops at vowel <code>i</code>, outputs <code>Str</code>.</p>
 <h3 id="using-field-widths">Using Field Widths</h3>
 <p>A <strong>field width</strong> can be applied in a <code>scanf</code> conversion specifier to control how many characters are read from the input stream.</p>
@@ -891,19 +747,19 @@ int main(void) {
 <li>Useful when parsing fixed-length data such as IDs, phone numbers, or formatted strings.</li>
 </ul>
 <p>Example: <code>%2d</code> reads exactly 2 digits into one variable, then <code>%d</code> reads the rest.</p>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 
-int main(void) {
-    int x = 0;
-    int y = 0;
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
-    printf(&quot;%s&quot;, &quot;Enter a six digit integer: &quot;);
-    scanf(&quot;%2d%d&quot;, &amp;x, &amp;y); // first 2 digits go to x, remaining go to y
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Enter a six digit integer: &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%2d%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">y</span><span class="p">);</span><span class="w"> </span><span class="c1">// first 2 digits go to x, remaining go to y</span>
 
-    printf(&quot;The integers input were %d and %d\n&quot;, x, y);
-    return 0;
-}
-</code></pre>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The integers input were %d and %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>Input: <code>123456</code> → output: <code>12</code> and <code>3456</code>.</p>
 <h3 id="skipping-characters-in-an-input-stream">Skipping Characters in an Input Stream</h3>
 <p><code>scanf</code> can skip unnecessary characters in the input stream:</p>
@@ -912,30 +768,30 @@ int main(void) {
 <li><strong>Literal characters</strong> in the format string (like <code>-</code> or <code>/</code>) must match in the input and are discarded.</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-c">scanf(&quot;%d-%d-%d&quot;, &amp;month, &amp;day, &amp;year);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d-%d-%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">day</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">year</span><span class="p">);</span>
+</code></pre></div>
 <p>Input: <code>11-10-1999</code> → assigns 11, 10, 1999 while skipping the dashes.</p>
 <hr />
 <h4 id="assignment-suppression-character">Assignment Suppression Character</h4>
 <p>The <strong><code>*</code> assignment suppression character</strong> allows <code>scanf</code> to read and discard input without storing it in a variable.</p>
 <p>Example: <code>%*c</code> reads and discards a single character.</p>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 
-int main(void) {
-    int month = 0;
-    int day = 0;
-    int year = 0;
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">month</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">day</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
-    printf(&quot;%s&quot;, &quot;Enter a date in the form mm-dd-yyyy: &quot;);
-    scanf(&quot;%d%*c%d%*c%d&quot;, &amp;month, &amp;day, &amp;year); // ignores separators
-    printf(&quot;month = %d day = %d year = %d\n&quot;, month, day, year);
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Enter a date in the form mm-dd-yyyy: &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%*c%d%*c%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">day</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">year</span><span class="p">);</span><span class="w"> </span><span class="c1">// ignores separators</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;month = %d day = %d year = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="n">day</span><span class="p">,</span><span class="w"> </span><span class="n">year</span><span class="p">);</span>
 
-    printf(&quot;%s&quot;, &quot;Enter a date in the form mm/dd/yyyy: &quot;);
-    scanf(&quot;%d%*c%d%*c%d&quot;, &amp;month, &amp;day, &amp;year); // works with /
-    printf(&quot;month = %d day = %d year = %d\n&quot;, month, day, year);
-    return 0;
-}
-</code></pre>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Enter a date in the form mm/dd/yyyy: &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%*c%d%*c%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">day</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">year</span><span class="p">);</span><span class="w"> </span><span class="c1">// works with /</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;month = %d day = %d year = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="n">day</span><span class="p">,</span><span class="w"> </span><span class="n">year</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>Input: <code>07-04-2021</code> → output: <code>7 4 2021</code>
 Input: <code>01/01/2021</code> → output: <code>1 1 2021</code></p>
 <h2 id="recursion">Recursion</h2>
@@ -964,27 +820,27 @@ Input: <code>01/01/2021</code> → output: <code>1 1 2021</code></p>
 </ul>
 <hr />
 <h3 id="example-factorial">Example: Factorial</h3>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 
-int factorial(int n) {
-    if (n == 0) {           // base case
-        return 1;
-    } else {
-        return n * factorial(n - 1); // recursive case
-    }
-}
+<span class="kt">int</span><span class="w"> </span><span class="nf">factorial</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">           </span><span class="c1">// base case</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// recursive case</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 
-int main(void) {
-    int num = 5;
-    printf(&quot;Factorial of %d is %d\n&quot;, num, factorial(num));
-    return 0;
-}
-</code></pre>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Factorial of %d is %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">factorial</span><span class="p">(</span><span class="n">num</span><span class="p">));</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>Input: <code>5</code> → Output: <code>120</code></p>
 <h4 id="stack-visualization">Stack Visualization</h4>
 <p>Recursive calls can be visualized as a stack. Each new call is <strong>pushed</strong> onto the stack showing the pending computation, and results are <strong>popped</strong> once the base case is reached.</p>
 <p><strong>Factorial(5):</strong></p>
-<pre><code>Push (calls):
+<div class="highlight"><pre><span></span><code>Push (calls):
 Factorial(5) -&gt; 5 * Factorial(4)
   Factorial(4) -&gt; 4 * Factorial(3)
     Factorial(3) -&gt; 3 * Factorial(2)
@@ -998,7 +854,7 @@ Pop (returns):
     Factorial(3) = 3 * Factorial(2) = 3 * 2 = 6
   Factorial(4) = 4 * Factorial(3) = 4 * 6 = 24
 Factorial(5) = 5 * Factorial(4) = 5 * 24 = 120
-</code></pre>
+</code></pre></div>
 
 
 
@@ -1047,7 +903,7 @@ Factorial(5) = 5 * Factorial(4) = 5 * 24 = 120
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["toc.integrate", "navigation.expand", "navigation.sections"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
