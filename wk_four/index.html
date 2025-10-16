@@ -390,6 +390,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#initializing-union-during-declaration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initializing union During Declaration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beyond-the-textbook-tagged-unions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beyond the Textbook: Tagged Unions
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -498,6 +516,62 @@ reused across multiple source files that require access to the same type
 definition.</p>
 </div>
 <hr>
+
+<h3 id="initializing-union-during-declaration">Initializing <code>union</code> During Declaration</h3>
+<p>You can initialize a variable of a union type during its declaration by
+assigning a value to the <strong>first member type</strong> listed in the definition.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// &#39;number&#39; contains the following members in order: int x, double y</span>
+<span class="k">union</span><span class="w"> </span><span class="nc">number</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">10</span><span class="p">};</span><span class="w"> </span><span class="c1">// assigns 10 to x</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you provide a value intended for a different member during initialization,
+it will be converted to the first member type instead.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// &#39;number&#39; contains the following members in order: int x, double y</span>
+<span class="k">union</span><span class="w"> </span><span class="nc">number</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">1.43</span><span class="p">};</span><span class="w"> </span><span class="c1">// assigns 1 to x instead of assigning 1.43 to y</span>
+</code></pre></div>
+</div>
+<hr>
+
+<h3 id="beyond-the-textbook-tagged-unions">Beyond the Textbook: Tagged Unions</h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following material was <strong>not covered in class (nor in this section of 
+the text as far as I can tell)</strong> and is provided here for informational
+purposes only.</p>
+</div>
+<p>While traditional unions allow multiple types to share the same memory space,
+they provide <strong>no way to track which member is currently active</strong>. This makes
+them error-prone for most applications.</p>
+<p>A safer and more common modern pattern is the <strong>tagged union</strong> (also called a
+<em>discriminated union</em>). A tagged union adds an explicit field, or <em>tag</em>, to
+record which member of the union is currently valid.</p>
+<div class="highlight"><pre><span></span><code><span class="k">enum</span><span class="w"> </span><span class="n">ValueType</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">TYPE_INT</span><span class="p">,</span><span class="w"> </span><span class="n">TYPE_DOUBLE</span><span class="w"> </span><span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">Value</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="n">ValueType</span><span class="w"> </span><span class="n">type</span><span class="p">;</span><span class="w">   </span><span class="c1">// the tag</span>
+<span class="w">    </span><span class="k">union</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">d</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>This design lets programs safely determine which member to use:</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">Value</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+<span class="n">v</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TYPE_DOUBLE</span><span class="p">;</span>
+<span class="n">v</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14</span><span class="p">;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">TYPE_DOUBLE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">d</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Tagged unions are common in modern C for representing values that may take
+multiple forms, such as tokens in a compiler or event types in an input system.
+They are safer and clearer than plain unions while still using shared memory
+efficiently.</p>
+</div>
 
 
 
