@@ -413,6 +413,162 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#bitwise-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise Operators
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bitwise Operators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-and" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise AND (&amp;)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-or" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise OR (|)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-xor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise XOR (^)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#left-shift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Left Shift (&lt;&lt;)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#right-shift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Right Shift (&gt;&gt;)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-not" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise NOT (~)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beyond-the-textbook-common-bit-manipulation-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beyond the Textbook: Common Bit Manipulation Techniques
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Beyond the Textbook: Common Bit Manipulation Techniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-checking-if-a-number-is-even-or-odd" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Checking if a Number is Even or Odd
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-swapping-two-numbers-without-a-temporary-variable" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Swapping Two Numbers Without a Temporary Variable
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-checking-if-a-number-is-a-power-of-two" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Checking if a Number is a Power of Two
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-counting-set-bits-brian-kernighans-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Counting Set Bits (Brian Kernighan’s Algorithm)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-clearing-or-setting-a-specific-bit" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Clearing or Setting a Specific Bit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-toggling-a-bit" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Toggling a Bit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-extracting-the-lowest-set-bit" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Extracting the Lowest Set Bit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-checking-if-two-integers-have-opposite-signs" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Checking if Two Integers Have Opposite Signs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -482,8 +638,8 @@
 
 
 <h1 id="week-4">Week 4</h1>
-<p>This week continued Chapter 10 and covered <strong>unions</strong>, <strong>bit manipulations</strong>, 
-and a review on <strong>enums</strong>.</p>
+<p>This week continued Chapter 10 and covered <strong>unions</strong> and <strong>bit manipulations</strong>. 
+.</p>
 <hr>
 
 <h2 id="unions">Unions</h2>
@@ -546,6 +702,7 @@ them error-prone for most applications.</p>
 <p>A safer and more common modern pattern is the <strong>tagged union</strong> (also called a
 <em>discriminated union</em>). A tagged union adds an explicit field, or <em>tag</em>, to
 record which member of the union is currently valid.</p>
+<p>This trades a bit of extra overhead for greater safety.</p>
 <div class="highlight"><pre><span></span><code><span class="k">enum</span><span class="w"> </span><span class="n">ValueType</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">TYPE_INT</span><span class="p">,</span><span class="w"> </span><span class="n">TYPE_DOUBLE</span><span class="w"> </span><span class="p">};</span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">Value</span><span class="w"> </span><span class="p">{</span>
@@ -572,6 +729,210 @@ multiple forms, such as tokens in a compiler or event types in an input system.
 They are safer and clearer than plain unions while still using shared memory
 efficiently.</p>
 </div>
+<hr>
+
+<h2 id="bitwise-operators">Bitwise Operators</h2>
+<p>Computers represent all data internally as sequences of bits (0s and 1s). Each
+bit can store one of two values, and groups of bits are used to represent
+larger quantities. On most systems, eight bits form one byte — the typical
+storage unit for a <code>char</code>.</p>
+<p>Bitwise operators allow direct manipulation of individual bits within integer
+values. These operations work on the binary representations of the operands and
+are frequently used for low-level programming, such as hardware control,
+encoding, and flag management.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Bitwise operations are typically applied to <strong>unsigned</strong> integers to avoid
+ambiguity when dealing with sign bits and system-dependent right-shift
+behavior.</p>
+</div>
+<hr>
+
+<h3 id="bitwise-and">Bitwise AND (<code>&amp;</code>)</h3>
+<p>Sets each bit in the result to 1 only if the corresponding bits in both
+operands are 1.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 4-bit examples</span>
+<span class="c1">//    1101  (13)</span>
+<span class="c1">//  &amp; 1011  (11)</span>
+<span class="c1">//  --------</span>
+<span class="c1">//    1001  (9)</span>
+</code></pre></div>
+<h3 id="bitwise-or">Bitwise OR (<code>|</code>)</h3>
+<p>Sets each bit in the result to 1 if at least one of the corresponding bits in
+either operand is 1.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//    1101  (13)</span>
+<span class="c1">//  | 1011  (11)</span>
+<span class="c1">//  --------</span>
+<span class="c1">//    1111  (15)</span>
+</code></pre></div>
+<h3 id="bitwise-xor">Bitwise XOR (<code>^</code>)</h3>
+<p>Sets each bit in the result to 1 only if the corresponding bits in the operands
+differ.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//    1101  (13)</span>
+<span class="c1">//  ^ 1011  (11)</span>
+<span class="c1">//  --------</span>
+<span class="c1">//    0110  (6)</span>
+</code></pre></div>
+<h3 id="left-shift">Left Shift (<code>&lt;&lt;</code>)</h3>
+<p>Moves bits to the left, filling with zeros from the right. Each left shift by 1
+multiplies the number by 2.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//    0101  (5)</span>
+<span class="c1">//  &lt;&lt; 1</span>
+<span class="c1">//  --------</span>
+<span class="c1">//    1010  (10)</span>
+</code></pre></div>
+<h3 id="right-shift">Right Shift (<code>&gt;&gt;</code>)</h3>
+<p>Moves bits to the right, discarding bits on the right. For unsigned values,
+zeros are filled in from the left. Each right shift by 1 divides the number by
+2 (integer division).</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//    1010  (10)</span>
+<span class="c1">//  &gt;&gt; 1</span>
+<span class="c1">//  --------</span>
+<span class="c1">//    0101  (5)</span>
+</code></pre></div>
+<h3 id="bitwise-not">Bitwise NOT (<code>~</code>)</h3>
+<p>Inverts each bit of the operand, turning 0s into 1s and 1s into 0s.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//    0101  (5)</span>
+<span class="c1">//  ~</span>
+<span class="c1">//  --------</span>
+<span class="c1">//    1010  (10 if only 4 bits are shown)</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In C, <code>~</code> inverts <strong>all</strong> bits in the operand, not just the visible ones. For
+fixed-width integers like <code>uint8_t</code>, this means all 8 bits are inverted. When
+printed as signed types, this can appear as a negative number.</p>
+</div>
+<h3 id="beyond-the-textbook-common-bit-manipulation-techniques">Beyond the Textbook: Common Bit Manipulation Techniques</h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following material was <strong>not covered in class (nor in this section of 
+the text)</strong> and is provided here for informational purposes only.</p>
+</div>
+<p>Bit manipulation techniques are frequently used in competitive programming and
+technical interviews (such as on LeetCode). These operations allow efficient
+arithmetic and logical computations without relying on higher-level constructs.</p>
+<p>Below are several common patterns, each explained with examples using 4-bit
+binary values for clarity.</p>
+<hr />
+<h4 id="1-checking-if-a-number-is-even-or-odd">1. Checking if a Number is Even or Odd</h4>
+<p>You can check the least significant bit (LSB) of a number using the bitwise AND
+operator.</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Odd&quot;</span><span class="p">);</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Even&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//   0101 (5)</span>
+<span class="c1">// &amp; 0001</span>
+<span class="c1">// ------</span>
+<span class="c1">//   0001 -&gt; Odd</span>
+
+<span class="c1">//   0110 (6)</span>
+<span class="c1">// &amp; 0001</span>
+<span class="c1">// ------</span>
+<span class="c1">//   0000 -&gt; Even</span>
+</code></pre></div>
+<hr />
+<h4 id="2-swapping-two-numbers-without-a-temporary-variable">2. Swapping Two Numbers Without a Temporary Variable</h4>
+<p>This uses XOR to swap values in place.</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="w"> </span><span class="o">^=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="n">b</span><span class="w"> </span><span class="o">^=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="n">a</span><span class="w"> </span><span class="o">^=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// a = 0101 (5)</span>
+<span class="c1">// b = 0011 (3)</span>
+<span class="c1">// Step 1: a = a ^ b -&gt; 0110</span>
+<span class="c1">// Step 2: b = b ^ a -&gt; 0101</span>
+<span class="c1">// Step 3: a = a ^ b -&gt; 0011</span>
+<span class="c1">// Result: a = 3, b = 5</span>
+</code></pre></div>
+<hr />
+<h4 id="3-checking-if-a-number-is-a-power-of-two">3. Checking if a Number is a Power of Two</h4>
+<p>A number is a power of two if it has exactly one bit set.</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Power of 2&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//   x = 0100 (4)</span>
+<span class="c1">// x-1 = 0011</span>
+<span class="c1">// &amp; operation:</span>
+<span class="c1">//   0100</span>
+<span class="c1">// &amp; 0011 </span>
+<span class="c1">//   ---- </span>
+<span class="c1">//   0000 -&gt; true</span>
+</code></pre></div>
+<hr />
+<h4 id="4-counting-set-bits-brian-kernighans-algorithm">4. Counting Set Bits (Brian Kernighan’s Algorithm)</h4>
+<p>This algorithm repeatedly removes the lowest set bit until the number becomes
+zero.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// x = 1101 (13)</span>
+<span class="c1">// 1101 -&gt; 1100 -&gt; 1000 -&gt; 0000</span>
+<span class="c1">// count = 3</span>
+</code></pre></div>
+<hr />
+<h4 id="5-clearing-or-setting-a-specific-bit">5. Clearing or Setting a Specific Bit</h4>
+<p>To <strong>set</strong> a bit, use OR; to <strong>clear</strong> a bit, use AND with the complement of a
+mask.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Set nth bit</span>
+<span class="n">x</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+
+<span class="c1">// Clear nth bit</span>
+<span class="n">x</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// x = 0101, n = 1</span>
+<span class="c1">// (1 &lt;&lt; 1) = 0010</span>
+<span class="c1">// Set:   0101 | 0010 = 0111</span>
+<span class="c1">// Clear: 0101 &amp; 1101 = 0101 (no change since that bit is already 0)</span>
+</code></pre></div>
+<hr />
+<h4 id="6-toggling-a-bit">6. Toggling a Bit</h4>
+<p>Flips the specified bit using XOR.</p>
+<div class="highlight"><pre><span></span><code><span class="n">x</span><span class="w"> </span><span class="o">^=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// x = 0101, n = 2</span>
+<span class="c1">// (1 &lt;&lt; 2) = 0100</span>
+<span class="c1">//   0101 </span>
+<span class="c1">// ^ 0100 </span>
+<span class="c1">//   ----</span>
+<span class="c1">//   0001</span>
+</code></pre></div>
+<hr />
+<h4 id="7-extracting-the-lowest-set-bit">7. Extracting the Lowest Set Bit</h4>
+<p>Returns a number with only the lowest set bit of <code>x</code> preserved.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">lowest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">-</span><span class="n">x</span><span class="p">;</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// x = 1010</span>
+<span class="c1">// -x (two’s complement) = 0110</span>
+<span class="c1">//   1010 </span>
+<span class="c1">// &amp; 0110 </span>
+<span class="c1">//   ----</span>
+<span class="c1">//   0010</span>
+</code></pre></div>
+<hr />
+<h4 id="8-checking-if-two-integers-have-opposite-signs">8. Checking if Two Integers Have Opposite Signs</h4>
+<p>Uses XOR to test the sign bit. The result will be negative if the signs differ.</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">x</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Opposite signs&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// x = +5 (0101), y = -3 (in 4-bit two’s complement: 1101)</span>
+<span class="c1">// x ^ y = 1000 (negative)</span>
+<span class="c1">// -&gt; Opposite signs</span>
+</code></pre></div>
+<hr />
 
 
 
