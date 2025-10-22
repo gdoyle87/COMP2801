@@ -1,0 +1,22 @@
+# --- Python virtual environment ---
+.venv/
+venv/
+env/
+
+# --- Build output ---
+site/
+__pycache__/
+*.pyc
+
+# --- Editor/OS clutter ---
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.tmp
+
+# --- MkDocs and temp files ---
+.mkdocs_cache/
+.cache/
+*.log
+

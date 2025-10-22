@@ -233,28 +233,26 @@ int main(void) {
 
 Input: `5` → Output: `120`
 
-
 #### Stack Visualization
 
-Recursive calls can be visualized as a stack. Each new call is **pushed** onto the stack showing the pending computation, and results are **popped** once the base case is reached.
+Recursive calls can be visualized as a stack. Each new call is
+**pushed** onto the stack showing the pending computation, and
+results are **popped** once the base case is reached.
 
-**Factorial(5):**
 
-```
-Push (calls):
-Factorial(5) -> 5 * Factorial(4)
-  Factorial(4) -> 4 * Factorial(3)
-    Factorial(3) -> 3 * Factorial(2)
-      Factorial(2) -> 2 * Factorial(1)
-        Factorial(1) -> 1 * Factorial(0)
-          Factorial(0) -> 1  (base case)
-
-Pop (returns):
-        Factorial(1) = 1 * Factorial(0) = 1 * 1 = 1
-      Factorial(2) = 2 * Factorial(1) = 2 * 1 = 2
-    Factorial(3) = 3 * Factorial(2) = 3 * 2 = 6
-  Factorial(4) = 4 * Factorial(3) = 4 * 6 = 24
-Factorial(5) = 5 * Factorial(4) = 5 * 24 = 120
-```
-
+!!! example "Factorial(5)"
+    <strong>Push (calls):</strong><br>
+    <span style="color:#ffa726;">Factorial(5)</span> -> 5 * <span style="color:#ffca28;">Factorial(4)</span><br>
+      <span style="color:#ffca28;">Factorial(4)</span> -> 4 * <span style="color:#aed581;">Factorial(3)</span><br>
+        <span style="color:#aed581;">Factorial(3)</span> -> 3 * <span style="color:#81c784;">Factorial(2)</span><br>
+          <span style="color:#81c784;">Factorial(2)</span> -> 2 * <span style="color:#4dd0e1;">Factorial(1)</span><br>
+            <span style="color:#4dd0e1;">Factorial(1)</span> -> 1 * <span style="color:#42a5f5;">Factorial(0)</span><br>
+              <span style="color:#42a5f5;">Factorial(0)</span> -> 1  (base case)<br><br>
+    
+    <strong>Pop (returns):</strong><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4dd0e1;">Factorial(1)</span> = 1 * <span style="color:#42a5f5;">Factorial(0)</span> = 1 * 1 = 1<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#81c784;">Factorial(2)</span> = 2 * <span style="color:#4dd0e1;">Factorial(1)</span> = 2 * 1 = 2<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#aed581;">Factorial(3)</span> = 3 * <span style="color:#81c784;">Factorial(2)</span> = 3 * 2 = 6<br>
+    &nbsp;&nbsp;<span style="color:#ffca28;">Factorial(4)</span> = 4 * <span style="color:#aed581;">Factorial(3)</span> = 4 * 6 = 24<br>
+    <span style="color:#ffa726;">Factorial(5)</span> = 5 * <span style="color:#ffca28;">Factorial(4)</span> = 5 * 24 = 120
 

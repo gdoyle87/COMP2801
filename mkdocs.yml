@@ -4,12 +4,39 @@ nav:
   - Home: index.md
   - Week 1 - Formatted Output in C: wk_one.md
   - Week 2 - scanf and Recursion: wk_two.md
+  - Week 3 - Structures and typedef: wk_three.md
+  - Week 4 - Unions, Bit manipulations: wk_four.md
   - COMP 2701: https://gdoyle87.github.io/COMP2701
   - Other Notes: https://gdoyle87.github.io/
 
-theme: readthedocs
+theme:
+  name: material
+  features:
+    - toc.integrate # move page TOC into the left nav
+    - navigation.expand # expand sections by default (feels like RTD)
+    - navigation.sections
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue grey
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue grey
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
 markdown_extensions:
   - md_in_html
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.details
 
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.js
