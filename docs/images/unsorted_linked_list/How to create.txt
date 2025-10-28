@@ -1,0 +1,20 @@
+Create the frames in figma and export them.
+
+Create a frames.txt file similar to the one in this folder.
+
+run the following ffmpeg command (replace linke_list_insertion.webm with the name of the output file):
+ffmpeg -f concat -safe 0 -i frames.txt \
+  -vf "scale=1200:-1:flags=lanczos" \
+  -c:v libvpx-vp9 -pix_fmt yuv420p \
+  linked_list_insertion.webm
+
+# Generate a palette (sharp colors)
+ffmpeg -f concat -safe 0 -i frames.txt \
+  -vf "scale=1200:-1:flags=lanczos,palettegen" \
+  -y palette.png
+
+# Create high-quality GIF
+ffmpeg -f concat -safe 0 -i frames.txt -i palette.png \
+  -lavfi "scale=1200:-1:flags=lanczos,paletteuse" \
+  -loop 0 linked_list_insertion.gif
+

@@ -302,11 +302,9 @@ int main(void) {
 ```
 
 ??? note "Why `%%` isn’t like `\\n`"
-Backslash escapes (like `\\n`, `\\t`, `\\?`) are **language features** handled at compile time, because they solve parsing or representation issues in string literals.
-
-```
-Percent escapes (like `%d`, `%%`) are **library features**, defined only for functions such as `printf`/`scanf` and interpreted at runtime.
-
-**In short:** `\\n` is replaced by the compiler, while `%%` is handled later by `printf`.
-```
+    Backslash escapes (like `\\n`, `\\t`, `\\?`) are **language features** handled at compile time, because they solve parsing or representation issues in string literals.
+    <br>
+    Percent escapes (like `%d`, `%%`) are **library features**, defined only for functions such as `printf`/`scanf` and interpreted at runtime.
+    <br>
+    **In short:** `\\n` is replaced by the compiler, while `%%` is handled later by `printf`.
 

@@ -6,6 +6,8 @@ nav:
   - Week 2 - scanf and Recursion: wk_two.md
   - Week 3 - Structures and typedef: wk_three.md
   - Week 4 - Unions, Bit manipulations: wk_four.md
+  - Week 5 - Linked Lists and Trees: wk_five.md
+  - Week 6 - Stacks and Queues: wk_six.md
   - COMP 2701: https://gdoyle87.github.io/COMP2701
   - Other Notes: https://gdoyle87.github.io/
 
@@ -40,6 +42,7 @@ markdown_extensions:
 
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.js
+  - js/ll_stepper.js
 
 extra_css:
   - https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.css

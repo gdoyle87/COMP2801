@@ -565,6 +565,28 @@
   
   
     <li class="md-nav__item">
+      <a href="../wk_five/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 5 - Linked Lists and Trees
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="https://gdoyle87.github.io/COMP2701" class="md-nav__link">
         
   
@@ -962,12 +984,12 @@ The <code>0</code> flag changes this so that extra space is filled with <strong>
 </code></pre></div>
 <details class="note">
 <summary>Why <code>%%</code> isn’t like <code>\\n</code></summary>
+<p>Backslash escapes (like <code>\\n</code>, <code>\\t</code>, <code>\\?</code>) are <strong>language features</strong> handled at compile time, because they solve parsing or representation issues in string literals.
+<br>
+Percent escapes (like <code>%d</code>, <code>%%</code>) are <strong>library features</strong>, defined only for functions such as <code>printf</code>/<code>scanf</code> and interpreted at runtime.
+<br>
+<strong>In short:</strong> <code>\\n</code> is replaced by the compiler, while <code>%%</code> is handled later by <code>printf</code>.</p>
 </details>
-<p>Backslash escapes (like <code>\\n</code>, <code>\\t</code>, <code>\\?</code>) are <strong>language features</strong> handled at compile time, because they solve parsing or representation issues in string literals.</p>
-<div class="highlight"><pre><span></span><code>Percent escapes (like `%d`, `%%`) are **library features**, defined only for functions such as `printf`/`scanf` and interpreted at runtime.
-
-**In short:** `\\n` is replaced by the compiler, while `%%` is handled later by `printf`.
-</code></pre></div>
 
 
 
@@ -1022,6 +1044,8 @@ The <code>0</code> flag changes this so that extra space is filled with <strong>
       <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.js"></script>
+      
+        <script src="../js/ll_stepper.js"></script>
       
     
   </body>
