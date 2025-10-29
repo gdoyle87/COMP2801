@@ -1,0 +1,1859 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://gdoyle87.github.io/COMP2801/midterm/">
+      
+      
+        <link rel="prev" href="../wk_six/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Midterm Study Notes - COMP2801</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#printf" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="COMP2801" class="md-header__button md-logo" aria-label="COMP2801" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            COMP2801
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Midterm Study Notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="COMP2801" class="md-nav__button md-logo" aria-label="COMP2801" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    COMP2801
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_one/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 1 - Formatted Output in C
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_two/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 2 - scanf and Recursion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_three/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 3 - Structures and typedef
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_four/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 4 - Unions, Bit manipulations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_five/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 5 - Linked Lists and Trees
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_six/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 6 - Stacks and Queues
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Midterm Study Notes
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Midterm Study Notes
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#printf" class="md-nav__link">
+    <span class="md-ellipsis">
+      printf
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="printf">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conversion-specifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conversion Specifiers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conversion Specifiers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-g" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use %g
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field-widths" class="md-nav__link">
+    <span class="md-ellipsis">
+      Field Widths
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flags
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scanf" class="md-nav__link">
+    <span class="md-ellipsis">
+      scanf
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="scanf">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conversion-specifiers_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conversion Specifiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scan-sets-and-inverted-scan-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scan Sets and Inverted Scan Sets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field-widths_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Field Widths
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skipping-characters-and-assignment-suppression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skipping Characters and Assignment Suppression
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recursion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Concepts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-factorial-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example – Factorial Function
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Structures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-variables-of-structure-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defining Variables of Structure Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structures-without-tag-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structures Without Tag Names
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparing-structure-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparing Structure Objects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-sizeof-with-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using sizeof with Structures
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typedef" class="md-nav__link">
+    <span class="md-ellipsis">
+      typedef
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="typedef">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#combining-typedef-with-struct" class="md-nav__link">
+    <span class="md-ellipsis">
+      Combining typedef with struct
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Characteristics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initializing-a-union" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initializing a Union
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bitwise-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise Operators
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bitwise Operators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-and" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise AND (&amp;)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-or" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise OR (|)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-xor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise XOR (^)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#left-shift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Left Shift (&lt;&lt;)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#right-shift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Right Shift (&gt;&gt;)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-not" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise NOT (~)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-bit-manipulation-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Bit Manipulation Techniques
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Bit Manipulation Techniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-check-if-a-number-is-even-or-odd" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Check if a Number is Even or Odd
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-swap-two-numbers-without-a-temp-variable" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Swap Two Numbers Without a Temp Variable
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-check-if-a-number-is-a-power-of-two" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Check if a Number is a Power of Two
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-count-set-bits-brian-kernighans-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Count Set Bits (Brian Kernighan’s Algorithm)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-set-or-clear-a-specific-bit" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Set or Clear a Specific Bit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-toggle-a-bit" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Toggle a Bit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-extract-the-lowest-set-bit" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Extract the Lowest Set Bit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-check-if-two-integers-have-opposite-signs" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Check if Two Integers Have Opposite Signs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-referential-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-Referential Structures
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linked-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linked Lists
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linked Lists">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Points
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Operations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trees
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trees">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#binary-trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binary Trees
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-search-tree-bst" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binary Search Tree (BST)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tree-traversals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tree Traversals
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stacks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stacks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Concepts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Operations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#queues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Queues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Queues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-concepts_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Concepts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-operations_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Operations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://gdoyle87.github.io/COMP2701" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    COMP 2701
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://gdoyle87.github.io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Other Notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Midterm Study Notes</h1>
+
+<h2 id="printf"><code>printf</code></h2>
+<hr />
+<h3 id="conversion-specifiers">Conversion Specifiers</h3>
+<p><code>printf</code> uses <strong>conversion specifiers</strong> to determine how data is formatted when printed. Each specifier begins with <code>%</code> followed by one or more characters describing type and formatting.</p>
+<table>
+<thead>
+<tr>
+<th>Specifier</th>
+<th>Description</th>
+<th>Example Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Integers</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%d</code>, <code>%i</code></td>
+<td>Signed decimal integer</td>
+<td><code>printf("%d", 42)</code> → <code>42</code></td>
+</tr>
+<tr>
+<td><code>%u</code></td>
+<td>Unsigned decimal integer</td>
+<td><code>printf("%u", 42)</code> → <code>42</code></td>
+</tr>
+<tr>
+<td><code>%o</code></td>
+<td>Unsigned octal integer</td>
+<td><code>printf("%o", 10)</code> → <code>12</code></td>
+</tr>
+<tr>
+<td><code>%x</code>, <code>%X</code></td>
+<td>Unsigned hexadecimal integer (<code>a–f</code> or <code>A–F</code>)</td>
+<td><code>printf("%x", 255)</code> → <code>ff</code></td>
+</tr>
+<tr>
+<td><strong>Floating-point</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%f</code></td>
+<td>Floating-point decimal (fixed)</td>
+<td><code>printf("%f", 3.1416)</code> → <code>3.141600</code></td>
+</tr>
+<tr>
+<td><code>%e</code>, <code>%E</code></td>
+<td>Floating-point in scientific notation</td>
+<td><code>printf("%e", 1234.56)</code> → <code>1.234560e+03</code></td>
+</tr>
+<tr>
+<td><code>%g</code>, <code>%G</code></td>
+<td>Floating-point (shortest of <code>%f</code> or <code>%e</code>)</td>
+<td><code>printf("%g", 0.0000123)</code> → <code>1.23e-05</code></td>
+</tr>
+<tr>
+<td><strong>Characters &amp; Strings</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%c</code></td>
+<td>Single character</td>
+<td><code>printf("%c", 'A')</code> → <code>A</code></td>
+</tr>
+<tr>
+<td><code>%s</code></td>
+<td>String of characters</td>
+<td><code>printf("%s", "Hello")</code> → <code>Hello</code></td>
+</tr>
+<tr>
+<td><strong>Miscellaneous</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%p</code></td>
+<td>Pointer (memory address)</td>
+<td><code>printf("%p", ptr)</code> → <code>0x7ffeefbff5ac</code></td>
+</tr>
+<tr>
+<td><code>%%</code></td>
+<td>Prints a literal percent sign</td>
+<td><code>printf("%%")</code> → <code>%</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="when-to-use-g">When to Use <code>%g</code></h4>
+<p>The <code>%g</code> (or <code>%G</code>) specifier automatically chooses between <strong>fixed-point (<code>%f</code>)</strong> and <strong>scientific (<code>%e</code>)</strong> notation depending on the value’s magnitude and precision:</p>
+<ul>
+<li>If the exponent is less than -4 or greater than or equal to the precision, <code>%e</code> format is used.</li>
+<li>Otherwise, <code>%f</code> format is used.</li>
+<li>Trailing zeros are <strong>removed</strong>, and no unnecessary decimal point is shown.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%g&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0000123</span><span class="p">);</span><span class="w"> </span><span class="c1">// → 1.23e-05</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%g&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">123.456</span><span class="p">);</span><span class="w">   </span><span class="c1">// → 123.456</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%g&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">100.0</span><span class="p">);</span><span class="w">     </span><span class="c1">// → 100</span>
+</code></pre></div>
+<p>Use <code>%g</code> when you want <strong>concise output</strong> without manually deciding between scientific and decimal notation.</p>
+<hr />
+<h3 id="field-widths">Field Widths</h3>
+<p>A <strong>field width</strong> specifies the <strong>minimum number of characters</strong> to print. If the value is shorter, it is <strong>right-padded with spaces</strong> by default.</p>
+<div class="highlight"><pre><span></span><code><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%5d&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">);</span><span class="w">   </span><span class="c1">// &quot;   12&quot; (width = 5)</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%-5d&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">);</span><span class="w">  </span><span class="c1">// &quot;12   &quot; (left-justified)</span>
+</code></pre></div>
+<p>Field widths can also apply to floating-point values:</p>
+<div class="highlight"><pre><span></span><code><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%8.2f&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">3.14</span><span class="p">);</span><span class="w"> </span><span class="c1">// &quot;    3.14&quot;</span>
+</code></pre></div>
+<ul>
+<li>The number before the decimal controls total width.</li>
+<li>The number after the decimal controls precision.</li>
+</ul>
+<hr />
+<h3 id="flags">Flags</h3>
+<p>Flags modify alignment, padding, and sign display in formatted output.</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-</code></td>
+<td>Left-justify within the field</td>
+<td><code>printf("%-5d", 42)</code> → <code>42</code></td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>Always print a sign (<code>+</code> or <code>-</code>)</td>
+<td><code>printf("%+d", 42)</code> → <code>+42</code></td>
+</tr>
+<tr>
+<td>space</td>
+<td>Prefix positive numbers with a space</td>
+<td><code>printf("% d", 42)</code> → <code>42</code></td>
+</tr>
+<tr>
+<td><code>0</code></td>
+<td>Pad numeric output with leading zeros</td>
+<td><code>printf("%05d", 42)</code> → <code>00042</code></td>
+</tr>
+<tr>
+<td><code>#</code></td>
+<td>Force alternate form (e.g., add <code>0x</code> for hex, decimal point for floats)</td>
+<td><code>printf("%#x", 255)</code> → <code>0xff</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="scanf"><code>scanf</code></h2>
+<hr />
+<h3 id="conversion-specifiers_1">Conversion Specifiers</h3>
+<table>
+<thead>
+<tr>
+<th>Specifier</th>
+<th>Description</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Integers</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%d</code></td>
+<td>Reads a signed decimal integer  <code>int*</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%i</code></td>
+<td>Reads signed decimal, octal, or hexadecimal  <code>int*</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%o</code></td>
+<td>Reads an octal integer  <code>unsigned int*</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%u</code></td>
+<td>Reads an unsigned decimal integer  <code>unsigned int*</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%x</code> / <code>%X</code></td>
+<td>Reads a hexadecimal integer  <code>unsigned int*</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>h</code>, <code>l</code>, <code>ll</code></td>
+<td>Length modifiers (<code>short</code>, <code>long</code>, <code>long long</code>) for integers</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Floating-point</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%e</code>, <code>%E</code>, <code>%f</code>, <code>%F</code>, <code>%g</code>, <code>%G</code></td>
+<td>Reads a floating-point value  <code>float*</code> / <code>double*</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>l</code> or <code>L</code></td>
+<td>Length modifiers for <code>double</code> or <code>long double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Characters &amp; Strings</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%c</code></td>
+<td>Reads a single character  <code>char*</code> (no <code>\0</code> added)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>%s</code></td>
+<td>Reads a string  <code>char[]</code> (terminates with <code>\0</code>)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Scan set</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%[...]</code></td>
+<td>Reads a set of characters into a string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Miscellaneous</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%p</code></td>
+<td>Reads an address (pointer format)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>%n</code></td>
+<td>Stores number of characters read so far  <code>int*</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%%</code></td>
+<td>Skips a literal <code>%</code> in input</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="scan-sets-and-inverted-scan-sets">Scan Sets and Inverted Scan Sets</h3>
+<p><strong>Scan sets</strong> allow <code>scanf</code> to read a group of characters that match a specified set. They are defined using <code>%[ ... ]</code>.</p>
+<ul>
+<li><code>%[characters]</code> → reads only the characters listed.</li>
+<li><code>%[^characters]</code> → reads everything <em>except</em> the characters listed.</li>
+<li>Useful for reading structured data such as comma- or space-separated values.</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kt">char</span><span class="w"> </span><span class="n">word</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%19[A-Za-z]&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">word</span><span class="p">);</span><span class="w">   </span><span class="c1">// reads only letters</span>
+
+<span class="kt">char</span><span class="w"> </span><span class="n">untilComma</span><span class="p">[</span><span class="mi">30</span><span class="p">];</span>
+<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%29[^,]&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">untilComma</span><span class="p">);</span><span class="w">  </span><span class="c1">// reads everything up to the next comma</span>
+</code></pre></div>
+<p><strong>Notes:</strong></p>
+<ul>
+<li><code>scanf</code> automatically adds a null terminator (<code>'\0'</code>) at the end.</li>
+<li>To include <code>]</code> in the set, place it first inside the brackets: <code>%[]A-Z]</code>.</li>
+<li>To include <code>-</code>, place it at the start or end of the set: <code>%[-A-Z]</code>.</li>
+</ul>
+<hr />
+<h3 id="field-widths_1">Field Widths</h3>
+<p>Field widths define how many characters <code>scanf</code> will read for a given conversion. This prevents buffer overflows and controls input precision.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">11</span><span class="p">];</span>
+<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%10s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span><span class="w">   </span><span class="c1">// reads at most 10 chars, leaves space for null terminator</span>
+</code></pre></div>
+<p><strong>Numeric Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="n">day</span><span class="p">;</span>
+<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%4d%2d%2d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">day</span><span class="p">);</span>
+<span class="c1">// Input: 20251028 → year=2025, month=10, day=28</span>
+</code></pre></div>
+<hr />
+<h3 id="skipping-characters-and-assignment-suppression">Skipping Characters and Assignment Suppression</h3>
+<p>The <strong>assignment suppression character</strong> (<code>*</code>) allows <code>scanf</code> to skip matched input without storing it.</p>
+<ul>
+<li>Any literal in the format string must appear in the input and will be consumed.</li>
+<li>Whitespace in the format matches any amount of whitespace in the input.</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Skip a single character (like &#39;-&#39;) between numbers</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="n">day</span><span class="p">;</span>
+<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%*c%d%*c%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">day</span><span class="p">);</span>
+
+<span class="c1">// Skip entire field before comma</span>
+<span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%*[^,],%19s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="recursion">Recursion</h2>
+<p><strong>Recursion</strong> occurs when a function calls itself directly or indirectly. Each call creates a new stack frame until a <strong>base case</strong> is reached, after which calls resolve in reverse order.</p>
+<h3 id="key-concepts">Key Concepts</h3>
+<ul>
+<li><strong>Base Case:</strong> The simplest form of the problem that can be solved directly.</li>
+<li><strong>Recursive Case:</strong> Reduces the problem toward the base case.</li>
+<li>Recursion always requires <em>progress toward termination</em> to prevent infinite loops.</li>
+</ul>
+<h3 id="example-factorial-function">Example – Factorial Function</h3>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">factorial</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">  </span><span class="c1">// base case</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span><span class="w">          </span><span class="c1">// recursive case</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li>For <code>factorial(3)</code> → calls unfold as <code>3 * factorial(2)</code> → <code>2 * factorial(1)</code> → <code>1 * factorial(0)</code>.</li>
+<li>Base case returns 1, then each call multiplies by the previous <code>n</code> until the result is complete.</li>
+</ul>
+<hr />
+<h2 id="structures">Structures</h2>
+<p>A <strong>structure</strong> groups related variables under one name. The C standard calls them <em>aggregates</em>.
+Defined using the <code>struct</code> keyword:</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">face</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">suit</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Semicolon is required after the closing brace. Members can be of different types, but a structure cannot directly contain an instance of itself—only a pointer to its own type.</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">face</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">suit</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">card</span><span class="w"> </span><span class="o">*</span><span class="n">nextCard</span><span class="p">;</span><span class="w">  </span><span class="c1">// Valid</span>
+<span class="p">};</span>
+</code></pre></div>
+<hr />
+<h3 id="defining-variables-of-structure-types">Defining Variables of Structure Types</h3>
+<p>Defining a structure creates a <strong>type</strong>, not a variable.
+Variables are declared afterward:</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">card</span><span class="w"> </span><span class="n">myCard</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">card</span><span class="w"> </span><span class="n">deck</span><span class="p">[</span><span class="mi">52</span><span class="p">];</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">card</span><span class="w"> </span><span class="o">*</span><span class="n">cardPtr</span><span class="p">;</span>
+</code></pre></div>
+<p>You can also define variables inline with the structure:</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">face</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">suit</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">myCard</span><span class="p">,</span><span class="w"> </span><span class="n">deck</span><span class="p">[</span><span class="mi">52</span><span class="p">],</span><span class="w"> </span><span class="o">*</span><span class="n">cardPtr</span><span class="p">;</span>
+</code></pre></div>
+<hr />
+<h3 id="structures-without-tag-names">Structures Without Tag Names</h3>
+<p>Anonymous structs can be declared if variables are defined immediately:</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">point1</span><span class="p">,</span><span class="w"> </span><span class="n">point2</span><span class="p">;</span>
+</code></pre></div>
+<p>Without a tag, you can’t reuse the type elsewhere.</p>
+<hr />
+<h3 id="comparing-structure-objects">Comparing Structure Objects</h3>
+<p>Structures cannot be compared with <code>==</code> or <code>!=</code> because compilers insert <strong>padding bytes</strong> for memory alignment, which may hold <strong>unspecified garbage values</strong>.
+Even identical structures might differ in padding, making bytewise comparison <strong>undefined behavior</strong>.</p>
+<hr />
+<h3 id="using-sizeof-with-structures">Using <code>sizeof</code> with Structures</h3>
+<p><code>sizeof(struct_name)</code> gives the memory occupied by a structure, including padding.</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">example</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%zu</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">example</span><span class="p">));</span><span class="w"> </span><span class="c1">// Likely prints 8, not 5</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Structure Packing and Alignment</p>
+<p>Compilers may insert padding between members for alignment, improving speed but wasting space.
+To minimize padding, order members from largest to smallest type.
+Use <code>#pragma pack</code> only when absolutely necessary for binary compatibility — it reduces portability.</p>
+</div>
+<hr />
+<h2 id="typedef"><code>typedef</code></h2>
+<p><code>typedef</code> creates an alias for a type, making code more concise and readable.</p>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">card</span><span class="w"> </span><span class="n">Card</span><span class="p">;</span>
+<span class="n">Card</span><span class="w"> </span><span class="n">newCard</span><span class="p">;</span>
+</code></pre></div>
+<hr />
+<h3 id="combining-typedef-with-struct">Combining <code>typedef</code> with <code>struct</code></h3>
+<p>You can combine both in one declaration:</p>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">face</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">suit</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">Card</span><span class="p">;</span>
+</code></pre></div>
+<p>This eliminates the need to repeat <code>struct</code> every time.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not declare variables in the same line when using this form.
+If you need variables too, use a standard <code>struct</code> definition followed by a separate <code>typedef</code>.</p>
+</div>
+<hr />
+<h2 id="unions">Unions</h2>
+<p>A <strong>union</strong> is a derived data type similar to a <code>struct</code>, but unlike structures, <strong>all members share the same memory space</strong>. Only one member can be used at a time, making unions memory-efficient when variables are only relevant at different times during execution.</p>
+<div class="highlight"><pre><span></span><code><span class="k">union</span><span class="w"> </span><span class="nc">number</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Defining a union creates a new type but does not allocate memory until a variable is declared.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Union definitions are often placed in header files so multiple source files can reuse the same type definition.</p>
+</div>
+<h3 id="characteristics">Characteristics</h3>
+<ul>
+<li>The <strong>size</strong> of a union equals the size of its <strong>largest member</strong>.</li>
+<li>Accessing a member different from the one last assigned leads to undefined behavior.</li>
+<li>Unions save space but require careful type management.</li>
+</ul>
+<h3 id="initializing-a-union">Initializing a Union</h3>
+<p>A union can be initialized only through its <strong>first member</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">union</span><span class="w"> </span><span class="nc">number</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">10</span><span class="p">};</span><span class="w"> </span><span class="c1">// assigns 10 to x</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If initialized with a value meant for another member, it will be converted to the first member’s type:</p>
+<div class="highlight"><pre><span></span><code><span class="k">union</span><span class="w"> </span><span class="nc">number</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">1.43</span><span class="p">};</span><span class="w"> </span><span class="c1">// assigns 1 to x instead of 1.43 to y</span>
+</code></pre></div>
+</div>
+<hr />
+<h2 id="bitwise-operators">Bitwise Operators</h2>
+<p>Bitwise operations work directly on the binary representation of integers. Each bit in a value represents a power of two. These operations are commonly used for hardware programming, flag control, and performance optimization.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use <strong>unsigned</strong> integers for bitwise operations to avoid sign bit ambiguities.</p>
+</div>
+<h3 id="bitwise-and">Bitwise AND (<code>&amp;</code>)</h3>
+<p>Sets a bit to 1 <strong>only if both operands’ bits are 1</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//   1101 (13)</span>
+<span class="c1">// &amp; 1011 (11)</span>
+<span class="c1">// ------</span>
+<span class="c1">//   1001 (9)</span>
+</code></pre></div>
+<h3 id="bitwise-or">Bitwise OR (<code>|</code>)</h3>
+<p>Sets a bit to 1 <strong>if either operand’s bit is 1</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//   1101 (13)</span>
+<span class="c1">// | 1011 (11)</span>
+<span class="c1">// ------</span>
+<span class="c1">//   1111 (15)</span>
+</code></pre></div>
+<h3 id="bitwise-xor">Bitwise XOR (<code>^</code>)</h3>
+<p>Sets a bit to 1 <strong>only if the corresponding bits differ</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//   1101 (13)</span>
+<span class="c1">// ^ 1011 (11)</span>
+<span class="c1">// ------</span>
+<span class="c1">//   0110 (6)</span>
+</code></pre></div>
+<h3 id="left-shift">Left Shift (<code>&lt;&lt;</code>)</h3>
+<p>Moves bits <strong>left</strong>, filling with zeros. Each shift by one multiplies by 2.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 0101 (5)</span>
+<span class="c1">// &lt;&lt; 1</span>
+<span class="c1">// ------</span>
+<span class="c1">// 1010 (10)</span>
+</code></pre></div>
+<h3 id="right-shift">Right Shift (<code>&gt;&gt;</code>)</h3>
+<p>Moves bits <strong>right</strong>, discarding bits on the right. Each shift by one divides by 2.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1010 (10)</span>
+<span class="c1">// &gt;&gt; 1</span>
+<span class="c1">// ------</span>
+<span class="c1">// 0101 (5)</span>
+</code></pre></div>
+<h3 id="bitwise-not">Bitwise NOT (<code>~</code>)</h3>
+<p>Inverts each bit: 0 → 1 and 1 → 0.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 0101 (5)</span>
+<span class="c1">// ~</span>
+<span class="c1">// ------</span>
+<span class="c1">// 1010 (10 if only 4 bits shown)</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>~</code> flips <strong>all bits</strong>, including sign bits. When applied to signed integers, the result may appear negative.</p>
+</div>
+<hr />
+<h3 id="common-bit-manipulation-techniques">Common Bit Manipulation Techniques</h3>
+<p>These patterns are frequently used in embedded systems and competitive programming.</p>
+<h4 id="1-check-if-a-number-is-even-or-odd">1. Check if a Number is Even or Odd</h4>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Odd&quot;</span><span class="p">);</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Even&quot;</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="2-swap-two-numbers-without-a-temp-variable">2. Swap Two Numbers Without a Temp Variable</h4>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="w"> </span><span class="o">^=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="n">b</span><span class="w"> </span><span class="o">^=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="n">a</span><span class="w"> </span><span class="o">^=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="3-check-if-a-number-is-a-power-of-two">3. Check if a Number is a Power of Two</h4>
+<p>A number is a power of two if it has exactly one bit set.</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Power of 2&quot;</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="4-count-set-bits-brian-kernighans-algorithm">4. Count Set Bits (Brian Kernighan’s Algorithm)</h4>
+<p>Counts the number of bits set to 1.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="5-set-or-clear-a-specific-bit">5. Set or Clear a Specific Bit</h4>
+<div class="highlight"><pre><span></span><code><span class="n">x</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w">   </span><span class="c1">// set nth bit</span>
+<span class="n">x</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w">  </span><span class="c1">// clear nth bit</span>
+</code></pre></div>
+<h4 id="6-toggle-a-bit">6. Toggle a Bit</h4>
+<div class="highlight"><pre><span></span><code><span class="n">x</span><span class="w"> </span><span class="o">^=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="7-extract-the-lowest-set-bit">7. Extract the Lowest Set Bit</h4>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">lowest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">-</span><span class="n">x</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="8-check-if-two-integers-have-opposite-signs">8. Check if Two Integers Have Opposite Signs</h4>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">x</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Opposite signs&quot;</span><span class="p">);</span>
+</code></pre></div>
+<h2 id="self-referential-structures">Self-Referential Structures</h2>
+<ul>
+<li>Structures can include <strong>pointers to their own type</strong>, enabling dynamic data structures.</li>
+<li>Example:</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="n">nextPtr</span><span class="p">;</span><span class="w"> </span><span class="p">};</span>
+</code></pre></div>
+* Used for <strong>linked lists</strong>, <strong>stacks</strong>, and <strong>trees</strong>.</p>
+<hr />
+<h2 id="linked-lists">Linked Lists</h2>
+<ul>
+<li><strong>Linear collection</strong> of nodes connected by pointers.</li>
+<li>Each node contains <strong>data</strong> and a <strong>pointer to the next node</strong>.</li>
+<li>The <strong>head pointer</strong> references the first node; the last node’s pointer is <code>NULL</code>.</li>
+</ul>
+<p><img alt="Basic Linked List" src="../images/basic_linked_list.png" /></p>
+<h3 id="key-points">Key Points</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Arrays</th>
+<th style="text-align: left;">Linked Lists</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Fixed size</td>
+<td style="text-align: left;">Dynamic size</td>
+</tr>
+<tr>
+<td style="text-align: left;">O(1) direct access</td>
+<td style="text-align: left;">Sequential traversal</td>
+</tr>
+<tr>
+<td style="text-align: left;">Costly insert/delete</td>
+<td style="text-align: left;">Efficient insert/delete</td>
+</tr>
+</tbody>
+</table>
+<h3 id="common-operations">Common Operations</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Operation</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Insert</strong></td>
+<td style="text-align: left;">Allocate a new node and relink pointers.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Delete</strong></td>
+<td style="text-align: left;">Relink surrounding nodes and free memory.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Traverse</strong></td>
+<td style="text-align: left;">Follow <code>nextPtr</code> until <code>NULL</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="trees">Trees</h2>
+<ul>
+<li><strong>Non-linear hierarchical</strong> data structure consisting of <strong>nodes</strong> connected by edges.</li>
+<li>Each node may have <strong>two or more</strong> children.</li>
+</ul>
+<h3 id="binary-trees">Binary Trees</h3>
+<ul>
+<li>Each node has at most <strong>two children</strong> (<code>left</code>, <code>right</code>).</li>
+<li>The <strong>root</strong> is the topmost node; <strong>leaves</strong> have no children.</li>
+</ul>
+<p><img alt="Basic Tree Structure" src="../images/basic_tree.png" /></p>
+<h3 id="binary-search-tree-bst">Binary Search Tree (BST)</h3>
+<ul>
+<li>
+<p>Special binary tree where:</p>
+<ul>
+<li>Left subtree value <strong>&lt;</strong> Root value <strong>&lt;</strong> Right subtree value.</li>
+<li>Enables fast searching, insertion, and deletion.</li>
+<li><strong>Average complexity:</strong> O(log n)</li>
+<li><strong>Worst case (unbalanced):</strong> O(n)</li>
+</ul>
+</li>
+</ul>
+<h3 id="tree-traversals">Tree Traversals</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Visit Order</th>
+<th style="text-align: left;">Common Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Preorder</strong></td>
+<td style="text-align: left;">Root → Left → Right</td>
+<td style="text-align: left;">Copying the tree</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Inorder</strong></td>
+<td style="text-align: left;">Left → Root → Right</td>
+<td style="text-align: left;">Produces sorted output</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Postorder</strong></td>
+<td style="text-align: left;">Left → Right → Root</td>
+<td style="text-align: left;">Deletion or cleanup</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Summary:</strong></p>
+<ul>
+<li>Use self-referential structures to create dynamic collections.</li>
+<li>Linked lists are best for variable-size sequential data.</li>
+<li>Trees (especially BSTs) provide efficient searching and hierarchical relationships.</li>
+</ul>
+<h2 id="stacks">Stacks</h2>
+<p>A <strong>stack</strong> is a linear data structure that follows the <strong>Last-In, First-Out (LIFO)</strong> principle. The most recently added element is removed first.</p>
+<h3 id="core-concepts">Core Concepts</h3>
+<ul>
+<li>Insertion and deletion occur only at the <strong>top</strong> of the stack.</li>
+<li>Implemented using <strong>linked lists</strong> or <strong>arrays</strong>.</li>
+<li>The <strong>stack pointer</strong> (<code>topPtr</code>) tracks the current top node.</li>
+</ul>
+<h3 id="key-operations">Key Operations</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Operation</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>push()</strong></td>
+<td style="text-align: left;">Insert an element at the top.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>pop()</strong></td>
+<td style="text-align: left;">Remove the top element and return its value.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>isEmpty()</strong></td>
+<td style="text-align: left;">Check if the stack is empty.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Structure:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">stackNode</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">stackNode</span><span class="w"> </span><span class="o">*</span><span class="n">nextPtr</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<hr />
+<h2 id="queues">Queues</h2>
+<p>A <strong>queue</strong> is a linear data structure that follows the <strong>First-In, First-Out (FIFO)</strong> principle. The first element added is the first one removed.</p>
+<h3 id="core-concepts_1">Core Concepts</h3>
+<ul>
+<li>Insertion occurs at the <strong>rear</strong>; deletion occurs at the <strong>front</strong>.</li>
+<li>Implemented using <strong>linked lists</strong>.</li>
+<li>
+<p>Two pointers are used:</p>
+<ul>
+<li><code>frontPtr</code> → points to the first node</li>
+<li><code>rearPtr</code> → points to the last node</li>
+</ul>
+</li>
+</ul>
+<h3 id="key-operations_1">Key Operations</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Operation</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>enqueue()</strong></td>
+<td style="text-align: left;">Add a new element to the rear.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>dequeue()</strong></td>
+<td style="text-align: left;">Remove an element from the front.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>isEmpty()</strong></td>
+<td style="text-align: left;">Check if the queue is empty.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Structure:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">queueNode</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">queueNode</span><span class="w"> </span><span class="o">*</span><span class="n">nextPtr</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["toc.integrate", "navigation.expand", "navigation.sections"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.js"></script>
+      
+        <script src="../js/ll_stepper.js"></script>
+      
+    
+  </body>
+</html>
