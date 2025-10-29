@@ -24,11 +24,10 @@ scanf(format-control-string, other-arguments);
 **format-control-string** – describes input formats using conversion specifiers.
 **other-arguments** – pointers to variables that will receive the input.
 
-<br><br>
-* Prompt the user for one (or a few) items at a time.
-* Avoid asking for many inputs in one statement.
-* Always handle the possibility of incorrect data (e.g., invalid integers or
-  strings with missing punctuation).
+    - Prompt the user for one (or a few) items at a time.
+    - Avoid asking for many inputs in one statement.
+    - Always handle the possibility of incorrect data (e.g., invalid integers or
+      strings with missing punctuation).
 
 ---
 
@@ -37,27 +36,27 @@ scanf(format-control-string, other-arguments);
 Like `printf`, `scanf` uses conversion specifiers to handle different data types.
 Some specifiers differ between input (`scanf`) and output (`printf`).
 
-| Specifier                          | Description                                                  |   |
-| ---------------------------------- | ------------------------------------------------------------ | - |
-| **Integers**                       |                                                              |   |
-| `%d`                               | Reads a signed decimal integer  `int*`                      |   |
-| `%i`                               | Reads signed decimal, octal, or hexadecimal  `int*`         |   |
-| `%o`                               | Reads an octal integer  `unsigned int*`                     |   |
-| `%u`                               | Reads an unsigned decimal integer  `unsigned int*`          |   |
-| `%x` / `%X`                        | Reads a hexadecimal integer  `unsigned int*`                |   |
-| `h`, `l`, `ll`                     | Length modifiers (`short`, `long`, `long long`) for integers |   |
-| **Floating-point**                 |                                                              |   |
-| `%e`, `%E`, `%f`, `%F`, `%g`, `%G` | Reads a floating-point value  `float*` / `double*`          |   |
-| `l` or `L`                         | Length modifiers for `double` or `long double`               |   |
-| **Characters & Strings**           |                                                              |   |
-| `%c`                               | Reads a single character  `char*` (no `\0` added)           |   |
-| `%s`                               | Reads a string  `char[]` (terminates with `\0`)             |   |
-| **Scan set**                       |                                                              |   |
-| `%[...]`                           | Reads a set of characters into a string                      |   |
-| **Miscellaneous**                  |                                                              |   |
-| `%p`                               | Reads an address (pointer format)                            |   |
-| `%n`                               | Stores number of characters read so far  `int*`             |   |
-| `%%`                               | Skips a literal `%` in input                                 |   |
+| Specifier                          | Description                                                  |     |
+| ---------------------------------- | ------------------------------------------------------------ | --- |
+| **Integers**                       |                                                              |     |
+| `%d`                               | Reads a signed decimal integer `int*`                        |     |
+| `%i`                               | Reads signed decimal, octal, or hexadecimal `int*`           |     |
+| `%o`                               | Reads an octal integer `unsigned int*`                       |     |
+| `%u`                               | Reads an unsigned decimal integer `unsigned int*`            |     |
+| `%x` / `%X`                        | Reads a hexadecimal integer `unsigned int*`                  |     |
+| `h`, `l`, `ll`                     | Length modifiers (`short`, `long`, `long long`) for integers |     |
+| **Floating-point**                 |                                                              |     |
+| `%e`, `%E`, `%f`, `%F`, `%g`, `%G` | Reads a floating-point value `float*` / `double*`            |     |
+| `l` or `L`                         | Length modifiers for `double` or `long double`               |     |
+| **Characters & Strings**           |                                                              |     |
+| `%c`                               | Reads a single character `char*` (no `\0` added)             |     |
+| `%s`                               | Reads a string `char[]` (terminates with `\0`)               |     |
+| **Scan set**                       |                                                              |     |
+| `%[...]`                           | Reads a set of characters into a string                      |     |
+| **Miscellaneous**                  |                                                              |     |
+| `%p`                               | Reads an address (pointer format)                            |     |
+| `%n`                               | Stores number of characters read so far `int*`               |     |
+| `%%`                               | Skips a literal `%` in input                                 |     |
 
 ---
 
@@ -87,7 +86,7 @@ Input: `oeeeooahah` → stops at `h`, outputs `oeeeooa`.
 
 #### Inverting the Scan Set
 
-An **inverted scan set** matches characters *not* in the given set. Use a `^`
+An **inverted scan set** matches characters _not_ in the given set. Use a `^`
 inside the brackets to invert.
 
 Example: `%[^aeiou]` reads only consonants and other non-vowels.
@@ -110,8 +109,8 @@ Input: `String` → stops at vowel `i`, outputs `Str`.
 
 A **field width** can be applied in a `scanf` conversion specifier to control how many characters are read from the input stream.
 
-* Input is read as groups of digits/characters of the specified width.
-* Useful when parsing fixed-length data such as IDs, phone numbers, or formatted strings.
+- Input is read as groups of digits/characters of the specified width.
+- Useful when parsing fixed-length data such as IDs, phone numbers, or formatted strings.
 
 Example: `%2d` reads exactly 2 digits into one variable, then `%d` reads the rest.
 
@@ -136,8 +135,8 @@ Input: `123456` → output: `12` and `3456`.
 
 `scanf` can skip unnecessary characters in the input stream:
 
-* **Whitespace characters** (space, tab, newline) are skipped automatically at the beginning of most format specifiers.
-* **Literal characters** in the format string (like `-` or `/`) must match in the input and are discarded.
+- **Whitespace characters** (space, tab, newline) are skipped automatically at the beginning of most format specifiers.
+- **Literal characters** in the format string (like `-` or `/`) must match in the input and are discarded.
 
 Example:
 
@@ -177,7 +176,6 @@ int main(void) {
 Input: `07-04-2021` → output: `7 4 2021`
 Input: `01/01/2021` → output: `1 1 2021`
 
-
 ## Recursion
 
 A **recursive function** is one that calls itself, either directly or indirectly through another function. Recursion is a common but complex topic; here we look at its basic structure.
@@ -186,8 +184,8 @@ A **recursive function** is one that calls itself, either directly or indirectly
 
 A recursive function solves problems by dividing them into:
 
-* A **base case** – the simplest case the function knows how to solve directly.
-* A **recursive case** – a more complex problem broken down into smaller versions of itself.
+- A **base case** – the simplest case the function knows how to solve directly.
+- A **recursive case** – a more complex problem broken down into smaller versions of itself.
 
 The recursive case must resemble the original problem but be simpler or smaller, ensuring progress toward the base case. Each recursive call works on the reduced problem until the base case is reached.
 
@@ -195,9 +193,9 @@ The recursive case must resemble the original problem but be simpler or smaller,
 
 When a recursive call is made:
 
-* The function pauses its current execution and launches a fresh copy of itself to handle the smaller problem.
-* This process can repeat many times, generating multiple recursive calls.
-* Each call must eventually converge on the base case, where recursion stops.
+- The function pauses its current execution and launches a fresh copy of itself to handle the smaller problem.
+- This process can repeat many times, generating multiple recursive calls.
+- Each call must eventually converge on the base case, where recursion stops.
 
 ### Returning Results
 
@@ -205,9 +203,9 @@ Each recursive call includes a `return` statement. When the base case is reached
 
 In summary:
 
-* Base case: directly solvable, no further recursion.
-* Recursive step: reduces the problem and calls the function again.
-* Convergence: repeated recursion eventually reaches the base case, then unwinds with results.
+- Base case: directly solvable, no further recursion.
+- Recursive step: reduces the problem and calls the function again.
+- Convergence: repeated recursion eventually reaches the base case, then unwinds with results.
 
 ---
 
@@ -239,20 +237,18 @@ Recursive calls can be visualized as a stack. Each new call is
 **pushed** onto the stack showing the pending computation, and
 results are **popped** once the base case is reached.
 
-
 !!! example "Factorial(5)"
-    <strong>Push (calls):</strong><br>
-    <span style="color:#ffa726;">Factorial(5)</span> -> 5 * <span style="color:#ffca28;">Factorial(4)</span><br>
-      <span style="color:#ffca28;">Factorial(4)</span> -> 4 * <span style="color:#aed581;">Factorial(3)</span><br>
-        <span style="color:#aed581;">Factorial(3)</span> -> 3 * <span style="color:#81c784;">Factorial(2)</span><br>
-          <span style="color:#81c784;">Factorial(2)</span> -> 2 * <span style="color:#4dd0e1;">Factorial(1)</span><br>
-            <span style="color:#4dd0e1;">Factorial(1)</span> -> 1 * <span style="color:#42a5f5;">Factorial(0)</span><br>
-              <span style="color:#42a5f5;">Factorial(0)</span> -> 1  (base case)<br><br>
-    
+<strong>Push (calls):</strong><br>
+<span style="color:#ffa726;">Factorial(5)</span> -> 5 _ <span style="color:#ffca28;">Factorial(4)</span><br>
+  <span style="color:#ffca28;">Factorial(4)</span> -> 4 _ <span style="color:#aed581;">Factorial(3)</span><br>
+    <span style="color:#aed581;">Factorial(3)</span> -> 3 _ <span style="color:#81c784;">Factorial(2)</span><br>
+      <span style="color:#81c784;">Factorial(2)</span> -> 2 _ <span style="color:#4dd0e1;">Factorial(1)</span><br>
+        <span style="color:#4dd0e1;">Factorial(1)</span> -> 1 \* <span style="color:#42a5f5;">Factorial(0)</span><br>
+          <span style="color:#42a5f5;">Factorial(0)</span> -> 1 (base case)<br><br>
+
     <strong>Pop (returns):</strong><br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4dd0e1;">Factorial(1)</span> = 1 * <span style="color:#42a5f5;">Factorial(0)</span> = 1 * 1 = 1<br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#81c784;">Factorial(2)</span> = 2 * <span style="color:#4dd0e1;">Factorial(1)</span> = 2 * 1 = 2<br>
     &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#aed581;">Factorial(3)</span> = 3 * <span style="color:#81c784;">Factorial(2)</span> = 3 * 2 = 6<br>
     &nbsp;&nbsp;<span style="color:#ffca28;">Factorial(4)</span> = 4 * <span style="color:#aed581;">Factorial(3)</span> = 4 * 6 = 24<br>
     <span style="color:#ffa726;">Factorial(5)</span> = 5 * <span style="color:#ffca28;">Factorial(4)</span> = 5 * 24 = 120
-

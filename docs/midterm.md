@@ -1,3 +1,20 @@
+## Streams
+
+---
+
+**Streams** are sequences of bytes used for input and output.
+
+- **Input**: Data flows _from_ a device (keyboard, disk, network, etc.) _into_ main memory.
+- **Output**: Data flows _from_ main memory _to_ a device (screen, printer, disk, network, etc.).
+
+At program start, three standard streams are available:
+
+1. Standard input (`stdin`) – usually from the keyboard.
+2. Standard output (`stdout`) – usually to the screen.
+3. Standard error (`stderr`) – also to the screen, for error messages.
+
+**Redirection**: Operating systems allow these streams to be redirected to other devices or files.
+
 ## `printf`
 
 ---
@@ -6,23 +23,25 @@
 
 `printf` uses **conversion specifiers** to determine how data is formatted when printed. Each specifier begins with `%` followed by one or more characters describing type and formatting.
 
-| Specifier                | Description                                   | Example Output                           |
-| ------------------------ | --------------------------------------------- | ---------------------------------------- |
-| **Integers**             |                                               |                                          |
-| `%d`, `%i`               | Signed decimal integer                        | `printf("%d", 42)` → `42`                |
-| `%u`                     | Unsigned decimal integer                      | `printf("%u", 42)` → `42`                |
-| `%o`                     | Unsigned octal integer                        | `printf("%o", 10)` → `12`                |
-| `%x`, `%X`               | Unsigned hexadecimal integer (`a–f` or `A–F`) | `printf("%x", 255)` → `ff`               |
-| **Floating-point**       |                                               |                                          |
-| `%f`                     | Floating-point decimal (fixed)                | `printf("%f", 3.1416)` → `3.141600`      |
-| `%e`, `%E`               | Floating-point in scientific notation         | `printf("%e", 1234.56)` → `1.234560e+03` |
-| `%g`, `%G`               | Floating-point (shortest of `%f` or `%e`)     | `printf("%g", 0.0000123)` → `1.23e-05`   |
-| **Characters & Strings** |                                               |                                          |
-| `%c`                     | Single character                              | `printf("%c", 'A')` → `A`                |
-| `%s`                     | String of characters                          | `printf("%s", "Hello")` → `Hello`        |
-| **Miscellaneous**        |                                               |                                          |
-| `%p`                     | Pointer (memory address)                      | `printf("%p", ptr)` → `0x7ffeefbff5ac`   |
-| `%%`                     | Prints a literal percent sign                 | `printf("%%")` → `%`                     |
+| Specifier                                            | Description                                               | Example Output                           |
+| ---------------------------------------------------- | --------------------------------------------------------- | ---------------------------------------- |
+| **Integers**                                         |                                                           |                                          |
+| `%d`, `%i`                                           | Signed decimal integer                                    | `printf("%d", 42)` → `42`                |
+| `%u`                                                 | Unsigned decimal integer                                  | `printf("%u", 42)` → `42`                |
+| `%o`                                                 | Unsigned octal integer                                    | `printf("%o", 10)` → `12`                |
+| `%x`, `%X`                                           | Unsigned hexadecimal integer (`a–f` or `A–F`)             | `printf("%x", 255)` → `ff`               |
+| **Floating-point**                                   |                                                           |                                          |
+| `%f`\*                                               | Floating-point decimal (fixed)                            | `printf("%f", 3.1416)` → `3.141600`      |
+| `%e`, `%E`\*                                         | Floating-point in scientific notation                     | `printf("%e", 1234.56)` → `1.234560e+03` |
+| `%g`, `%G`\*\*                                       | Floating-point (shortest of `%f` or `%e`)                 | `printf("%g", 0.0000123)` → `1.23e-05`   |
+| \* default 6 digits of percision after decimal       |                                                           |                                          |
+| \*\* 6 significant digits (including before decimal) |                                                           |                                          |
+| **Characters & Strings**                             |                                                           |                                          |
+| `%c`                                                 | Single character                                          | `printf("%c", 'A')` → `A`                |
+| `%s`                                                 | String of characters                                      | `printf("%s", "Hello")` → `Hello`        |
+| **Miscellaneous**                                    |                                                           |                                          |
+| `%p`                                                 | Pointer displayed in an **implementation defined manner** | `printf("%p", ptr)` → `0x7ffeefbff5ac`   |
+| `%%`                                                 | Prints a literal percent sign                             | `printf("%%")` → `%`                     |
 
 ---
 
@@ -189,6 +208,29 @@ scanf("%*[^,],%19s", name);
 
 ---
 
+## Literals and Escape Sequences
+
+Characters in a format string that are not part of a conversion specification are printed literally.
+
+Escape sequences allow you to include special characters in strings that cannot be typed directly or would otherwise be ambiguous.
+
+| Escape | Description                                                     |
+| ------ | --------------------------------------------------------------- |
+| `\'`   | Single quote (`'`)                                              |
+| `\"`   | Double quote (`"`)                                              |
+| `\?`   | Question mark (`?`)                                             |
+| `\\`   | Backslash (`\\`)                                                |
+| `\a`   | Alert (bell/flash)                                              |
+| `\b`   | Backspace                                                       |
+| `\f`   | Form feed (new page)                                            |
+| `\n`   | Newline                                                         |
+| `\r`   | Carriage return (does **_not_** move to beginning of next line) |
+| `\t`   | Horizontal tab                                                  |
+| `\v`   | Vertical tab                                                    |
+| `%%`   | Percent symbol (`%`)                                            |
+
+---
+
 ## Recursion
 
 **Recursion** occurs when a function calls itself directly or indirectly. Each call creates a new stack frame until a **base case** is reached, after which calls resolve in reverse order.
@@ -264,6 +306,52 @@ struct card {
 
 ---
 
+### Initializing Structures
+
+Structures can be initialized by:
+
+- array-like member initializer lists
+  ```c
+  struct card K = {"king", "clubs"};
+  ```
+- assigning values to individual data members
+  ```c
+  struct card Q;
+  Q.face = "queen";
+  Q.suit = "spades";
+  ```
+- assignment statements (setting one variable to equal another of the same struct)
+  ```c
+  struct card A = {"Ace", "Hearts"};
+  struct card B;
+
+  B = A;   // assignment statement
+
+  ```
+
+---
+
+### Accessing Members of a Structure
+
+You can access members of a structure using the **structure member operator**:
+`.`
+
+```c
+struct card K = {"king", "clubs"};`
+char *Kface = K.face;
+```
+
+If you are referring to the structure through a pointer, you can use the
+**structure arrow operator** to access the members.
+
+```c
+struct card *KPtr = &K;
+char *Kface = K->face;
+
+// Alternatively you can also use the following dereference and dot syntax
+char *Ksuit = (*KPtr).suit; // note the paranthesis are *required* here.
+```
+
 ### Structures Without Tag Names
 
 Anonymous structs can be declared if variables are defined immediately:
@@ -281,8 +369,15 @@ Without a tag, you can’t reuse the type elsewhere.
 
 ### Comparing Structure Objects
 
-Structures cannot be compared with `==` or `!=` because compilers insert **padding bytes** for memory alignment, which may hold **unspecified garbage values**.
-Even identical structures might differ in padding, making bytewise comparison **undefined behavior**.
+Structures cannot be compared with `==` or `!=` because compilers insert
+**padding bytes** for memory alignment, which may hold **unspecified garbage
+values**.
+
+Even identical structures might differ in padding, making bytewise comparison
+**undefined behaviour**.
+
+With that said, they could **_sometimes_** compare equally (although as noted
+it is undefined behaviour and can't be relied on).
 
 ---
 
@@ -304,6 +399,17 @@ printf("%zu\n", sizeof(struct example)); // Likely prints 8, not 5
     Compilers may insert padding between members for alignment, improving speed but wasting space.
     To minimize padding, order members from largest to smallest type.
     Use `#pragma pack` only when absolutely necessary for binary compatibility — it reduces portability.
+
+---
+
+### Passing Structures and Arrays
+
+- **Array of structures:** passed **by reference** (actually decays to a pointer), just like any other array.
+
+  - The function can modify the original elements.
+
+- **Array member inside a structure:** passed **by value** when the structure itself is passed by value.
+  - The function receives a copy; modifying it won’t affect the original.
 
 ---
 
@@ -340,7 +446,10 @@ This eliminates the need to repeat `struct` every time.
 
 ## Unions
 
-A **union** is a derived data type similar to a `struct`, but unlike structures, **all members share the same memory space**. Only one member can be used at a time, making unions memory-efficient when variables are only relevant at different times during execution.
+A **union** is a derived data type similar to a `struct`, but unlike structures,
+**all members share the same memory space**. Only one member can be used at a
+time, making unions memory-efficient when variables are only relevant at different
+times during execution.
 
 ```c
 union number {
@@ -526,6 +635,11 @@ int lowest = x & -x;
 if ((x ^ y) < 0)
     printf("Opposite signs");
 ```
+
+## Enums
+
+Enumeration constants within an enumeration _must have unique identifiers_.
+Assigning a value to an enumeration constant when creating an enumeration type causes a syntax error.
 
 ## Self-Referential Structures
 

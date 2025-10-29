@@ -273,20 +273,20 @@ Characters in a format string that are not part of a conversion specification ar
 
 Escape sequences allow you to include special characters in strings that cannot be typed directly or would otherwise be ambiguous.
 
-| Escape | Description          |
-| ------ | -------------------- |
-| `\'`   | Single quote (`'`)   |
-| `\"`   | Double quote (`"`)   |
-| `\?`   | Question mark (`?`)  |
-| `\\`   | Backslash (`\\`)     |
-| `\a`   | Alert (bell/flash)   |
-| `\b`   | Backspace            |
-| `\f`   | Form feed (new page) |
-| `\n`   | Newline              |
-| `\r`   | Carriage return      |
-| `\t`   | Horizontal tab       |
-| `\v`   | Vertical tab         |
-| `%%`   | Percent symbol (`%`) |
+| Escape | Description                                                     |
+| ------ | --------------------------------------------------------------- |
+| `\'`   | Single quote (`'`)                                              |
+| `\"`   | Double quote (`"`)                                              |
+| `\?`   | Question mark (`?`)                                             |
+| `\\`   | Backslash (`\\`)                                                |
+| `\a`   | Alert (bell/flash)                                              |
+| `\b`   | Backspace                                                       |
+| `\f`   | Form feed (new page)                                            |
+| `\n`   | Newline                                                         |
+| `\r`   | Carriage return (does **_not_** move to beginning of next line) |
+| `\t`   | Horizontal tab                                                  |
+| `\v`   | Vertical tab                                                    |
+| `%%`   | Percent symbol (`%`)                                            |
 
 ---
 
