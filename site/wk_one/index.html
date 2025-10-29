@@ -479,6 +479,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#formatted-io-variants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formatted I/O Variants
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1028,12 +1037,50 @@ The <code>0</code> flag changes this so that extra space is filled with <strong>
 </code></pre></div>
 <details class="note">
 <summary>Why <code>%%</code> isn’t like <code>\\n</code></summary>
+</details>
 <p>Backslash escapes (like <code>\\n</code>, <code>\\t</code>, <code>\\?</code>) are <strong>language features</strong> handled at compile time, because they solve parsing or representation issues in string literals.
 <br>
 Percent escapes (like <code>%d</code>, <code>%%</code>) are <strong>library features</strong>, defined only for functions such as <code>printf</code>/<code>scanf</code> and interpreted at runtime.
 <br>
 <strong>In short:</strong> <code>\\n</code> is replaced by the compiler, while <code>%%</code> is handled later by <code>printf</code>.</p>
-</details>
+<hr />
+<h3 id="formatted-io-variants">Formatted I/O Variants</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+<th>Typical Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fprintf(FILE *fp, const char *format, ...)</code></td>
+<td>Prints formatted output to a file stream.</td>
+<td>Writing data to files.</td>
+</tr>
+<tr>
+<td><code>fscanf(FILE *fp, const char *format, ...)</code></td>
+<td>Reads formatted input from a file stream.</td>
+<td>Reading structured file input.</td>
+</tr>
+<tr>
+<td><code>sprintf(char *str, const char *format, ...)</code></td>
+<td>Writes formatted output into a string buffer.</td>
+<td>Building formatted strings in memory.</td>
+</tr>
+<tr>
+<td><code>sscanf(const char *str, const char *format, ...)</code></td>
+<td>Reads formatted input from a string.</td>
+<td>Parsing string data (e.g., CSV fields).</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+</div>
+<p>These functions behave like <code>printf</code> and <code>scanf</code>, but redirect input/output to files or strings instead of the console.</p>
+<hr />
 
 
 
