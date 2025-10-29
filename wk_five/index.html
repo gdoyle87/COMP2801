@@ -663,6 +663,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#pointer-to-pointer-parameters-and-the-insertnode-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pointer-to-Pointer Parameters and the insertNode Example
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pointer-to-Pointer Parameters and the insertNode Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-treeptr-leftptr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why &amp;((*treePtr)-&gt;leftPtr)?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -795,7 +819,7 @@ type. This allows structures to reference other structures of the same type.</p>
 and one or more pointers that describe how to reach other nodes.</p>
 <p>Because these pointers refer to other nodes of the <em>same type</em>, nodes are
 self-referential.</p>
-<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">node</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
 <span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="n">nextPtr</span><span class="p">;</span>
@@ -818,11 +842,7 @@ the <strong>head</strong>. If the list is empty, the head pointer is set to <cod
 <span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="n">nextPtr</span><span class="p">;</span>
 <span class="p">};</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>graph LR
-    A((data)) --&gt; B((data))
-    B --&gt; C((data))
-    C --&gt; D((NULL))
-</code></pre></div>
+<p><img alt="Basic Linked List" src="../images/basic_linked_list.png" /></p>
 <p>The last node in the list has a <code>nextPtr</code> of <code>NULL</code>, indicating that no further
 nodes follow.</p>
 <h4 id="traversing-a-linked-list">Traversing a Linked List</h4>
@@ -842,27 +862,27 @@ memory is managed and how elements are accessed.</p>
 <h5 id="when-linked-lists-are-useful">When Linked Lists Are Useful</h5>
 <ul>
 <li>A <strong>linked list</strong> is appropriate when the number of data items is <strong>unknown
-or changes over time</strong>.</li>
+  or changes over time</strong>.</li>
 <li>Linked lists are <strong>dynamic</strong>: nodes can be added or removed as needed at
-runtime.</li>
+  runtime.</li>
 <li>Useful when elements will be frequently <strong>inserted or deleted</strong>, especially
-in the <strong>middle</strong> of the sequence.</li>
+  in the <strong>middle</strong> of the sequence.</li>
 </ul>
 <h5 id="when-arrays-are-useful">When Arrays Are Useful</h5>
 <ul>
 <li>Arrays are <strong>fixed-size</strong> data structures. The size is determined when the
-array is created.</li>
+  array is created.</li>
 <li>Arrays allow direct (constant-time) access to <strong><em>any</em></strong> element because
-elements are stored <strong>contiguously</strong> in memory.</li>
+  elements are stored <strong>contiguously</strong> in memory.</li>
 <li>Best when the total number of elements is <strong>known in advance</strong> and <strong>fast
-indexing</strong> is required.</li>
+  indexing</strong> is required.</li>
 </ul>
 <h5 id="memory-considerations">Memory Considerations</h5>
 <ul>
 <li>Arrays may reserve <strong>more space than needed</strong> if sized too large.</li>
 <li>Linked lists only use memory for the nodes currently stored, but <strong>each node
-requires extra memory for a pointer</strong>, and dynamic allocation involves
-overhead.</li>
+  requires extra memory for a pointer</strong>, and dynamic allocation involves
+  overhead.</li>
 </ul>
 <h5 id="performance-summary">Performance Summary</h5>
 <table>
@@ -949,7 +969,9 @@ so the ordering is preserved.</p>
 <li>
 <p><code>previousPtr = NULL</code></p>
 </li>
-<li><code>currentPtr = head</code></li>
+<li>
+<p><code>currentPtr = head</code></p>
+</li>
 <li>
 <p>Traverse the list to locate the correct insertion point:</p>
 </li>
@@ -959,15 +981,19 @@ so the ordering is preserved.</p>
 <ul>
 <li><code>previousPtr = currentPtr</code></li>
 <li><code>currentPtr = currentPtr-&gt;nextPtr</code></li>
-<li>Insert the new node:</li>
 </ul>
 </li>
 <li>
+<p>Insert the new node:</p>
+</li>
+<li>
 <p><strong>If <code>previousPtr</code> is <code>NULL</code></strong>, insert at <strong>beginning</strong>:</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">newPtr</span><span class="o">-&gt;</span><span class="n">nextPtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="n">newPtr</span><span class="o">-&gt;</span><span class="n">nextPtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">;</span>
 <span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newPtr</span><span class="p">;</span>
 </code></pre></div>
-   * <strong>Otherwise</strong>, insert between <code>previousPtr</code> and <code>currentPtr</code>:</p>
+</li>
+<li>
+<p><strong>Otherwise</strong>, insert between <code>previousPtr</code> and <code>currentPtr</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">previousPtr</span><span class="o">-&gt;</span><span class="n">nextPtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newPtr</span><span class="p">;</span>
 <span class="n">newPtr</span><span class="o">-&gt;</span><span class="n">nextPtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">currentPtr</span><span class="p">;</span>
 </code></pre></div>
@@ -1018,8 +1044,12 @@ so the ordering is preserved.</p>
 <li>
 <p><code>previousPtr</code> tracks the node before the one to delete.</p>
 </li>
-<li><code>currentPtr</code> tracks the node being inspected.</li>
-<li>Stop when <code>currentPtr</code> points to the node to remove.</li>
+<li>
+<p><code>currentPtr</code> tracks the node being inspected.</p>
+</li>
+<li>
+<p>Stop when <code>currentPtr</code> points to the node to remove.</p>
+</li>
 <li>Update <code>previousPtr-&gt;nextPtr</code> to skip over the deleted node.</li>
 <li>Free the deleted node.</li>
 </ol>
@@ -1108,9 +1138,9 @@ and <strong>right</strong> child pointers. Either or both of these links can be 
 <strong>unique values</strong> and maintains a specific ordering property:</p>
 <ul>
 <li>All values in the <strong>left subtree</strong> of a node are <strong>less than</strong> the value in
-the node’s parent.</li>
+  the node’s parent.</li>
 <li>All values in the <strong>right subtree</strong> are <strong>greater than</strong> the value in the
-node’s parent.</li>
+  node’s parent.</li>
 </ul>
 <p>This ordering allows efficient <strong>search</strong>, <strong>insertion</strong>, and <strong>deletion</strong>
 operations.</p>
@@ -1127,20 +1157,23 @@ operations.</p>
 worst case (such as inserting sorted data without balancing) performance can
 degenerate to <strong>O(n)</strong>.</p>
 <h4 id="preorder-traversal-root-left-right">Preorder Traversal (Root → Left → Right)</h4>
-<p>In a <strong>preorder traversal</strong>, each node is visited before its subtrees:
-1. Visit the root.
-2. Traverse the left subtree.
-3. Traverse the right subtree.</p>
+<p>In a <strong>preorder traversal</strong>, each node is visited before its subtrees:</p>
+<ol>
+<li>Visit the root.</li>
+<li>Traverse the left subtree.</li>
+<li>Traverse the right subtree.</li>
+</ol>
 <p>This means the root is always processed first.</p>
 <details class="example" open="open">
 <summary>Pre-order Traversal Visual</summary>
-<p><div style="text-align: center;">
-  <video controls autoplay loop muted style="max-width: 500px; border-radius: 8px;">
-    <source src="../images/preorder_traversal.webm" type="video/webm">
-    Your browser does not support the video tag.
-  </video>
-</div></p>
 </details>
+<div style="text-align: center;">
+<video controls autoplay loop muted style="max-width: 500px; border-radius: 8px;">
+<source src="../images/preorder_traversal.webm" type="video/webm">
+Your browser does not support the video tag.
+</video>
+</div>
+
 <hr />
 <h4 id="inorder-traversal-left-root-right">Inorder Traversal (Left → Root → Right)</h4>
 <p>In an <strong>inorder traversal</strong>, the order ensures that nodes are visited in <strong>sorted order</strong> for a binary search tree:</p>
@@ -1152,13 +1185,14 @@ degenerate to <strong>O(n)</strong>.</p>
 <p>This traversal is often used to output data in ascending order.</p>
 <details class="example" open="open">
 <summary>In-order Traversal Visual</summary>
-<p><div style="text-align: center;"> 
-  <video controls autoplay loop muted style="max-width: 500px; border-radius: 8px;">
-    <source src="../images/inorder_traversal.webm" type="video/webm">
-    Your browser does not support the video tag. 
-  </video> 
-</div></p>
 </details>
+<div style="text-align: center;">
+<video controls autoplay loop muted style="max-width: 500px; border-radius: 8px;">
+<source src="../images/inorder_traversal.webm" type="video/webm">
+Your browser does not support the video tag.
+</video>
+</div>
+
 <hr />
 <h4 id="postorder-traversal-left-right-root">Postorder Traversal (Left → Right → Root)</h4>
 <p>In a <strong>postorder traversal</strong>, subtrees are processed <strong>before</strong> the parent node:</p>
@@ -1170,13 +1204,75 @@ degenerate to <strong>O(n)</strong>.</p>
 <p>This traversal is useful for <strong>deleting</strong> or <strong>freeing</strong> nodes, since children are handled before their parent.</p>
 <details class="example" open="open">
 <summary>Post-order Traversal Visual</summary>
-<p><div style="text-align: center;">
-  <video controls autoplay loop muted style="max-width: 500px; border-radius: 8px;"> 
-    <source src="../images/postorder_traversal.webm" type="video/webm">
-    Your browser does not support the video tag. 
-  </video> 
-</div></p>
 </details>
+<div style="text-align: center;">
+<video controls autoplay loop muted style="max-width: 500px; border-radius: 8px;">
+<source src="../images/postorder_traversal.webm" type="video/webm">
+Your browser does not support the video tag.
+</video>
+</div>
+
+<hr />
+<h3 id="pointer-to-pointer-parameters-and-the-insertnode-example">Pointer-to-Pointer Parameters and the <code>insertNode</code> Example</h3>
+<p>The <strong>pointer-to-pointer</strong> pattern is required when a function must <strong>modify a pointer owned by the caller</strong> (e.g., the tree’s root or a child link). Passing the address of that pointer lets the function assign to it directly.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">insertNode</span><span class="p">(</span><span class="n">TreeNodePtr</span><span class="w"> </span><span class="o">*</span><span class="n">treePtr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">treePtr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">*</span><span class="n">treePtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="w"> </span><span class="o">**</span><span class="n">treePtr</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">treePtr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="p">(</span><span class="o">*</span><span class="n">treePtr</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<span class="w">            </span><span class="p">(</span><span class="o">*</span><span class="n">treePtr</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">leftPtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<span class="w">            </span><span class="p">(</span><span class="o">*</span><span class="n">treePtr</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">rightPtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d not inserted. No memory available.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">treePtr</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">insertNode</span><span class="p">(</span><span class="o">&amp;</span><span class="p">((</span><span class="o">*</span><span class="n">treePtr</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">leftPtr</span><span class="p">),</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">treePtr</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">insertNode</span><span class="p">(</span><span class="o">&amp;</span><span class="p">((</span><span class="o">*</span><span class="n">treePtr</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">rightPtr</span><span class="p">),</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;dup</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><code>treePtr</code> has type <code>TreeNode **</code> (pointer to a <code>TreeNode *</code>).</li>
+<li><code>*treePtr</code> is the actual <code>TreeNode *</code> (root or a child link).</li>
+<li><code>(*treePtr)-&gt;member</code> accesses a field of the node that <code>*treePtr</code> points to.</li>
+</ul>
+<hr />
+<h4 id="why-treeptr-leftptr">Why <code>&amp;((*treePtr)-&gt;leftPtr)</code>?</h4>
+<p>When you recurse left or right, you must pass <strong>the address of the child pointer</strong> so the callee can update that pointer in place.</p>
+<ul>
+<li><code>(*treePtr)-&gt;leftPtr</code> has type <code>TreeNode *</code> (a child link).</li>
+<li><code>&amp;((*treePtr)-&gt;leftPtr)</code> therefore has type <code>TreeNode **</code> — exactly what <code>insertNode</code> expects.</li>
+</ul>
+<p>This is the critical difference: you are <strong>not</strong> passing the address of the node; you are passing the <strong>address of the pointer that stores the child link</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Types at each step</span>
+<span class="n">TreeNodePtr</span><span class="w">  </span><span class="n">left</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">treePtr</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">leftPtr</span><span class="p">;</span><span class="w">   </span><span class="c1">// TreeNode *</span>
+<span class="n">TreeNodePtr</span><span class="w"> </span><span class="o">*</span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="p">((</span><span class="o">*</span><span class="n">treePtr</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">leftPtr</span><span class="p">);</span><span class="w"> </span><span class="c1">// TreeNode **</span>
+<span class="n">insertNode</span><span class="p">(</span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">);</span><span class="w">                   </span><span class="c1">// matches parameter type</span>
+</code></pre></div>
+<p><strong>Operator precedence and parentheses</strong></p>
+<ul>
+<li><code>-&gt;</code> binds tighter than unary <code>&amp;</code>, so <code>&amp;(*treePtr)-&gt;leftPtr</code> would be parsed the same as <code>&amp;((*treePtr)-&gt;leftPtr)</code>.</li>
+<li>The extra parentheses are kept for readability and to avoid misreading the expression as <code>&amp;*treePtr</code> (which simplifies to <code>treePtr</code>, not the child field’s address).</li>
+</ul>
+<p><strong>Contrast:</strong></p>
+<ul>
+<li><code>&amp;*treePtr</code> → <code>treePtr</code> (type <code>TreeNode **</code>), the address-of followed by dereference cancels out.</li>
+<li><code>&amp;((*treePtr)-&gt;leftPtr)</code> → address <strong>of the left child pointer field</strong> inside the node pointed to by <code>*treePtr</code>.</li>
+</ul>
+<p>A helpful way to read it:</p>
+<ol>
+<li><code>*treePtr</code> → the current node pointer.</li>
+<li><code>(*treePtr)-&gt;leftPtr</code> → the left child pointer stored in that node.</li>
+<li><code>&amp;((*treePtr)-&gt;leftPtr)</code> → the address of that child pointer (so we can assign to it inside the callee).</li>
+</ol>
+<hr />
 
 
 
