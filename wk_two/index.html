@@ -680,11 +680,11 @@ should be read, followed by pointers to variables where the input will be stored
 </code></pre></div>
 <p><strong>format-control-string</strong> – describes input formats using conversion specifiers.
 <strong>other-arguments</strong> – pointers to variables that will receive the input.</p>
-<p><br><br>
-* Prompt the user for one (or a few) items at a time.
-* Avoid asking for many inputs in one statement.
-* Always handle the possibility of incorrect data (e.g., invalid integers or
-  strings with missing punctuation).</p>
+<pre><code>- Prompt the user for one (or a few) items at a time.
+- Avoid asking for many inputs in one statement.
+- Always handle the possibility of incorrect data (e.g., invalid integers or
+  strings with missing punctuation).
+</code></pre>
 <hr />
 <h3 id="conversion-specifiers">Conversion Specifiers</h3>
 <p>Like <code>printf</code>, <code>scanf</code> uses conversion specifiers to handle different data types.
@@ -705,27 +705,27 @@ Some specifiers differ between input (<code>scanf</code>) and output (<code>prin
 </tr>
 <tr>
 <td><code>%d</code></td>
-<td>Reads a signed decimal integer  <code>int*</code></td>
+<td>Reads a signed decimal integer <code>int*</code></td>
 <td></td>
 </tr>
 <tr>
 <td><code>%i</code></td>
-<td>Reads signed decimal, octal, or hexadecimal  <code>int*</code></td>
+<td>Reads signed decimal, octal, or hexadecimal <code>int*</code></td>
 <td></td>
 </tr>
 <tr>
 <td><code>%o</code></td>
-<td>Reads an octal integer  <code>unsigned int*</code></td>
+<td>Reads an octal integer <code>unsigned int*</code></td>
 <td></td>
 </tr>
 <tr>
 <td><code>%u</code></td>
-<td>Reads an unsigned decimal integer  <code>unsigned int*</code></td>
+<td>Reads an unsigned decimal integer <code>unsigned int*</code></td>
 <td></td>
 </tr>
 <tr>
 <td><code>%x</code> / <code>%X</code></td>
-<td>Reads a hexadecimal integer  <code>unsigned int*</code></td>
+<td>Reads a hexadecimal integer <code>unsigned int*</code></td>
 <td></td>
 </tr>
 <tr>
@@ -740,7 +740,7 @@ Some specifiers differ between input (<code>scanf</code>) and output (<code>prin
 </tr>
 <tr>
 <td><code>%e</code>, <code>%E</code>, <code>%f</code>, <code>%F</code>, <code>%g</code>, <code>%G</code></td>
-<td>Reads a floating-point value  <code>float*</code> / <code>double*</code></td>
+<td>Reads a floating-point value <code>float*</code> / <code>double*</code></td>
 <td></td>
 </tr>
 <tr>
@@ -755,12 +755,12 @@ Some specifiers differ between input (<code>scanf</code>) and output (<code>prin
 </tr>
 <tr>
 <td><code>%c</code></td>
-<td>Reads a single character  <code>char*</code> (no <code>\0</code> added)</td>
+<td>Reads a single character <code>char*</code> (no <code>\0</code> added)</td>
 <td></td>
 </tr>
 <tr>
 <td><code>%s</code></td>
-<td>Reads a string  <code>char[]</code> (terminates with <code>\0</code>)</td>
+<td>Reads a string <code>char[]</code> (terminates with <code>\0</code>)</td>
 <td></td>
 </tr>
 <tr>
@@ -785,7 +785,7 @@ Some specifiers differ between input (<code>scanf</code>) and output (<code>prin
 </tr>
 <tr>
 <td><code>%n</code></td>
-<td>Stores number of characters read so far  <code>int*</code></td>
+<td>Stores number of characters read so far <code>int*</code></td>
 <td></td>
 </tr>
 <tr>
@@ -931,20 +931,21 @@ Input: <code>01/01/2021</code> → output: <code>1 1 2021</code></p>
 results are <strong>popped</strong> once the base case is reached.</p>
 <div class="admonition example">
 <p class="admonition-title">Factorial(5)</p>
-<p><strong>Push (calls):</strong><br>
-<span style="color:#ffa726;">Factorial(5)</span> -&gt; 5 * <span style="color:#ffca28;">Factorial(4)</span><br>
-  <span style="color:#ffca28;">Factorial(4)</span> -&gt; 4 * <span style="color:#aed581;">Factorial(3)</span><br>
-    <span style="color:#aed581;">Factorial(3)</span> -&gt; 3 * <span style="color:#81c784;">Factorial(2)</span><br>
-      <span style="color:#81c784;">Factorial(2)</span> -&gt; 2 * <span style="color:#4dd0e1;">Factorial(1)</span><br>
-        <span style="color:#4dd0e1;">Factorial(1)</span> -&gt; 1 * <span style="color:#42a5f5;">Factorial(0)</span><br>
-          <span style="color:#42a5f5;">Factorial(0)</span> -&gt; 1  (base case)<br><br></p>
-<p><strong>Pop (returns):</strong><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4dd0e1;">Factorial(1)</span> = 1 * <span style="color:#42a5f5;">Factorial(0)</span> = 1 * 1 = 1<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#81c784;">Factorial(2)</span> = 2 * <span style="color:#4dd0e1;">Factorial(1)</span> = 2 * 1 = 2<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#aed581;">Factorial(3)</span> = 3 * <span style="color:#81c784;">Factorial(2)</span> = 3 * 2 = 6<br>
-&nbsp;&nbsp;<span style="color:#ffca28;">Factorial(4)</span> = 4 * <span style="color:#aed581;">Factorial(3)</span> = 4 * 6 = 24<br>
-<span style="color:#ffa726;">Factorial(5)</span> = 5 * <span style="color:#ffca28;">Factorial(4)</span> = 5 * 24 = 120</p>
 </div>
+<p><strong>Push (calls):</strong><br>
+<span style="color:#ffa726;">Factorial(5)</span> -&gt; 5 _ <span style="color:#ffca28;">Factorial(4)</span><br>
+  <span style="color:#ffca28;">Factorial(4)</span> -&gt; 4 _ <span style="color:#aed581;">Factorial(3)</span><br>
+    <span style="color:#aed581;">Factorial(3)</span> -&gt; 3 _ <span style="color:#81c784;">Factorial(2)</span><br>
+      <span style="color:#81c784;">Factorial(2)</span> -&gt; 2 _ <span style="color:#4dd0e1;">Factorial(1)</span><br>
+        <span style="color:#4dd0e1;">Factorial(1)</span> -&gt; 1 * <span style="color:#42a5f5;">Factorial(0)</span><br>
+          <span style="color:#42a5f5;">Factorial(0)</span> -&gt; 1 (base case)<br><br></p>
+<pre><code>&lt;strong&gt;Pop (returns):&lt;/strong&gt;&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;span style="color:#4dd0e1;"&gt;Factorial(1)&lt;/span&gt; = 1 * &lt;span style="color:#42a5f5;"&gt;Factorial(0)&lt;/span&gt; = 1 * 1 = 1&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;span style="color:#81c784;"&gt;Factorial(2)&lt;/span&gt; = 2 * &lt;span style="color:#4dd0e1;"&gt;Factorial(1)&lt;/span&gt; = 2 * 1 = 2&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;span style="color:#aed581;"&gt;Factorial(3)&lt;/span&gt; = 3 * &lt;span style="color:#81c784;"&gt;Factorial(2)&lt;/span&gt; = 3 * 2 = 6&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&lt;span style="color:#ffca28;"&gt;Factorial(4)&lt;/span&gt; = 4 * &lt;span style="color:#aed581;"&gt;Factorial(3)&lt;/span&gt; = 4 * 6 = 24&lt;br&gt;
+&lt;span style="color:#ffa726;"&gt;Factorial(5)&lt;/span&gt; = 5 * &lt;span style="color:#ffca28;"&gt;Factorial(4)&lt;/span&gt; = 5 * 24 = 120
+</code></pre>
 
 
 
