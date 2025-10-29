@@ -332,8 +332,9 @@ typedef struct {
 This eliminates the need to repeat `struct` every time.
 
 !!! warning
-Do not declare variables in the same line when using this form.
-If you need variables too, use a standard `struct` definition followed by a separate `typedef`.
+
+    Do not declare variables in the same line when using this form.
+    If you need variables too, use a standard `struct` definition followed by a separate `typedef`.
 
 ---
 
