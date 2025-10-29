@@ -1771,12 +1771,6 @@ If you need variables too, use a standard <code>struct</code> definition followe
 </tbody>
 </table>
 <hr />
-<p><strong>Summary:</strong></p>
-<ul>
-<li>Use self-referential structures to create dynamic collections.</li>
-<li>Linked lists are best for variable-size sequential data.</li>
-<li>Trees (especially BSTs) provide efficient searching and hierarchical relationships.</li>
-</ul>
 <h3 id="pointer-to-pointer">Pointer-to-Pointer</h3>
 <p>When a function needs to <strong>modify a pointer</strong> (such as a tree’s root or a linked list’s head), it must receive the <strong>address of that pointer</strong>. This allows the function to update the caller’s pointer directly.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">insertNode</span><span class="p">(</span><span class="n">TreeNodePtr</span><span class="w"> </span><span class="o">*</span><span class="n">treePtr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">)</span>
