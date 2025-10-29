@@ -629,7 +629,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Binary Search Tree (BST)">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#preorder-traversal-root-left-right" class="md-nav__link">
@@ -679,6 +680,11 @@
       Why &amp;((*treePtr)-&gt;leftPtr)?
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1156,7 +1162,7 @@ operations.</p>
 <p>This property enables fast lookups—on average <strong>O(log n)</strong> time—but in the
 worst case (such as inserting sorted data without balancing) performance can
 degenerate to <strong>O(n)</strong>.</p>
-<h4 id="preorder-traversal-root-left-right">Preorder Traversal (Root → Left → Right)</h4>
+<h5 id="preorder-traversal-root-left-right">Preorder Traversal (Root → Left → Right)</h5>
 <p>In a <strong>preorder traversal</strong>, each node is visited before its subtrees:</p>
 <ol>
 <li>Visit the root.</li>
@@ -1166,16 +1172,15 @@ degenerate to <strong>O(n)</strong>.</p>
 <p>This means the root is always processed first.</p>
 <details class="example" open="open">
 <summary>Pre-order Traversal Visual</summary>
-</details>
-<div style="text-align: center;">
+<p><div style="text-align: center;">
 <video controls autoplay loop muted style="max-width: 500px; border-radius: 8px;">
 <source src="../images/preorder_traversal.webm" type="video/webm">
 Your browser does not support the video tag.
 </video>
-</div>
-
+</div></p>
+</details>
 <hr />
-<h4 id="inorder-traversal-left-root-right">Inorder Traversal (Left → Root → Right)</h4>
+<h5 id="inorder-traversal-left-root-right">Inorder Traversal (Left → Root → Right)</h5>
 <p>In an <strong>inorder traversal</strong>, the order ensures that nodes are visited in <strong>sorted order</strong> for a binary search tree:</p>
 <ol>
 <li>Traverse the left subtree.</li>
@@ -1185,16 +1190,15 @@ Your browser does not support the video tag.
 <p>This traversal is often used to output data in ascending order.</p>
 <details class="example" open="open">
 <summary>In-order Traversal Visual</summary>
-</details>
-<div style="text-align: center;">
+<p><div style="text-align: center;">
 <video controls autoplay loop muted style="max-width: 500px; border-radius: 8px;">
 <source src="../images/inorder_traversal.webm" type="video/webm">
 Your browser does not support the video tag.
 </video>
-</div>
-
+</div></p>
+</details>
 <hr />
-<h4 id="postorder-traversal-left-right-root">Postorder Traversal (Left → Right → Root)</h4>
+<h5 id="postorder-traversal-left-right-root">Postorder Traversal (Left → Right → Root)</h5>
 <p>In a <strong>postorder traversal</strong>, subtrees are processed <strong>before</strong> the parent node:</p>
 <ol>
 <li>Traverse the left subtree.</li>
@@ -1204,16 +1208,15 @@ Your browser does not support the video tag.
 <p>This traversal is useful for <strong>deleting</strong> or <strong>freeing</strong> nodes, since children are handled before their parent.</p>
 <details class="example" open="open">
 <summary>Post-order Traversal Visual</summary>
-</details>
-<div style="text-align: center;">
+<p><div style="text-align: center;">
 <video controls autoplay loop muted style="max-width: 500px; border-radius: 8px;">
 <source src="../images/postorder_traversal.webm" type="video/webm">
 Your browser does not support the video tag.
 </video>
-</div>
-
+</div></p>
+</details>
 <hr />
-<h3 id="pointer-to-pointer-parameters-and-the-insertnode-example">Pointer-to-Pointer Parameters and the <code>insertNode</code> Example</h3>
+<h4 id="pointer-to-pointer-parameters-and-the-insertnode-example">Pointer-to-Pointer Parameters and the <code>insertNode</code> Example</h4>
 <p>The <strong>pointer-to-pointer</strong> pattern is required when a function must <strong>modify a pointer owned by the caller</strong> (e.g., the tree’s root or a child link). Passing the address of that pointer lets the function assign to it directly.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">insertNode</span><span class="p">(</span><span class="n">TreeNodePtr</span><span class="w"> </span><span class="o">*</span><span class="n">treePtr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">)</span>
 <span class="p">{</span>
@@ -1244,7 +1247,7 @@ Your browser does not support the video tag.
 <li><code>(*treePtr)-&gt;member</code> accesses a field of the node that <code>*treePtr</code> points to.</li>
 </ul>
 <hr />
-<h4 id="why-treeptr-leftptr">Why <code>&amp;((*treePtr)-&gt;leftPtr)</code>?</h4>
+<h5 id="why-treeptr-leftptr">Why <code>&amp;((*treePtr)-&gt;leftPtr)</code>?</h5>
 <p>When you recurse left or right, you must pass <strong>the address of the child pointer</strong> so the callee can update that pointer in place.</p>
 <ul>
 <li><code>(*treePtr)-&gt;leftPtr</code> has type <code>TreeNode *</code> (a child link).</li>

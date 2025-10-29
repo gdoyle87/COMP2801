@@ -536,17 +536,17 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#formatted-io-variants" class="md-nav__link">
     <span class="md-ellipsis">
       Formatted I/O Variants
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1390,7 +1390,7 @@
 <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%*[^,],%19s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
 </code></pre></div>
 <hr />
-<h3 id="formatted-io-variants">Formatted I/O Variants</h3>
+<h2 id="formatted-io-variants">Formatted I/O Variants</h2>
 <table>
 <thead>
 <tr>
@@ -1424,8 +1424,8 @@
 </table>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-</div>
 <p>These functions behave like <code>printf</code> and <code>scanf</code>, but redirect input/output to files or strings instead of the console.</p>
+</div>
 <hr />
 <h2 id="recursion">Recursion</h2>
 <p><strong>Recursion</strong> occurs when a function calls itself directly or indirectly. Each call creates a new stack frame until a <strong>base case</strong> is reached, after which calls resolve in reverse order.</p>
@@ -1504,10 +1504,10 @@ Even identical structures might differ in padding, making bytewise comparison <s
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Structure Packing and Alignment</p>
-</div>
 <p>Compilers may insert padding between members for alignment, improving speed but wasting space.
 To minimize padding, order members from largest to smallest type.
 Use <code>#pragma pack</code> only when absolutely necessary for binary compatibility — it reduces portability.</p>
+</div>
 <hr />
 <h2 id="typedef"><code>typedef</code></h2>
 <p><code>typedef</code> creates an alias for a type, making code more concise and readable.</p>
@@ -1608,8 +1608,8 @@ If you need variables too, use a standard <code>struct</code> definition followe
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-</div>
 <p><code>~</code> flips <strong>all bits</strong>, including sign bits. When applied to signed integers, the result may appear negative.</p>
+</div>
 <hr />
 <h3 id="common-bit-manipulation-techniques">Common Bit Manipulation Techniques</h3>
 <p>These patterns are frequently used in embedded systems and competitive programming.</p>
