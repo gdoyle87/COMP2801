@@ -174,7 +174,7 @@ scanf("%*[^,],%19s", name);
 
 ---
 
-### Formatted I/O Variants
+## Formatted I/O Variants
 
 | Function                                           | Purpose                                       | Typical Use Case                        |
 | -------------------------------------------------- | --------------------------------------------- | --------------------------------------- |
@@ -184,7 +184,8 @@ scanf("%*[^,],%19s", name);
 | `sscanf(const char *str, const char *format, ...)` | Reads formatted input from a string.          | Parsing string data (e.g., CSV fields). |
 
 !!! tip
-These functions behave like `printf` and `scanf`, but redirect input/output to files or strings instead of the console.
+
+    These functions behave like `printf` and `scanf`, but redirect input/output to files or strings instead of the console.
 
 ---
 
@@ -299,9 +300,10 @@ printf("%zu\n", sizeof(struct example)); // Likely prints 8, not 5
 ```
 
 !!! note "Structure Packing and Alignment"
-Compilers may insert padding between members for alignment, improving speed but wasting space.
-To minimize padding, order members from largest to smallest type.
-Use `#pragma pack` only when absolutely necessary for binary compatibility — it reduces portability.
+
+    Compilers may insert padding between members for alignment, improving speed but wasting space.
+    To minimize padding, order members from largest to smallest type.
+    Use `#pragma pack` only when absolutely necessary for binary compatibility — it reduces portability.
 
 ---
 
@@ -451,7 +453,8 @@ Inverts each bit: 0 → 1 and 1 → 0.
 ```
 
 !!! warning
-`~` flips **all bits**, including sign bits. When applied to signed integers, the result may appear negative.
+
+    `~` flips **all bits**, including sign bits. When applied to signed integers, the result may appear negative.
 
 ---
 

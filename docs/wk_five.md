@@ -380,7 +380,7 @@ This property enables fast lookups—on average **O(log n)** time—but in the
 worst case (such as inserting sorted data without balancing) performance can
 degenerate to **O(n)**.
 
-#### Preorder Traversal (Root → Left → Right)
+##### Preorder Traversal (Root → Left → Right)
 
 In a **preorder traversal**, each node is visited before its subtrees:
 
@@ -392,16 +392,16 @@ This means the root is always processed first.
 
 ???+ example "Pre-order Traversal Visual"
 
-<div style="text-align: center;">
-<video controls autoplay loop muted style="max-width: 500px; border-radius: 8px;">
-<source src="../images/preorder_traversal.webm" type="video/webm">
-Your browser does not support the video tag.
-</video>
-</div>
+    <div style="text-align: center;">
+    <video controls autoplay loop muted style="max-width: 500px; border-radius: 8px;">
+    <source src="../images/preorder_traversal.webm" type="video/webm">
+    Your browser does not support the video tag.
+    </video>
+    </div>
 
 ---
 
-#### Inorder Traversal (Left → Root → Right)
+##### Inorder Traversal (Left → Root → Right)
 
 In an **inorder traversal**, the order ensures that nodes are visited in **sorted order** for a binary search tree:
 
@@ -413,16 +413,16 @@ This traversal is often used to output data in ascending order.
 
 ???+ example "In-order Traversal Visual"
 
-<div style="text-align: center;">
-<video controls autoplay loop muted style="max-width: 500px; border-radius: 8px;">
-<source src="../images/inorder_traversal.webm" type="video/webm">
-Your browser does not support the video tag.
-</video>
-</div>
+    <div style="text-align: center;">
+    <video controls autoplay loop muted style="max-width: 500px; border-radius: 8px;">
+    <source src="../images/inorder_traversal.webm" type="video/webm">
+    Your browser does not support the video tag.
+    </video>
+    </div>
 
 ---
 
-#### Postorder Traversal (Left → Right → Root)
+##### Postorder Traversal (Left → Right → Root)
 
 In a **postorder traversal**, subtrees are processed **before** the parent node:
 
@@ -434,16 +434,16 @@ This traversal is useful for **deleting** or **freeing** nodes, since children a
 
 ???+ example "Post-order Traversal Visual"
 
-<div style="text-align: center;">
-<video controls autoplay loop muted style="max-width: 500px; border-radius: 8px;">
-<source src="../images/postorder_traversal.webm" type="video/webm">
-Your browser does not support the video tag.
-</video>
-</div>
+    <div style="text-align: center;">
+    <video controls autoplay loop muted style="max-width: 500px; border-radius: 8px;">
+    <source src="../images/postorder_traversal.webm" type="video/webm">
+    Your browser does not support the video tag.
+    </video>
+    </div>
 
 ---
 
-### Pointer-to-Pointer Parameters and the `insertNode` Example
+#### Pointer-to-Pointer Parameters and the `insertNode` Example
 
 The **pointer-to-pointer** pattern is required when a function must **modify a pointer owned by the caller** (e.g., the tree’s root or a child link). Passing the address of that pointer lets the function assign to it directly.
 
@@ -478,7 +478,7 @@ void insertNode(TreeNodePtr *treePtr, int value)
 
 ---
 
-#### Why `&((*treePtr)->leftPtr)`?
+##### Why `&((*treePtr)->leftPtr)`?
 
 When you recurse left or right, you must pass **the address of the child pointer** so the callee can update that pointer in place.
 
