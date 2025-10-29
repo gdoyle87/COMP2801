@@ -8,8 +8,8 @@ This week covers the first half of Chapter 9 in the text. We look in depth at `p
 
 **Streams** are sequences of bytes used for input and output.
 
-* **Input**: Data flows *from* a device (keyboard, disk, network, etc.) *into* main memory.
-* **Output**: Data flows *from* main memory *to* a device (screen, printer, disk, network, etc.).
+- **Input**: Data flows _from_ a device (keyboard, disk, network, etc.) _into_ main memory.
+- **Output**: Data flows _from_ main memory _to_ a device (screen, printer, disk, network, etc.).
 
 At program start, three standard streams are available:
 
@@ -23,7 +23,7 @@ At program start, three standard streams are available:
 
 ## `printf` Formatting
 
-As we learned in the previous course, `printf` can be used to format output to `stdout` using *conversion specifications*.
+As we learned in the previous course, `printf` can be used to format output to `stdout` using _conversion specifications_.
 
 ### Type Specifiers
 
@@ -41,7 +41,7 @@ As we learned in the previous course, `printf` can be used to format output to `
 
 Note: if you are using any of the **unsigned** specifiers, don't pass it any negative numbers.
 
-If you are using any of the long *length modifiers* you should add a corresponding literal suffix (`L`, `LL`) to the value that you pass to `printf`.
+If you are using any of the long _length modifiers_ you should add a corresponding literal suffix (`L`, `LL`) to the value that you pass to `printf`.
 
 ```c
 printf("%ld\n", 5000000000L); // long (suffix L required)
@@ -59,16 +59,16 @@ printf("%lld\n", 9000000000000LL); // long long (suffix LL required)
 | `%g` / `%G`           | Uses either `%f` or `%e` (`%E`) depending on value’s magnitude, with no trailing zeros |
 | `%Lf` / `%Le` / `%Lg` | Long double (length modifier `L`)                                                      |
 
-The default precision is **6 digits** after the decimal (for `%f`) or **6 *significant* digits** (for `%g`/`%G`).
+The default precision is **6 digits** after the decimal (for `%f`) or **6 _significant_ digits** (for `%g`/`%G`).
 
 **Rounding**: `%e`, `%E`, and `%g` perform rounding; `%f` shows exact decimals.
 
-`%g`/`%G` automatically chooses the *shortest* visual representation for a given number:
+`%g`/`%G` automatically chooses the _shortest_ visual representation for a given number:
 
-* Chooses `%e` if the exponent is < -4 or ≥ precision.
-* Otherwise chooses `%f`.
-* Removes trailing zeros.
-* Omits the decimal point if the fractional part is zero.
+- Chooses `%e` if the exponent is < -4 or ≥ precision.
+- Otherwise chooses `%f`.
+- Removes trailing zeros.
+- Omits the decimal point if the fractional part is zero.
 
 ```c
 #include <stdio.h>
@@ -100,10 +100,10 @@ int main(void) {
 
 #### Strings and Characters
 
-* `%c` prints a single `char`
-* `%s` prints a null-terminated string (`char*`), stops at `\0`
-* Missing null terminator or wrong format specifier (e.g., `%s` with a `char`) undefined behavior, often a crash
-* Compilers usually don’t catch format string errors — they show up only at runtime.
+- `%c` prints a single `char`
+- `%s` prints a null-terminated string (`char*`), stops at `\0`
+- Missing null terminator or wrong format specifier (e.g., `%s` with a `char`) undefined behavior, often a crash
+- Compilers usually don’t catch format string errors — they show up only at runtime.
 
 #### Pointers
 
@@ -123,7 +123,7 @@ You can control the minimum number of characters used when printing a value by s
 
 If the value has fewer characters than the field width then it is padded (by default with spaces).
 
-**Note**: If the value has *more* characters than the field width then the full value is printed (field width is ignored). That is to say, it does ***not*** truncate the output.
+**Note**: If the value has _more_ characters than the field width then the full value is printed (field width is ignored). That is to say, it does **_not_** truncate the output.
 
 ```c
 #include <stdio.h>
@@ -161,7 +161,7 @@ int main(void) {
 
 Instead of providing a number, you can pass `*` instead and then supply the width as one of the values passed instead.
 
-This works for *precision* as well.
+This works for _precision_ as well.
 
 ```c
 printf("BEFORE%*.*fAFTER", 7, 2, 98.736); // BEFORE  98.74AFTER
@@ -189,8 +189,8 @@ int main(void) {
 By default, only negative numbers are printed with a sign (`-`).
 You can control how positive numbers appear using flags:
 
-* `+`: always print a sign (`+` for positive, `-` for negative).
-* space (`' '`): print a space in front of positive numbers (negative numbers still get `-`).
+- `+`: always print a sign (`+` for positive, `-` for negative).
+- space (`' '`): print a space in front of positive numbers (negative numbers still get `-`).
 
 This can be useful for aligning columns of positive and negative numbers.
 
@@ -211,11 +211,11 @@ int main(void) {
 
 The `#` flag modifies how certain values are displayed:
 
-* **Octal (`%o`)**: prefixes the value with `0`.
-* **Hexadecimal (`%x` / `%X`)**: prefixes the value with `0x` or `0X`.
-* **Floating-point (`%f`, `%e`, `%E`, `%g`, `%G`)**: forces a decimal point to appear, even if the fractional part is zero.
+- **Octal (`%o`)**: prefixes the value with `0`.
+- **Hexadecimal (`%x` / `%X`)**: prefixes the value with `0x` or `0X`.
+- **Floating-point (`%f`, `%e`, `%E`, `%g`, `%G`)**: forces a decimal point to appear, even if the fractional part is zero.
 
-  * For `%g` / `%G`, it also prevents trailing zeros from being removed.
+  - For `%g` / `%G`, it also prevents trailing zeros from being removed.
 
 ```c
 #include <stdio.h>
@@ -245,9 +245,9 @@ int main(void) {
 By default, extra space in a field width is filled with spaces.
 The `0` flag changes this so that extra space is filled with **leading zeros**.
 
-* Works with integers and floating-point numbers.
-* Often combined with the `+` flag to show signs with padded numbers.
-* Padding occurs **after** the sign, not before.
+- Works with integers and floating-point numbers.
+- Often combined with the `+` flag to show signs with padded numbers.
+- Padding occurs **after** the sign, not before.
 
 ---
 
@@ -302,9 +302,24 @@ int main(void) {
 ```
 
 ??? note "Why `%%` isn’t like `\\n`"
-    Backslash escapes (like `\\n`, `\\t`, `\\?`) are **language features** handled at compile time, because they solve parsing or representation issues in string literals.
-    <br>
-    Percent escapes (like `%d`, `%%`) are **library features**, defined only for functions such as `printf`/`scanf` and interpreted at runtime.
-    <br>
-    **In short:** `\\n` is replaced by the compiler, while `%%` is handled later by `printf`.
+Backslash escapes (like `\\n`, `\\t`, `\\?`) are **language features** handled at compile time, because they solve parsing or representation issues in string literals.
+<br>
+Percent escapes (like `%d`, `%%`) are **library features**, defined only for functions such as `printf`/`scanf` and interpreted at runtime.
+<br>
+**In short:** `\\n` is replaced by the compiler, while `%%` is handled later by `printf`.
 
+---
+
+### Formatted I/O Variants
+
+| Function                                           | Purpose                                       | Typical Use Case                        |
+| -------------------------------------------------- | --------------------------------------------- | --------------------------------------- |
+| `fprintf(FILE *fp, const char *format, ...)`       | Prints formatted output to a file stream.     | Writing data to files.                  |
+| `fscanf(FILE *fp, const char *format, ...)`        | Reads formatted input from a file stream.     | Reading structured file input.          |
+| `sprintf(char *str, const char *format, ...)`      | Writes formatted output into a string buffer. | Building formatted strings in memory.   |
+| `sscanf(const char *str, const char *format, ...)` | Reads formatted input from a string.          | Parsing string data (e.g., CSV fields). |
+
+!!! tip
+These functions behave like `printf` and `scanf`, but redirect input/output to files or strings instead of the console.
+
+---

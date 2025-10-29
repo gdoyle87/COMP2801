@@ -6,23 +6,23 @@
 
 `printf` uses **conversion specifiers** to determine how data is formatted when printed. Each specifier begins with `%` followed by one or more characters describing type and formatting.
 
-| Specifier  | Description                                   | Example Output                           |
-| ---------- | --------------------------------------------- | ---------------------------------------- |
-| **Integers** |                                             |                                          |
-| `%d`, `%i` | Signed decimal integer                        | `printf("%d", 42)` → `42`                |
-| `%u`       | Unsigned decimal integer                      | `printf("%u", 42)` → `42`                |
-| `%o`       | Unsigned octal integer                        | `printf("%o", 10)` → `12`                |
-| `%x`, `%X` | Unsigned hexadecimal integer (`a–f` or `A–F`) | `printf("%x", 255)` → `ff`               |
-| **Floating-point**                 |                                                              |   |
-| `%f`       | Floating-point decimal (fixed)                | `printf("%f", 3.1416)` → `3.141600`      |
-| `%e`, `%E` | Floating-point in scientific notation         | `printf("%e", 1234.56)` → `1.234560e+03` |
-| `%g`, `%G` | Floating-point (shortest of `%f` or `%e`)     | `printf("%g", 0.0000123)` → `1.23e-05`   |
-| **Characters & Strings**           |                                                              |   |
-| `%c`       | Single character                              | `printf("%c", 'A')` → `A`                |
-| `%s`       | String of characters                          | `printf("%s", "Hello")` → `Hello`        |
-| **Miscellaneous**                  |                                                              |   |
-| `%p`       | Pointer (memory address)                      | `printf("%p", ptr)` → `0x7ffeefbff5ac`   |
-| `%%`       | Prints a literal percent sign                 | `printf("%%")` → `%`                     |
+| Specifier                | Description                                   | Example Output                           |
+| ------------------------ | --------------------------------------------- | ---------------------------------------- |
+| **Integers**             |                                               |                                          |
+| `%d`, `%i`               | Signed decimal integer                        | `printf("%d", 42)` → `42`                |
+| `%u`                     | Unsigned decimal integer                      | `printf("%u", 42)` → `42`                |
+| `%o`                     | Unsigned octal integer                        | `printf("%o", 10)` → `12`                |
+| `%x`, `%X`               | Unsigned hexadecimal integer (`a–f` or `A–F`) | `printf("%x", 255)` → `ff`               |
+| **Floating-point**       |                                               |                                          |
+| `%f`                     | Floating-point decimal (fixed)                | `printf("%f", 3.1416)` → `3.141600`      |
+| `%e`, `%E`               | Floating-point in scientific notation         | `printf("%e", 1234.56)` → `1.234560e+03` |
+| `%g`, `%G`               | Floating-point (shortest of `%f` or `%e`)     | `printf("%g", 0.0000123)` → `1.23e-05`   |
+| **Characters & Strings** |                                               |                                          |
+| `%c`                     | Single character                              | `printf("%c", 'A')` → `A`                |
+| `%s`                     | String of characters                          | `printf("%s", "Hello")` → `Hello`        |
+| **Miscellaneous**        |                                               |                                          |
+| `%p`                     | Pointer (memory address)                      | `printf("%p", ptr)` → `0x7ffeefbff5ac`   |
+| `%%`                     | Prints a literal percent sign                 | `printf("%%")` → `%`                     |
 
 ---
 
@@ -30,9 +30,9 @@
 
 The `%g` (or `%G`) specifier automatically chooses between **fixed-point (`%f`)** and **scientific (`%e`)** notation depending on the value’s magnitude and precision:
 
-* If the exponent is less than -4 or greater than or equal to the precision, `%e` format is used.
-* Otherwise, `%f` format is used.
-* Trailing zeros are **removed**, and no unnecessary decimal point is shown.
+- If the exponent is less than -4 or greater than or equal to the precision, `%e` format is used.
+- Otherwise, `%f` format is used.
+- Trailing zeros are **removed**, and no unnecessary decimal point is shown.
 
 ```c
 printf("%g", 0.0000123); // → 1.23e-05
@@ -59,8 +59,8 @@ Field widths can also apply to floating-point values:
 printf("%8.2f", 3.14); // "    3.14"
 ```
 
-* The number before the decimal controls total width.
-* The number after the decimal controls precision.
+- The number before the decimal controls total width.
+- The number after the decimal controls precision.
 
 ---
 
@@ -79,31 +79,32 @@ Flags modify alignment, padding, and sign display in formatted output.
 ---
 
 ## `scanf`
+
 ---
 
 ### Conversion Specifiers
 
-| Specifier                          | Description                                                  |   |
-| ---------------------------------- | ------------------------------------------------------------ | - |
-| **Integers**                       |                                                              |   |
-| `%d`                               | Reads a signed decimal integer  `int*`                      |   |
-| `%i`                               | Reads signed decimal, octal, or hexadecimal  `int*`         |   |
-| `%o`                               | Reads an octal integer  `unsigned int*`                     |   |
-| `%u`                               | Reads an unsigned decimal integer  `unsigned int*`          |   |
-| `%x` / `%X`                        | Reads a hexadecimal integer  `unsigned int*`                |   |
-| `h`, `l`, `ll`                     | Length modifiers (`short`, `long`, `long long`) for integers |   |
-| **Floating-point**                 |                                                              |   |
-| `%e`, `%E`, `%f`, `%F`, `%g`, `%G` | Reads a floating-point value  `float*` / `double*`          |   |
-| `l` or `L`                         | Length modifiers for `double` or `long double`               |   |
-| **Characters & Strings**           |                                                              |   |
-| `%c`                               | Reads a single character  `char*` (no `\0` added)           |   |
-| `%s`                               | Reads a string  `char[]` (terminates with `\0`)             |   |
-| **Scan set**                       |                                                              |   |
-| `%[...]`                           | Reads a set of characters into a string                      |   |
-| **Miscellaneous**                  |                                                              |   |
-| `%p`                               | Reads an address (pointer format)                            |   |
-| `%n`                               | Stores number of characters read so far  `int*`             |   |
-| `%%`                               | Skips a literal `%` in input                                 |   |
+| Specifier                          | Description                                                  |     |
+| ---------------------------------- | ------------------------------------------------------------ | --- |
+| **Integers**                       |                                                              |     |
+| `%d`                               | Reads a signed decimal integer `int*`                        |     |
+| `%i`                               | Reads signed decimal, octal, or hexadecimal `int*`           |     |
+| `%o`                               | Reads an octal integer `unsigned int*`                       |     |
+| `%u`                               | Reads an unsigned decimal integer `unsigned int*`            |     |
+| `%x` / `%X`                        | Reads a hexadecimal integer `unsigned int*`                  |     |
+| `h`, `l`, `ll`                     | Length modifiers (`short`, `long`, `long long`) for integers |     |
+| **Floating-point**                 |                                                              |     |
+| `%e`, `%E`, `%f`, `%F`, `%g`, `%G` | Reads a floating-point value `float*` / `double*`            |     |
+| `l` or `L`                         | Length modifiers for `double` or `long double`               |     |
+| **Characters & Strings**           |                                                              |     |
+| `%c`                               | Reads a single character `char*` (no `\0` added)             |     |
+| `%s`                               | Reads a string `char[]` (terminates with `\0`)               |     |
+| **Scan set**                       |                                                              |     |
+| `%[...]`                           | Reads a set of characters into a string                      |     |
+| **Miscellaneous**                  |                                                              |     |
+| `%p`                               | Reads an address (pointer format)                            |     |
+| `%n`                               | Stores number of characters read so far `int*`               |     |
+| `%%`                               | Skips a literal `%` in input                                 |     |
 
 ---
 
@@ -111,9 +112,9 @@ Flags modify alignment, padding, and sign display in formatted output.
 
 **Scan sets** allow `scanf` to read a group of characters that match a specified set. They are defined using `%[ ... ]`.
 
-* `%[characters]` → reads only the characters listed.
-* `%[^characters]` → reads everything *except* the characters listed.
-* Useful for reading structured data such as comma- or space-separated values.
+- `%[characters]` → reads only the characters listed.
+- `%[^characters]` → reads everything _except_ the characters listed.
+- Useful for reading structured data such as comma- or space-separated values.
 
 **Examples:**
 
@@ -127,9 +128,9 @@ scanf("%29[^,]", untilComma);  // reads everything up to the next comma
 
 **Notes:**
 
-* `scanf` automatically adds a null terminator (`'\0'`) at the end.
-* To include `]` in the set, place it first inside the brackets: `%[]A-Z]`.
-* To include `-`, place it at the start or end of the set: `%[-A-Z]`.
+- `scanf` automatically adds a null terminator (`'\0'`) at the end.
+- To include `]` in the set, place it first inside the brackets: `%[]A-Z]`.
+- To include `-`, place it at the start or end of the set: `%[-A-Z]`.
 
 ---
 
@@ -156,8 +157,8 @@ scanf("%4d%2d%2d", &year, &month, &day);
 
 The **assignment suppression character** (`*`) allows `scanf` to skip matched input without storing it.
 
-* Any literal in the format string must appear in the input and will be consumed.
-* Whitespace in the format matches any amount of whitespace in the input.
+- Any literal in the format string must appear in the input and will be consumed.
+- Whitespace in the format matches any amount of whitespace in the input.
 
 **Examples:**
 
@@ -173,15 +174,29 @@ scanf("%*[^,],%19s", name);
 
 ---
 
+### Formatted I/O Variants
+
+| Function                                           | Purpose                                       | Typical Use Case                        |
+| -------------------------------------------------- | --------------------------------------------- | --------------------------------------- |
+| `fprintf(FILE *fp, const char *format, ...)`       | Prints formatted output to a file stream.     | Writing data to files.                  |
+| `fscanf(FILE *fp, const char *format, ...)`        | Reads formatted input from a file stream.     | Reading structured file input.          |
+| `sprintf(char *str, const char *format, ...)`      | Writes formatted output into a string buffer. | Building formatted strings in memory.   |
+| `sscanf(const char *str, const char *format, ...)` | Reads formatted input from a string.          | Parsing string data (e.g., CSV fields). |
+
+!!! tip
+These functions behave like `printf` and `scanf`, but redirect input/output to files or strings instead of the console.
+
+---
+
 ## Recursion
 
 **Recursion** occurs when a function calls itself directly or indirectly. Each call creates a new stack frame until a **base case** is reached, after which calls resolve in reverse order.
 
 ### Key Concepts
 
-* **Base Case:** The simplest form of the problem that can be solved directly.
-* **Recursive Case:** Reduces the problem toward the base case.
-* Recursion always requires *progress toward termination* to prevent infinite loops.
+- **Base Case:** The simplest form of the problem that can be solved directly.
+- **Recursive Case:** Reduces the problem toward the base case.
+- Recursion always requires _progress toward termination_ to prevent infinite loops.
 
 ### Example – Factorial Function
 
@@ -197,14 +212,14 @@ int factorial(int n)
 
 **Explanation:**
 
-* For `factorial(3)` → calls unfold as `3 * factorial(2)` → `2 * factorial(1)` → `1 * factorial(0)`.
-* Base case returns 1, then each call multiplies by the previous `n` until the result is complete.
+- For `factorial(3)` → calls unfold as `3 * factorial(2)` → `2 * factorial(1)` → `1 * factorial(0)`.
+- Base case returns 1, then each call multiplies by the previous `n` until the result is complete.
 
---- 
+---
 
 ## Structures
 
-A **structure** groups related variables under one name. The C standard calls them *aggregates*.
+A **structure** groups related variables under one name. The C standard calls them _aggregates_.
 Defined using the `struct` keyword:
 
 ```c
@@ -284,9 +299,9 @@ printf("%zu\n", sizeof(struct example)); // Likely prints 8, not 5
 ```
 
 !!! note "Structure Packing and Alignment"
-    Compilers may insert padding between members for alignment, improving speed but wasting space.
-    To minimize padding, order members from largest to smallest type.
-    Use `#pragma pack` only when absolutely necessary for binary compatibility — it reduces portability.
+Compilers may insert padding between members for alignment, improving speed but wasting space.
+To minimize padding, order members from largest to smallest type.
+Use `#pragma pack` only when absolutely necessary for binary compatibility — it reduces portability.
 
 ---
 
@@ -315,8 +330,8 @@ typedef struct {
 This eliminates the need to repeat `struct` every time.
 
 !!! warning
-    Do not declare variables in the same line when using this form.
-    If you need variables too, use a standard `struct` definition followed by a separate `typedef`.
+Do not declare variables in the same line when using this form.
+If you need variables too, use a standard `struct` definition followed by a separate `typedef`.
 
 ---
 
@@ -339,9 +354,9 @@ Defining a union creates a new type but does not allocate memory until a variabl
 
 ### Characteristics
 
-* The **size** of a union equals the size of its **largest member**.
-* Accessing a member different from the one last assigned leads to undefined behavior.
-* Unions save space but require careful type management.
+- The **size** of a union equals the size of its **largest member**.
+- Accessing a member different from the one last assigned leads to undefined behavior.
+- Unions save space but require careful type management.
 
 ### Initializing a Union
 
@@ -354,7 +369,7 @@ union number value = {10}; // assigns 10 to x
 !!! warning
 
     If initialized with a value meant for another member, it will be converted to the first member’s type:
-    
+
     ```c
     union number value = {1.43}; // assigns 1 to x instead of 1.43 to y
     ```
@@ -436,7 +451,7 @@ Inverts each bit: 0 → 1 and 1 → 0.
 ```
 
 !!! warning
-    `~` flips **all bits**, including sign bits. When applied to signed integers, the result may appear negative.
+`~` flips **all bits**, including sign bits. When applied to signed integers, the result may appear negative.
 
 ---
 
@@ -508,24 +523,24 @@ if ((x ^ y) < 0)
     printf("Opposite signs");
 ```
 
-
 ## Self-Referential Structures
 
-* Structures can include **pointers to their own type**, enabling dynamic data structures.
-* Example:
+- Structures can include **pointers to their own type**, enabling dynamic data structures.
+- Example:
 
   ```c
   struct node { int data; struct node *nextPtr; };
   ```
-* Used for **linked lists**, **stacks**, and **trees**.
+
+- Used for **linked lists**, **stacks**, and **trees**.
 
 ---
 
 ## Linked Lists
 
-* **Linear collection** of nodes connected by pointers.
-* Each node contains **data** and a **pointer to the next node**.
-* The **head pointer** references the first node; the last node’s pointer is `NULL`.
+- **Linear collection** of nodes connected by pointers.
+- Each node contains **data** and a **pointer to the next node**.
+- The **head pointer** references the first node; the last node’s pointer is `NULL`.
 
 ![Basic Linked List](../images/basic_linked_list.png)
 
@@ -549,24 +564,25 @@ if ((x ^ y) < 0)
 
 ## Trees
 
-* **Non-linear hierarchical** data structure consisting of **nodes** connected by edges.
-* Each node may have **two or more** children.
+- **Non-linear hierarchical** data structure consisting of **nodes** connected by edges.
+- Each node may have **two or more** children.
 
 ### Binary Trees
 
-* Each node has at most **two children** (`left`, `right`).
-* The **root** is the topmost node; **leaves** have no children.
+- Each node has at most **two children** (`left`, `right`).
+- The **root** is the topmost node; **leaves** have no children.
 
 ![Basic Tree Structure](../images/basic_tree.png)
 
 ### Binary Search Tree (BST)
 
-* Special binary tree where:
+- Special binary tree where:
 
-    * Left subtree value **<** Root value **<** Right subtree value.
-    * Enables fast searching, insertion, and deletion.
-* **Average complexity:** O(log n)
-* **Worst case (unbalanced):** O(n)
+  - Left subtree value **<** Root value **<** Right subtree value.
+  - Enables fast searching, insertion, and deletion.
+
+- **Average complexity:** O(log n)
+- **Worst case (unbalanced):** O(n)
 
 ### Tree Traversals
 
@@ -580,10 +596,35 @@ if ((x ^ y) < 0)
 
 **Summary:**
 
-* Use self-referential structures to create dynamic collections.
-* Linked lists are best for variable-size sequential data.
-* Trees (especially BSTs) provide efficient searching and hierarchical relationships.
+- Use self-referential structures to create dynamic collections.
+- Linked lists are best for variable-size sequential data.
+- Trees (especially BSTs) provide efficient searching and hierarchical relationships.
 
+### Pointer-to-Pointer
+
+When a function needs to **modify a pointer** (such as a tree’s root or a linked list’s head), it must receive the **address of that pointer**. This allows the function to update the caller’s pointer directly.
+
+```c
+void insertNode(TreeNodePtr *treePtr, int value)
+{
+    if (*treePtr == NULL) {
+        *treePtr = malloc(sizeof **treePtr);
+        (*treePtr)->data = value;
+        (*treePtr)->leftPtr = NULL;
+        (*treePtr)->rightPtr = NULL;
+    }
+    else if (value < (*treePtr)->data)
+        insertNode(&((*treePtr)->leftPtr), value);  // pass address of left child
+    else if (value > (*treePtr)->data)
+        insertNode(&((*treePtr)->rightPtr), value); // pass address of right child
+}
+```
+
+- `treePtr` is a **pointer to a pointer** (`TreeNode **`).
+- `*treePtr` gives the **actual node pointer** (e.g., the root or a child link).
+- `&((*treePtr)->leftPtr)` passes the **address of the child pointer**, allowing recursion to modify that link directly.
+
+Use `(*ptr)->member` instead of confusing forms like `*(*ptr).member`. Parentheses ensure the dereference applies to the pointer, not the struct member.
 
 ## Stacks
 
@@ -591,9 +632,9 @@ A **stack** is a linear data structure that follows the **Last-In, First-Out (LI
 
 ### Core Concepts
 
-* Insertion and deletion occur only at the **top** of the stack.
-* Implemented using **linked lists** or **arrays**.
-* The **stack pointer** (`topPtr`) tracks the current top node.
+- Insertion and deletion occur only at the **top** of the stack.
+- Implemented using **linked lists** or **arrays**.
+- The **stack pointer** (`topPtr`) tracks the current top node.
 
 ### Key Operations
 
@@ -620,12 +661,12 @@ A **queue** is a linear data structure that follows the **First-In, First-Out (F
 
 ### Core Concepts
 
-* Insertion occurs at the **rear**; deletion occurs at the **front**.
-* Implemented using **linked lists**.
-* Two pointers are used:
+- Insertion occurs at the **rear**; deletion occurs at the **front**.
+- Implemented using **linked lists**.
+- Two pointers are used:
 
-    * `frontPtr` → points to the first node
-    * `rearPtr` → points to the last node
+  - `frontPtr` → points to the first node
+  - `rearPtr` → points to the last node
 
 ### Key Operations
 
@@ -643,5 +684,3 @@ struct queueNode {
     struct queueNode *nextPtr;
 };
 ```
-
-
