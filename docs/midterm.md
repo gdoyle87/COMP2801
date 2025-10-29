@@ -598,12 +598,6 @@ if ((x ^ y) < 0)
 
 ---
 
-**Summary:**
-
-- Use self-referential structures to create dynamic collections.
-- Linked lists are best for variable-size sequential data.
-- Trees (especially BSTs) provide efficient searching and hierarchical relationships.
-
 ### Pointer-to-Pointer
 
 When a function needs to **modify a pointer** (such as a tree’s root or a linked list’s head), it must receive the **address of that pointer**. This allows the function to update the caller’s pointer directly.
