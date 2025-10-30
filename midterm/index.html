@@ -743,58 +743,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#traversal" class="md-nav__link">
-    <span class="md-ellipsis">
-      Traversal
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#insertion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Insertion
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Insertion">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-unsorted-insertion-at-the-beginning" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Unsorted Insertion (at the beginning)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-sorted-insertion-maintaining-order" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Sorted Insertion (maintaining order)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deletion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deletion
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Deletion">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#1-delete-the-first-node" class="md-nav__link">
     <span class="md-ellipsis">
       1. Delete the First Node
@@ -809,11 +757,6 @@
       2. Delete from Middle or End
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1709,63 +1652,70 @@ implementation-defined; use `unsigned` integers where possible.
 <li>The <strong>head pointer</strong> references the first node; the last node’s pointer is <code>NULL</code>.</li>
 </ul>
 <p><img alt="Basic Linked List" src="../images/basic_linked_list.png" /></p>
-<h3 id="traversal">Traversal</h3>
+<div class="admonition abstract">
+<p class="admonition-title">Traversals</p>
 <p>Move through nodes one by one until <code>NULL</code>:</p>
 <blockquote>
 <p>Start at <code>head</code> → process data → move to <code>nextPtr</code> → repeat.</p>
 </blockquote>
-<h3 id="insertion">Insertion</h3>
-<p>There are two common cases:</p>
-<h4 id="1-unsorted-insertion-at-the-beginning">1. Unsorted Insertion (at the beginning)</h4>
-<ol>
-<li>Allocate memory for a new node and create a <code>newPtr</code>.</li>
-<li>Assign the desired value to its data field.</li>
-<li>Link the new node to the existing list by setting
-   <code>newPtr-&gt;nextPtr = head;</code></li>
-<li>Update the head pointer so it points to the new node:
-   <code>head = newPtr;</code></li>
-</ol>
-<h4 id="2-sorted-insertion-maintaining-order">2. Sorted Insertion (maintaining order)</h4>
-<ol>
-<li>Allocate and initialize the new node.</li>
-<li>
-<p>Set <code>previousPtr = NULL</code> and <code>currentPtr = head</code>.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Insertions</p>
+<p>There are two common cases:
+<div class="grid cards" markdown>
+    - #### 1. Unsorted Insertion (at the beginning)</p>
+<pre><code>    1. Allocate memory for a new node and create a `newPtr`.
+    2. Assign the desired value to its data field.
+    3. Link the new node to the existing list by setting
+       `newPtr-&gt;nextPtr = head;`
+    4. Update the head pointer so it points to the new node:
+       `head = newPtr;`
+
+- #### 2. Sorted Insertion (maintaining order)
+
+    1.  Allocate and initialize the new node.
+    2.  Set `previousPtr = NULL` and `currentPtr = head`.
+
+         - `previousPtr` will always lag one node behind `currentPtr`
+
+    3. Walk while currentPtr != NULL &amp;&amp; currentPtr-&gt;data &lt; newValue:
+
+         - `previousPtr = currentPtr`
+         - `currentPtr = currentPtr-&gt;nextPtr`
+
+    4.  **Insert**: If `previousPtr == NULL`, insert at the start (new head).
+        Otherwise, insert between `previousPtr` and `currentPtr`.
+    5.  Update links:
+
+        - `previousPtr-&gt;nextPtr = newPtr;`
+        - `newPtr-&gt;nextPtr = currentPtr;`
+</code></pre>
+</div>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Deletions</p>
+<p>There are two common cases:
+<div class="grid cards" markdown></p>
 <ul>
-<li><code>previousPtr</code> will always lag one node behind <code>currentPtr</code></li>
-</ul>
-</li>
 <li>
-<p>Walk while currentPtr != NULL &amp;&amp; currentPtr-&gt;data &lt; newValue:</p>
-<ul>
-<li><code>previousPtr = currentPtr</code></li>
-<li><code>currentPtr = currentPtr-&gt;nextPtr</code></li>
-</ul>
-</li>
-<li>
-<p><strong>Insert</strong>: If <code>previousPtr == NULL</code>, insert at the start (new head).
-    Otherwise, insert between <code>previousPtr</code> and <code>currentPtr</code>.</p>
-</li>
-<li>
-<p>Update links:</p>
-<ul>
-<li><code>previousPtr-&gt;nextPtr = newPtr;</code></li>
-<li><code>newPtr-&gt;nextPtr = currentPtr;</code></li>
-</ul>
-</li>
-</ol>
-<h3 id="deletion">Deletion</h3>
 <h4 id="1-delete-the-first-node">1. Delete the First Node</h4>
 <ol>
 <li>Store the current head in a temporary pointer.</li>
 <li>Move <code>head</code> to <code>head-&gt;nextPtr</code>.</li>
 <li>Free the temporary node.</li>
 </ol>
+</li>
+<li>
 <h4 id="2-delete-from-middle-or-end">2. Delete from Middle or End</h4>
 <ol>
 <li>Use <code>previousPtr</code> and <code>currentPtr</code> to traverse until the node to delete is found.</li>
 <li>Update <code>previousPtr-&gt;nextPtr</code> to <code>currentPtr-&gt;nextPtr</code>.</li>
 <li>Free the deleted node.</li>
 </ol>
+</li>
+</ul>
+</div>
+</div>
 <h3 id="utility-operations">Utility Operations</h3>
 <ul>
 <li><strong>isEmpty:</strong> return <code>head == NULL</code>.</li>
