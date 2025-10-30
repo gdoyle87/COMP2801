@@ -615,57 +615,63 @@ WED = 4;  // <- ERROR: enumeration constants are read-only (compile-time error)
 
 ![Basic Linked List](../images/basic_linked_list.png)
 
-### Traversal
+!!! abstract "Traversals"
 
-Move through nodes one by one until `NULL`:
+    Move through nodes one by one until `NULL`:
 
-> Start at `head` → process data → move to `nextPtr` → repeat.
+    > Start at `head` → process data → move to `nextPtr` → repeat.
 
-### Insertion
+!!! abstract "Insertions"
 
-There are two common cases:
+    There are two common cases:
+    <div class="grid cards" markdown>
+        - #### 1. Unsorted Insertion (at the beginning)
 
-#### 1. Unsorted Insertion (at the beginning)
+            1. Allocate memory for a new node and create a `newPtr`.
+            2. Assign the desired value to its data field.
+            3. Link the new node to the existing list by setting
+               `newPtr->nextPtr = head;`
+            4. Update the head pointer so it points to the new node:
+               `head = newPtr;`
 
-1. Allocate memory for a new node and create a `newPtr`.
-2. Assign the desired value to its data field.
-3. Link the new node to the existing list by setting
-   `newPtr->nextPtr = head;`
-4. Update the head pointer so it points to the new node:
-   `head = newPtr;`
+        - #### 2. Sorted Insertion (maintaining order)
 
-#### 2. Sorted Insertion (maintaining order)
+            1.  Allocate and initialize the new node.
+            2.  Set `previousPtr = NULL` and `currentPtr = head`.
 
-1.  Allocate and initialize the new node.
-2.  Set `previousPtr = NULL` and `currentPtr = head`.
+                 - `previousPtr` will always lag one node behind `currentPtr`
 
-     - `previousPtr` will always lag one node behind `currentPtr`
+            3. Walk while currentPtr != NULL && currentPtr->data < newValue:
 
-3. Walk while currentPtr != NULL && currentPtr->data < newValue:
+                 - `previousPtr = currentPtr`
+                 - `currentPtr = currentPtr->nextPtr`
 
-     - `previousPtr = currentPtr`
-     - `currentPtr = currentPtr->nextPtr`
+            4.  **Insert**: If `previousPtr == NULL`, insert at the start (new head).
+                Otherwise, insert between `previousPtr` and `currentPtr`.
+            5.  Update links:
 
-4.  **Insert**: If `previousPtr == NULL`, insert at the start (new head).
-    Otherwise, insert between `previousPtr` and `currentPtr`.
-5.  Update links:
+                - `previousPtr->nextPtr = newPtr;`
+                - `newPtr->nextPtr = currentPtr;`
 
-    - `previousPtr->nextPtr = newPtr;`
-    - `newPtr->nextPtr = currentPtr;`
+    </div>
 
-### Deletion
+!!! abstract "Deletions"
 
-#### 1. Delete the First Node
+    There are two common cases:
+    <div class="grid cards" markdown>
 
-1. Store the current head in a temporary pointer.
-2. Move `head` to `head->nextPtr`.
-3. Free the temporary node.
+    - #### 1. Delete the First Node
 
-#### 2. Delete from Middle or End
+        1. Store the current head in a temporary pointer.
+        2. Move `head` to `head->nextPtr`.
+        3. Free the temporary node.
 
-1. Use `previousPtr` and `currentPtr` to traverse until the node to delete is found.
-2. Update `previousPtr->nextPtr` to `currentPtr->nextPtr`.
-3. Free the deleted node.
+    - #### 2. Delete from Middle or End
+
+        1. Use `previousPtr` and `currentPtr` to traverse until the node to delete is found.
+        2. Update `previousPtr->nextPtr` to `currentPtr->nextPtr`.
+        3. Free the deleted node.
+    </div>
 
 ### Utility Operations
 
