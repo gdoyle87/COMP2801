@@ -1730,12 +1730,16 @@ implementation-defined; use `unsigned` integers where possible.
 <li>Allocate and initialize the new node.</li>
 <li>
 <p>Set <code>previousPtr = NULL</code> and <code>currentPtr = head</code>.</p>
-<pre><code>* `previousPtr` will always lag one node behind `currentPtr`
-</code></pre>
-<p>3.Walk while currentPtr != NULL &amp;&amp; currentPtr-&gt;data &lt; newValue:</p>
-<pre><code>* `previousPtr = currentPtr`
-* `currentPtr = currentPtr-&gt;nextPtr`
-</code></pre>
+<ul>
+<li><code>previousPtr</code> will always lag one node behind <code>currentPtr</code></li>
+</ul>
+</li>
+<li>
+<p>Walk while currentPtr != NULL &amp;&amp; currentPtr-&gt;data &lt; newValue:</p>
+<ul>
+<li><code>previousPtr = currentPtr</code></li>
+<li><code>currentPtr = currentPtr-&gt;nextPtr</code></li>
+</ul>
 </li>
 <li>
 <p><strong>Insert</strong>: If <code>previousPtr == NULL</code>, insert at the start (new head).
