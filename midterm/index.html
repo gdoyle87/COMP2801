@@ -743,6 +743,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#2-sorted-insertion-maintaining-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Sorted Insertion (maintaining order)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#1-delete-the-first-node" class="md-nav__link">
     <span class="md-ellipsis">
       1. Delete the First Node
@@ -1663,33 +1672,46 @@ implementation-defined; use `unsigned` integers where possible.
 <p class="admonition-title">Insertions</p>
 <p>There are two common cases:
 <div class="grid cards" markdown>
-    - #### 1. Unsorted Insertion (at the beginning)</p>
-<pre><code>    1. Allocate memory for a new node and create a `newPtr`.
-    2. Assign the desired value to its data field.
-    3. Link the new node to the existing list by setting
-       `newPtr-&gt;nextPtr = head;`
-    4. Update the head pointer so it points to the new node:
-       `head = newPtr;`
-
-- #### 2. Sorted Insertion (maintaining order)
-
-    1.  Allocate and initialize the new node.
-    2.  Set `previousPtr = NULL` and `currentPtr = head`.
-
-         - `previousPtr` will always lag one node behind `currentPtr`
-
-    3. Walk while currentPtr != NULL &amp;&amp; currentPtr-&gt;data &lt; newValue:
-
-         - `previousPtr = currentPtr`
-         - `currentPtr = currentPtr-&gt;nextPtr`
-
-    4.  **Insert**: If `previousPtr == NULL`, insert at the start (new head).
-        Otherwise, insert between `previousPtr` and `currentPtr`.
-    5.  Update links:
-
-        - `previousPtr-&gt;nextPtr = newPtr;`
-        - `newPtr-&gt;nextPtr = currentPtr;`
+- #### 1. Unsorted Insertion (at the beginning)</p>
+<pre><code>1. Allocate memory for a new node and create a `newPtr`.
+2. Assign the desired value to its data field.
+3. Link the new node to the existing list by setting
+   `newPtr-&gt;nextPtr = head;`
+4. Update the head pointer so it points to the new node:
+   `head = newPtr;`
 </code></pre>
+<ul>
+<li>
+<h4 id="2-sorted-insertion-maintaining-order">2. Sorted Insertion (maintaining order)</h4>
+<ol>
+<li>Allocate and initialize the new node.</li>
+<li>
+<p>Set <code>previousPtr = NULL</code> and <code>currentPtr = head</code>.</p>
+<ul>
+<li><code>previousPtr</code> will always lag one node behind <code>currentPtr</code></li>
+</ul>
+</li>
+<li>
+<p>Walk while currentPtr != NULL &amp;&amp; currentPtr-&gt;data &lt; newValue:</p>
+<ul>
+<li><code>previousPtr = currentPtr</code></li>
+<li><code>currentPtr = currentPtr-&gt;nextPtr</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Insert</strong>: If <code>previousPtr == NULL</code>, insert at the start (new head).
+    Otherwise, insert between <code>previousPtr</code> and <code>currentPtr</code>.</p>
+</li>
+<li>
+<p>Update links:</p>
+<ul>
+<li><code>previousPtr-&gt;nextPtr = newPtr;</code></li>
+<li><code>newPtr-&gt;nextPtr = currentPtr;</code></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
 </div>
 </div>
 <div class="admonition abstract">
