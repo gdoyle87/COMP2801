@@ -5,13 +5,14 @@
 - **Input**: Data flows _from_ a device (keyboard, disk, network, etc.) _into_ main memory.
 - **Output**: Data flows _from_ main memory _to_ a device (screen, printer, disk, network, etc.).
 
-At program start, three standard streams are available (which can be *redirected* to other devices or files):
+At program start, three standard streams are available (which can be _redirected_ to other devices or files):
 
 1. Standard input (`stdin`) – usually from the keyboard.
 2. Standard output (`stdout`) – usually to the screen.
 3. Standard error (`stderr`) – also to the screen, for error messages.
 
 ---
+
 ## printf
 
 ### Conversion Specifiers
@@ -57,6 +58,7 @@ printf("%g", 100.0);     // → 100
 Use `%g` when you want **concise output** without manually deciding between scientific and decimal notation.
 
 ---
+
 ### Field Widths
 
 A **field width** specifies the **minimum number of characters** to print. If the value is shorter, it is **right-padded with spaces** by default.
@@ -77,6 +79,7 @@ printf("%8.2f", 3.14); // "    3.14"
 - The number after the decimal controls precision.
 
 ---
+
 ### Flags
 
 Flags modify alignment, padding, and sign display in formatted output.
@@ -90,11 +93,13 @@ Flags modify alignment, padding, and sign display in formatted output.
 | `#`   | Force alternate form (e.g., add `0x` for hex, decimal point for floats) | `printf("%#x", 255)` → `0xff`  |
 
 ---
+
 <div class="page-break"></div>
 
 ## scanf
 
 ---
+
 ### Conversion Specifiers
 
 | Specifier                          | Description                                                  |     |
@@ -144,6 +149,7 @@ scanf("%29[^,]", untilComma);  // reads everything up to the next comma
 - To include `-`, place it at the start or end of the set: `%[-A-Z]`.
 
 ---
+
 ### Field Widths
 
 Field widths define how many characters `scanf` will read for a given conversion. This prevents buffer overflows and controls input precision.
@@ -158,6 +164,7 @@ int year, month, day;
 scanf("%4d%2d%2d", &year, &month, &day);
 // Input: 20251028 → year=2025, month=10, day=28
 ```
+
 <hr>
 
 ### Skipping Characters and Assignment Suppression
@@ -178,6 +185,7 @@ scanf("%*[^,],%19s", name);
 ```
 
 ---
+
 ## Formatted I/O Variants
 
 | Function                                           | Purpose                                       | Typical Use Case                        |
@@ -192,6 +200,7 @@ scanf("%*[^,],%19s", name);
     These functions behave like `printf` and `scanf`, but redirect input/output to files or strings instead of the console.
 
 ---
+
 ## Literals and Escape Sequences
 
 Characters in a format string that are not part of a conversion specification are printed literally.
@@ -214,6 +223,7 @@ Escape sequences allow you to include special characters in strings that cannot 
 | `%%`   | Percent symbol (`%`)                                            |
 
 ---
+
 ## Recursion
 
 **Recursion** occurs when a function calls itself directly or indirectly. Each call creates a new stack frame until a **base case** is reached, after which calls resolve in reverse order.
@@ -221,7 +231,6 @@ Escape sequences allow you to include special characters in strings that cannot 
 - **Base Case:** The simplest form of the problem that can be solved directly.
 - **Recursive Case:** Reduces the problem toward the base case.
 - Recursion always requires _progress toward termination_ to prevent infinite loops.
-
 
 ```c
 int factorial(int n)
@@ -237,6 +246,7 @@ int factorial(int n)
 - Base case returns 1, then each call multiplies by the previous `n` until the result is complete.
 
 ---
+
 <div class="page-break"></div>
 
 ## Structures
@@ -262,6 +272,7 @@ struct card {
 ```
 
 ---
+
 ### Defining Variables of Structure Types
 
 Defining a structure creates a **type**, not a variable.
@@ -283,25 +294,27 @@ struct card {
 ```
 
 ---
+
 ### Initializing Structures
 
-  ```c
-  // array-like member initializer lists
-  struct card K = {"king", "clubs"};
+```c
+// array-like member initializer lists
+struct card K = {"king", "clubs"};
 
-  // assigning values to individual data members
-  struct card Q;
-  Q.face = "queen";
-  Q.suit = "spades";
+// assigning values to individual data members
+struct card Q;
+Q.face = "queen";
+Q.suit = "spades";
 
-  // assignment statements (setting one variable to equal another of the same struct)
-  struct card A = {"Ace", "Hearts"};
-  struct card B;
+// assignment statements (setting one variable to equal another of the same struct)
+struct card A = {"Ace", "Hearts"};
+struct card B;
 
-  B = A;   // assignment statement
-  ```
+B = A;   // assignment statement
+```
 
 ---
+
 ### Accessing Members of a Structure
 
 You can access members of a structure using the **structure member operator**:
@@ -324,6 +337,7 @@ char *Ksuit = (*KPtr).suit; // note the paranthesis are *required* here.
 ```
 
 ---
+
 ### Structures Without Tag Names
 
 Anonymous structs can be declared if variables are defined immediately:
@@ -338,6 +352,7 @@ struct {
 Without a tag, you can’t reuse the type elsewhere.
 
 ---
+
 ### Comparing Structure Objects
 
 Structures cannot be compared with `==` or `!=` because compilers insert
@@ -351,6 +366,7 @@ With that said, they could **_sometimes_** compare equally (although as noted
 it is undefined behaviour and can't be relied on).
 
 ---
+
 ### Using `sizeof` with Structures
 
 `sizeof(struct_name)` gives the memory occupied by a structure, including padding.
@@ -363,20 +379,23 @@ struct example {
 
 printf("%zu\n", sizeof(struct example)); // Likely prints 8, not 5
 ```
+
 <div class="page-break"></div>
 
 ---
+
 ### Passing Structures and Arrays
 
 **Array of structures:** passed **by reference** (actually decays to a pointer), just like any other array.
 
-  - The function can modify the original elements.
+- The function can modify the original elements.
 
 **Array member inside a structure:** passed **by value** when the structure itself is passed by value.
 
-  - The function receives a copy; modifying it won’t affect the original.
+- The function receives a copy; modifying it won’t affect the original.
 
 ---
+
 ## typedef
 
 `typedef` creates an alias for a type, making code more concise and readable.
@@ -387,6 +406,7 @@ Card newCard;
 ```
 
 ---
+
 ### Combining `typedef` with `struct`
 
 You can combine both in one declaration:
@@ -404,6 +424,7 @@ typedef struct {
     If you need variables too, use a standard `struct` definition followed by a separate `typedef`.
 
 ---
+
 ## Unions
 
 A **union** is a derived data type similar to a `struct`, but unlike structures,
@@ -446,70 +467,71 @@ union number value = {10}; // assigns 10 to x
 
 Bitwise operations work directly on the binary representation of integer types
 such as short, int, and long (and their unsigned variants). Each bit in a
-value represents a power of two. 
+value represents a power of two.
 
 !!! abstract "Operators"
-    <div class="grid cards print-3" markdown>
-    
-    -   **AND `&`**  
+
+<div class="grid cards print-3" markdown>
+
+    -   **AND `&`**
         Sets a bit to 1 **only if both bits are 1**.
-    
+
         ```c
         // 1101 (13)
         // 1011 (11)
         // ----
         // 1001 (9)
         ```
-    
-    -   **OR `|`**  
+
+    -   **OR `|`**
         Sets a bit to 1 **if either bit is 1**.
-    
+
         ```c
         // 1101 (13)
         // 1011 (11)
         // ----
         // 1111 (15)
         ```
-    
-    -   **XOR `^`**  
+
+    -   **XOR `^`**
         Sets a bit to 1 **if bits differ**.
-    
+
         ```c
         // 1101 (13)
         // 1011 (11)
         // ----
         // 0110 (6)
         ```
-    
-    -   **NOT `~`**  
+
+    -   **NOT `~`**
         Inverts each bit.
-    
+
         ```c
         // 0101 (5)
         // ~
         // ----
-        // 1010 (10)    
+        // 1010 (10)
         ```
         shown as 4 bits
-    
-    -   **Left shift `<<`**  
-        Moves bits **left** (fills with 0). 
-    
+
+    -   **Left shift `<<`**
+        Moves bits **left** (fills with 0).
+
         ```c
-        // 0101 (5) 
-        // << 1  
+        // 0101 (5)
+        // << 1
         // ----
         // 1010 (10)
         ```
         Each shift multiplies by 2.
-    
-    -   **Right shift `>>`**  
+
+    -   **Right shift `>>`**
         Moves bits **right** (fills with 0).
-    
+
         ```c
-        // 1010 (10) 
-        // >> 1  
-        // ---- 
+        // 1010 (10)
+        // >> 1
+        // ----
         //0101 (5)
         ```
         Each shift divides by 2.
@@ -518,42 +540,42 @@ value represents a power of two.
     **Note on shifts**: Right-shift of **signed** negative values is
     implementation-defined; use `unsigned` integers where possible.
 
-
 ???+ tip "Common bit manipulation patterns"
-     **Even/odd**: `x & 1`  
-      ```c
+**Even/odd**: `x & 1`  
+ `c
       if (x & 1) puts("Odd"); else puts("Even");
-      ```
-     **Swap without temp** (XOR-swap):  
-      ```c
+      `
+**Swap without temp** (XOR-swap):  
+ `c
       a ^= b; b ^= a; a ^= b;
-      ```
-     **Power of two** (exactly one bit set):  
-      ```c
+      `
+**Power of two** (exactly one bit set):  
+ `c
       if (x > 0 && (x & (x - 1)) == 0) puts("Power of 2");
-      ```
-     **Count set bits** (Kernighan):  
-      ```c
+      `
+**Count set bits** (Kernighan):  
+ `c
       int c = 0; for (; x; ++c) x &= (x - 1);
-      ```
-     **Set / clear / toggle bit n**:  
-      ```c
+      `
+**Set / clear / toggle bit n**:  
+ `c
       x |=  (1u << n);   // set
       x &= ~(1u << n);   // clear
       x ^=  (1u << n);   // toggle
-      ```
-     **Lowest set bit**:  
-      ```c
+      `
+**Lowest set bit**:  
+ `c
       unsigned lowest = x & -x;
-      ```
-     **Opposite signs**:  
-      ```c
+      `
+**Opposite signs**:  
+ `c
       if ((x ^ y) < 0) puts("Opposite signs");
-      ```
+      `
 
 <div class="page-break"></div>
 
 ---
+
 ## Enums
 
 An enumeration is a user-defined type consisting of a set of named integer constants.
@@ -571,6 +593,7 @@ WED = 4;  // <- ERROR: enumeration constants are read-only (compile-time error)
 ```
 
 ---
+
 ## Self-Referential Structures
 
 - Structures can include **pointers to their own type**, enabling dynamic data structures.
@@ -581,8 +604,8 @@ WED = 4;  // <- ERROR: enumeration constants are read-only (compile-time error)
 
 - Used for **linked lists**, **stacks**, and **trees**.
 
-
 ---
+
 ## Linked Lists
 
 **Linear collection** of nodes connected by pointers.
@@ -592,19 +615,62 @@ WED = 4;  // <- ERROR: enumeration constants are read-only (compile-time error)
 
 ![Basic Linked List](../images/basic_linked_list.png)
 
+### Traversal
 
-| Arrays               | Linked Lists            |
-| :------------------- | :---------------------- |
-| Fixed size           | Dynamic size            |
-| O(1) direct access   | Sequential traversal    |
-| Costly insert/delete | Efficient insert/delete |
+Move through nodes one by one until `NULL`:
 
+> Start at `head` → process data → move to `nextPtr` → repeat.
 
-| Operation    | Description                               |
-| :----------- | :---------------------------------------- |
-| **Insert**   | Allocate a new node and relink pointers.  |
-| **Delete**   | Relink surrounding nodes and free memory. |
-| **Traverse** | Follow `nextPtr` until `NULL`.            |
+### Insertion
+
+There are two common cases:
+
+#### 1. Unsorted Insertion (at the beginning)
+
+1. Allocate memory for a new node and create a `newPtr`.
+2. Assign the desired value to its data field.
+3. Link the new node to the existing list by setting
+   `newPtr->nextPtr = head;`
+4. Update the head pointer so it points to the new node:
+   `head = newPtr;`
+
+#### 2. Sorted Insertion (maintaining order)
+
+1.  Allocate and initialize the new node.
+2.  Set `previousPtr = NULL` and `currentPtr = head`.
+
+        * `previousPtr` will always lag one node behind `currentPtr`
+
+    3.Walk while currentPtr != NULL && currentPtr->data < newValue:
+
+        * `previousPtr = currentPtr`
+        * `currentPtr = currentPtr->nextPtr`
+
+3.  **Insert**: If `previousPtr == NULL`, insert at the start (new head).
+    Otherwise, insert between `previousPtr` and `currentPtr`.
+4.  Update links:
+
+    - `previousPtr->nextPtr = newPtr;`
+    - `newPtr->nextPtr = currentPtr;`
+
+### Deletion
+
+#### 1. Delete the First Node
+
+1. Store the current head in a temporary pointer.
+2. Move `head` to `head->nextPtr`.
+3. Free the temporary node.
+
+#### 2. Delete from Middle or End
+
+1. Use `previousPtr` and `currentPtr` to traverse until the node to delete is found.
+2. Update `previousPtr->nextPtr` to `currentPtr->nextPtr`.
+3. Free the deleted node.
+
+### Utility Operations
+
+- **isEmpty:** return `head == NULL`.
+- **printList:** traverse and print each node’s data until `NULL`.
 
 ---
 
@@ -622,7 +688,6 @@ A **stack** is a linear data structure that follows the **Last-In, First-Out (LI
 | **pop()**     | Remove the top element and return its value. |
 | **isEmpty()** | Check if the stack is empty.                 |
 
-
 ```c
 struct stackNode {
     int data;
@@ -631,6 +696,7 @@ struct stackNode {
 ```
 
 ---
+
 ## Queues
 
 A **queue** is a linear data structure that follows the **First-In, First-Out (FIFO)** principle. The first element added is the first one removed.
@@ -639,15 +705,14 @@ A **queue** is a linear data structure that follows the **First-In, First-Out (F
 - Implemented using **linked lists**.
 - Two pointers are used:
 
-    - `frontPtr` → points to the first node
-    - `rearPtr` → points to the last node
+  - `frontPtr` → points to the first node
+  - `rearPtr` → points to the last node
 
 | Operation     | Description                       |
 | :------------ | :-------------------------------- |
 | **enqueue()** | Add a new element to the rear.    |
 | **dequeue()** | Remove an element from the front. |
 | **isEmpty()** | Check if the queue is empty.      |
-
 
 ```c
 struct queueNode {
@@ -678,9 +743,8 @@ A type of tree where each node has at most **two children** (`left`, `right`).
 
 Special binary tree where:
 
-  - Left subtree value **<** Root value **<** Right subtree value.
-  - Enables fast searching, insertion, and deletion.
-
+- Left subtree value **<** Root value **<** Right subtree value.
+- Enables fast searching, insertion, and deletion.
 
 ### Tree Traversals
 
@@ -691,6 +755,7 @@ Special binary tree where:
 | **Postorder** | Left → Right → Root | Deletion or cleanup    |
 
 ---
+
 ### Pointer-to-Pointer
 
 When a function needs to **modify a pointer** (such as a tree’s root or a linked list’s head), it must receive the **address of that pointer**. This allows the function to update the caller’s pointer directly.
