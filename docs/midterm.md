@@ -61,18 +61,20 @@ Use `%g` when you want **concise output** without manually deciding between scie
 
 ### Field Widths
 
-A **field width** specifies the **minimum number of characters** to print. If the value is shorter, it is **right-padded with spaces** by default.
+A **field width** specifies the **minimum number of characters** to print. If
+the value is shorter, it is **left-padded with spaces** by default (making the 
+text right-aligned).
 
 ```c
-printf("%5d", 12);         // "   12" (width = 5)
+printf("%5d", 12);         // "   12" (left-padded with 3 spaces)
+printf("%-5d", 12);        // "12   " (right-padded with 3 spaces)
 printf("%5d\n", 123456);   // "123456" (wider than specifier, prints fully)
-printf("%-5d", 12);        // "12   " (left-justified)
 ```
 
 Field widths can also apply to floating-point values:
 
 ```c
-printf("%8.2f", 3.14); // "    3.14"
+printf("%0.2f", 3.14); // "    3.14"
 ```
 
 - The number before the decimal controls total width.
@@ -386,7 +388,7 @@ printf("%zu\n", sizeof(struct example)); // Likely prints 8, not 5
 
 ### Passing Structures and Arrays
 
-**Array of structures:** passed **by reference** (actually decays to a pointer), just like any other array.
+**Array of structures:** passed **by reference** (decays to a pointer), just like any other array.
 
 - The function can modify the original elements.
 
@@ -471,7 +473,7 @@ value represents a power of two.
 
 !!! abstract "Operators"
 
-<div class="grid cards print-3" markdown>
+    <div class="grid cards print-3" markdown>
 
     -   **AND `&`**
         Sets a bit to 1 **only if both bits are 1**.
@@ -541,37 +543,38 @@ value represents a power of two.
     implementation-defined; use `unsigned` integers where possible.
 
 ???+ tip "Common bit manipulation patterns"
-**Even/odd**: `x & 1`  
- `c
-      if (x & 1) puts("Odd"); else puts("Even");
-      `
-**Swap without temp** (XOR-swap):  
- `c
-      a ^= b; b ^= a; a ^= b;
-      `
-**Power of two** (exactly one bit set):  
- `c
-      if (x > 0 && (x & (x - 1)) == 0) puts("Power of 2");
-      `
-**Count set bits** (Kernighan):  
- `c
-      int c = 0; for (; x; ++c) x &= (x - 1);
-      `
-**Set / clear / toggle bit n**:  
- `c
-      x |=  (1u << n);   // set
-      x &= ~(1u << n);   // clear
-      x ^=  (1u << n);   // toggle
-      `
-**Lowest set bit**:  
- `c
-      unsigned lowest = x & -x;
-      `
-**Opposite signs**:  
- `c
-      if ((x ^ y) < 0) puts("Opposite signs");
-      `
 
+    **Even/odd**: `x & 1`  
+    ```c
+    if (x & 1) puts("Odd"); else puts("Even");
+    ```
+    **Swap without temp** (XOR-swap):  
+    ```c
+    a ^= b; b ^= a; a ^= b;
+    ```
+    **Power of two** (exactly one bit set):  
+    ```c
+    if (x > 0 && (x & (x - 1)) == 0) puts("Power of 2");
+    ```
+    **Count set bits** (Kernighan):  
+    ```c
+    int c = 0; for (; x; ++c) x &= (x - 1);
+    ```
+    **Set / clear / toggle bit n**:  
+    ```c
+    x |=  (1u << n);   // set
+    x &= ~(1u << n);   // clear
+    x ^=  (1u << n);   // toggle
+    ```
+    **Lowest set bit**:  
+    ```c
+    unsigned lowest = x & -x;
+    ```
+    **Opposite signs**:  
+    ```c
+    if ((x ^ y) < 0) puts("Opposite signs");
+    ```
+    
 <div class="page-break"></div>
 
 ---
@@ -621,43 +624,42 @@ WED = 4;  // <- ERROR: enumeration constants are read-only (compile-time error)
 
     > Start at `head` → process data → move to `nextPtr` → repeat.
 
-!!! abstract "Insertions"
+!!! abstract "Insertions (two cases)"
 
-    There are two common cases:
     <div class="grid cards" markdown>
-        - #### 1. Unsorted Insertion (at the beginning)
 
-            1. Allocate memory for a new node and create a `newPtr`.
-            2. Assign the desired value to its data field.
-            3. Link the new node to the existing list by setting
-               `newPtr->nextPtr = head;`
-            4. Update the head pointer so it points to the new node:
-               `head = newPtr;`
+    - #### 1. Unsorted Insertion (at the beginning)
 
-        - #### 2. Sorted Insertion (maintaining order)
+        1. Allocate memory for a new node and create a `newPtr`.
+        2. Assign the desired value to its data field.
+        3. Link the new node to the existing list by setting
+           `newPtr->nextPtr = head;`
+        4. Update the head pointer so it points to the new node:
+           `head = newPtr;`
 
-            1.  Allocate and initialize the new node.
-            2.  Set `previousPtr = NULL` and `currentPtr = head`.
+    - #### 2. Sorted Insertion (maintaining order)
 
-                 - `previousPtr` will always lag one node behind `currentPtr`
+        1.  Allocate and initialize the new node.
+        2.  Set `previousPtr = NULL` and `currentPtr = head`.
 
-            3. Walk while currentPtr != NULL && currentPtr->data < newValue:
+             - `previousPtr` will always lag one node behind `currentPtr`
 
-                 - `previousPtr = currentPtr`
-                 - `currentPtr = currentPtr->nextPtr`
+        3. Traverse/walk the links until you find the spot.
 
-            4.  **Insert**: If `previousPtr == NULL`, insert at the start (new head).
-                Otherwise, insert between `previousPtr` and `currentPtr`.
-            5.  Update links:
+             - `previousPtr = currentPtr`
+             - `currentPtr = currentPtr->nextPtr`
 
-                - `previousPtr->nextPtr = newPtr;`
-                - `newPtr->nextPtr = currentPtr;`
+        4.  If `previousPtr == NULL`, insert at the start (new head).
+            Otherwise, insert between `previousPtr` and `currentPtr`.
+
+            - `previousPtr->nextPtr = newPtr;`
+            - `newPtr->nextPtr = currentPtr;`
 
     </div>
 
-!!! abstract "Deletions"
 
-    There are two common cases:
+!!! abstract "Deletions (two cases)"
+
     <div class="grid cards" markdown>
 
     - #### 1. Delete the First Node
@@ -677,6 +679,8 @@ WED = 4;  // <- ERROR: enumeration constants are read-only (compile-time error)
 
 - **isEmpty:** return `head == NULL`.
 - **printList:** traverse and print each node’s data until `NULL`.
+
+<div class="page-break"></div>
 
 ---
 
@@ -709,10 +713,11 @@ A **queue** is a linear data structure that follows the **First-In, First-Out (F
 
 - Insertion occurs at the **rear**; deletion occurs at the **front**.
 - Implemented using **linked lists**.
-- Two pointers are used:
 
-  - `frontPtr` → points to the first node
-  - `rearPtr` → points to the last node
+Two pointers are used:
+
+ - `frontPtr` → points to the first node
+ - `rearPtr` → points to the last node
 
 | Operation     | Description                       |
 | :------------ | :-------------------------------- |
