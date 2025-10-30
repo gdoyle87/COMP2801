@@ -1698,18 +1698,15 @@ implementation-defined; use <code>unsigned</code> integers where possible.</p>
 </ul>
 </li>
 <li>
-<p>Walk while currentPtr != NULL &amp;&amp; currentPtr-&gt;data &lt; newValue:</p>
+<p>Traverse/walk the links until you find the spot.</p>
 <ul>
 <li><code>previousPtr = currentPtr</code></li>
 <li><code>currentPtr = currentPtr-&gt;nextPtr</code></li>
 </ul>
 </li>
 <li>
-<p><strong>Insert</strong>: If <code>previousPtr == NULL</code>, insert at the start (new head).
+<p>If <code>previousPtr == NULL</code>, insert at the start (new head).
     Otherwise, insert between <code>previousPtr</code> and <code>currentPtr</code>.</p>
-</li>
-<li>
-<p>Update links:</p>
 <ul>
 <li><code>previousPtr-&gt;nextPtr = newPtr;</code></li>
 <li><code>newPtr-&gt;nextPtr = currentPtr;</code></li>
