@@ -743,6 +743,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#1-unsorted-insertion-at-the-beginning" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Unsorted Insertion (at the beginning)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#2-sorted-insertion-maintaining-order" class="md-nav__link">
     <span class="md-ellipsis">
       2. Sorted Insertion (maintaining order)
@@ -1533,101 +1542,96 @@ such as short, int, and long (and their unsigned variants). Each bit in a
 value represents a power of two.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Operators</p>
+<div class="grid cards print-3" markdown>
+<ul>
+<li>
+<p><strong>AND <code>&amp;</code></strong>
+    Sets a bit to 1 <strong>only if both bits are 1</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1101 (13)</span>
+<span class="c1">// 1011 (11)</span>
+<span class="c1">// ----</span>
+<span class="c1">// 1001 (9)</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>OR <code>|</code></strong>
+    Sets a bit to 1 <strong>if either bit is 1</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1101 (13)</span>
+<span class="c1">// 1011 (11)</span>
+<span class="c1">// ----</span>
+<span class="c1">// 1111 (15)</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>XOR <code>^</code></strong>
+    Sets a bit to 1 <strong>if bits differ</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1101 (13)</span>
+<span class="c1">// 1011 (11)</span>
+<span class="c1">// ----</span>
+<span class="c1">// 0110 (6)</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>NOT <code>~</code></strong>
+    Inverts each bit.</p>
+<p><div class="highlight"><pre><span></span><code><span class="c1">// 0101 (5)</span>
+<span class="c1">// ~</span>
+<span class="c1">// ----</span>
+<span class="c1">// 1010 (10)</span>
+</code></pre></div>
+shown as 4 bits</p>
+</li>
+<li>
+<p><strong>Left shift <code>&lt;&lt;</code></strong>
+    Moves bits <strong>left</strong> (fills with 0).</p>
+<p><div class="highlight"><pre><span></span><code><span class="c1">// 0101 (5)</span>
+<span class="c1">// &lt;&lt; 1</span>
+<span class="c1">// ----</span>
+<span class="c1">// 1010 (10)</span>
+</code></pre></div>
+Each shift multiplies by 2.</p>
+</li>
+<li>
+<p><strong>Right shift <code>&gt;&gt;</code></strong>
+    Moves bits <strong>right</strong> (fills with 0).</p>
+<p><div class="highlight"><pre><span></span><code><span class="c1">// 1010 (10)</span>
+<span class="c1">// &gt;&gt; 1</span>
+<span class="c1">// ----</span>
+<span class="c1">//0101 (5)</span>
+</code></pre></div>
+Each shift divides by 2.</p>
+</li>
+</ul>
 </div>
-<div class="grid cards print-3">
-<pre><code>-   **AND `&amp;`**
-    Sets a bit to 1 **only if both bits are 1**.
-
-    ```c
-    // 1101 (13)
-    // 1011 (11)
-    // ----
-    // 1001 (9)
-    ```
-
--   **OR `|`**
-    Sets a bit to 1 **if either bit is 1**.
-
-    ```c
-    // 1101 (13)
-    // 1011 (11)
-    // ----
-    // 1111 (15)
-    ```
-
--   **XOR `^`**
-    Sets a bit to 1 **if bits differ**.
-
-    ```c
-    // 1101 (13)
-    // 1011 (11)
-    // ----
-    // 0110 (6)
-    ```
-
--   **NOT `~`**
-    Inverts each bit.
-
-    ```c
-    // 0101 (5)
-    // ~
-    // ----
-    // 1010 (10)
-    ```
-    shown as 4 bits
-
--   **Left shift `&lt;&lt;`**
-    Moves bits **left** (fills with 0).
-
-    ```c
-    // 0101 (5)
-    // &lt;&lt; 1
-    // ----
-    // 1010 (10)
-    ```
-    Each shift multiplies by 2.
-
--   **Right shift `&gt;&gt;`**
-    Moves bits **right** (fills with 0).
-
-    ```c
-    // 1010 (10)
-    // &gt;&gt; 1
-    // ----
-    //0101 (5)
-    ```
-    Each shift divides by 2.
-</code></pre>
+<p><strong>Note on shifts</strong>: Right-shift of <strong>signed</strong> negative values is
+implementation-defined; use <code>unsigned</code> integers where possible.</p>
 </div>
-<pre><code>**Note on shifts**: Right-shift of **signed** negative values is
-implementation-defined; use `unsigned` integers where possible.
-</code></pre>
 <details class="tip" open="open">
 <summary>Common bit manipulation patterns</summary>
-</details>
 <p><strong>Even/odd</strong>: <code>x &amp; 1</code><br />
-<code>c
-      if (x &amp; 1) puts("Odd"); else puts("Even");</code>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;Odd&quot;</span><span class="p">);</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;Even&quot;</span><span class="p">);</span>
+</code></pre></div>
 <strong>Swap without temp</strong> (XOR-swap):<br />
-<code>c
-      a ^= b; b ^= a; a ^= b;</code>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="w"> </span><span class="o">^=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">^=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">^=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+</code></pre></div>
 <strong>Power of two</strong> (exactly one bit set):<br />
-<code>c
-      if (x &gt; 0 &amp;&amp; (x &amp; (x - 1)) == 0) puts("Power of 2");</code>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;Power of 2&quot;</span><span class="p">);</span>
+</code></pre></div>
 <strong>Count set bits</strong> (Kernighan):<br />
-<code>c
-      int c = 0; for (; x; ++c) x &amp;= (x - 1);</code>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(;</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div>
 <strong>Set / clear / toggle bit n</strong>:<br />
-<code>c
-      x |=  (1u &lt;&lt; n);   // set
-      x &amp;= ~(1u &lt;&lt; n);   // clear
-      x ^=  (1u &lt;&lt; n);   // toggle</code>
+<div class="highlight"><pre><span></span><code><span class="n">x</span><span class="w"> </span><span class="o">|=</span><span class="w">  </span><span class="p">(</span><span class="mi">1u</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w">   </span><span class="c1">// set</span>
+<span class="n">x</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">1u</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w">   </span><span class="c1">// clear</span>
+<span class="n">x</span><span class="w"> </span><span class="o">^=</span><span class="w">  </span><span class="p">(</span><span class="mi">1u</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w">   </span><span class="c1">// toggle</span>
+</code></pre></div>
 <strong>Lowest set bit</strong>:<br />
-<code>c
-      unsigned lowest = x &amp; -x;</code>
+<div class="highlight"><pre><span></span><code><span class="kt">unsigned</span><span class="w"> </span><span class="n">lowest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">-</span><span class="n">x</span><span class="p">;</span>
+</code></pre></div>
 <strong>Opposite signs</strong>:<br />
-<code>c
-      if ((x ^ y) &lt; 0) puts("Opposite signs");</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">x</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;Opposite signs&quot;</span><span class="p">);</span>
+</code></pre></div></p>
+</details>
 <div class="page-break"></div>
 
 <hr />
@@ -1669,18 +1673,20 @@ implementation-defined; use `unsigned` integers where possible.
 </blockquote>
 </div>
 <div class="admonition abstract">
-<p class="admonition-title">Insertions</p>
-<p>There are two common cases:
+<p class="admonition-title">Insertions (two cases)</p>
 <div class="grid cards" markdown>
-- #### 1. Unsorted Insertion (at the beginning)</p>
-<pre><code>1. Allocate memory for a new node and create a `newPtr`.
-2. Assign the desired value to its data field.
-3. Link the new node to the existing list by setting
-   `newPtr-&gt;nextPtr = head;`
-4. Update the head pointer so it points to the new node:
-   `head = newPtr;`
-</code></pre>
 <ul>
+<li>
+<h4 id="1-unsorted-insertion-at-the-beginning">1. Unsorted Insertion (at the beginning)</h4>
+<ol>
+<li>Allocate memory for a new node and create a <code>newPtr</code>.</li>
+<li>Assign the desired value to its data field.</li>
+<li>Link the new node to the existing list by setting
+   <code>newPtr-&gt;nextPtr = head;</code></li>
+<li>Update the head pointer so it points to the new node:
+   <code>head = newPtr;</code></li>
+</ol>
+</li>
 <li>
 <h4 id="2-sorted-insertion-maintaining-order">2. Sorted Insertion (maintaining order)</h4>
 <ol>
@@ -1715,9 +1721,8 @@ implementation-defined; use `unsigned` integers where possible.
 </div>
 </div>
 <div class="admonition abstract">
-<p class="admonition-title">Deletions</p>
-<p>There are two common cases:
-<div class="grid cards" markdown></p>
+<p class="admonition-title">Deletions (two cases)</p>
+<div class="grid cards" markdown>
 <ul>
 <li>
 <h4 id="1-delete-the-first-node">1. Delete the First Node</h4>
