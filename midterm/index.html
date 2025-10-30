@@ -1058,7 +1058,8 @@
 <p>Use <code>%g</code> when you want <strong>concise output</strong> without manually deciding between scientific and decimal notation.</p>
 <hr />
 <h3 id="field-widths">Field Widths</h3>
-<p>A <strong>field width</strong> specifies the <strong>minimum number of characters</strong> to print. If the value is shorter, it is <strong>right-padded with spaces</strong> by default.</p>
+<p>A <strong>field width</strong> specifies the <strong>minimum number of characters</strong> to print. If
+the value is shorter, it is <strong>left-padded with spaces</strong> by default.</p>
 <div class="highlight"><pre><span></span><code><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%5d&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">);</span><span class="w">         </span><span class="c1">// &quot;   12&quot; (width = 5)</span>
 <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%5d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">123456</span><span class="p">);</span><span class="w">   </span><span class="c1">// &quot;123456&quot; (wider than specifier, prints fully)</span>
 <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%-5d&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">);</span><span class="w">        </span><span class="c1">// &quot;12   &quot; (left-justified)</span>
