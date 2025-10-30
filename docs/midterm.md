@@ -639,16 +639,16 @@ There are two common cases:
 1.  Allocate and initialize the new node.
 2.  Set `previousPtr = NULL` and `currentPtr = head`.
 
-        * `previousPtr` will always lag one node behind `currentPtr`
+     - `previousPtr` will always lag one node behind `currentPtr`
 
-    3.Walk while currentPtr != NULL && currentPtr->data < newValue:
+3. Walk while currentPtr != NULL && currentPtr->data < newValue:
 
-        * `previousPtr = currentPtr`
-        * `currentPtr = currentPtr->nextPtr`
+     - `previousPtr = currentPtr`
+     - `currentPtr = currentPtr->nextPtr`
 
-3.  **Insert**: If `previousPtr == NULL`, insert at the start (new head).
+4.  **Insert**: If `previousPtr == NULL`, insert at the start (new head).
     Otherwise, insert between `previousPtr` and `currentPtr`.
-4.  Update links:
+5.  Update links:
 
     - `previousPtr->nextPtr = newPtr;`
     - `newPtr->nextPtr = currentPtr;`
