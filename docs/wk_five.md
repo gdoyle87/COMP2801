@@ -319,6 +319,21 @@ void printList(ListNodePtr currentPtr)
 This function is often used for debugging or visualizing the list’s current
 state after insertions or deletions.
 
+---
+
+##### Merging Two Sorted Lists
+
+???+ example "Merge (visual)"
+
+    <div style="max-width: 500px; margin: 0 auto;">
+      <div class="ll-stepper"
+           data-base="../images/merge_linked_lists/"
+           data-frames=" frame_01.png,frame_02.png,frame_03.png,frame_04.png,frame_05.png, frame_06.png,frame_07.png,frame_08.png,frame_09.png,frame_10.png, frame_11.png,frame_12.png,frame_13.png,frame_14.png,frame_15.png, frame_16.png,frame_17.png,frame_18.png,frame_19.png,frame_20.png ">
+      </div>
+    </div>
+
+---
+
 ### Trees
 
 A **tree** is a nonlinear, two-dimensional data structure made up of **nodes**.
