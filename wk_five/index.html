@@ -1139,7 +1139,7 @@ state after insertions or deletions.</p>
 <li>
 <p>find the correct insertion point in list 1</p>
 <ol>
-<li>walk the pointers until <code>tempPtr-&gt;data</code> is greater than <code>currentPtr-&gt;data</code></li>
+<li>walk the pointers until <code>tempPtr-&gt;data</code> is less than or equal to <code>currentPtr-&gt;data</code> or <code>currentPtr</code> becomes <code>NULL</code></li>
 </ol>
 </li>
 <li>
