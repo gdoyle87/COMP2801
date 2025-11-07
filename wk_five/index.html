@@ -1137,42 +1137,42 @@ state after insertions or deletions.</p>
 </li>
 <li>
 <p>Loop through each element of list2 (using <code>tempPtr</code>)</p>
-</li>
+<ol>
 <li>
 <p>find the correct insertion point in list 1</p>
-<ul>
+<ol>
 <li>walk the pointers until <code>tempPtr-&gt;data</code> is greater than <code>currentPtr-&gt;data</code></li>
-</ul>
+</ol>
 </li>
 <li>
 <p>Insert the node</p>
-<ul>
+<ol>
 <li>
 <p>if <code>prevPtr</code> is <code>NULL</code> then insert at head by</p>
-</li>
-<li>
-<p>pointing the List2 pointer to the <code>tempPtr-&gt;next</code> node</p>
-</li>
+<ol>
+<li>pointing the List2 pointer to the <code>tempPtr-&gt;next</code> node</li>
 <li>updating the <code>tempPtr-&gt;next</code> node to point to the List1 pointer</li>
-<li>
-<p>updating the List1 pointer to point to the <code>tempPtr</code></p>
+<li>updating the List1 pointer to point to the <code>tempPtr</code></li>
+</ol>
 </li>
 <li>
 <p>otherwise:</p>
-</li>
-<li>
-<p>pointing the List2 pointer to the <code>tempPtr-&gt;next</code> node</p>
-</li>
+<ol>
+<li>pointing the List2 pointer to the <code>tempPtr-&gt;next</code> node</li>
 <li>updating the <code>prevPtr&gt;next</code> node to point to the <code>tempPtr</code> </li>
 <li>updating the <code>tempPtr-&gt;next</code> to point to the <code>currentPtr</code></li>
-</ul>
+</ol>
+</li>
+</ol>
 </li>
 <li>
 <p>Advance the pointers</p>
-<ul>
+<ol>
 <li>move <code>prevPtr</code> to the <code>tempPtr</code> node</li>
 <li>move <code>tempPtr</code> to the List2 pointer.</li>
-</ul>
+</ol>
+</li>
+</ol>
 </li>
 </ol>
 <details class="example" open="open">
