@@ -1124,6 +1124,57 @@ node’s data value in sequence.</p>
 state after insertions or deletions.</p>
 <hr />
 <h5 id="merging-two-sorted-lists">Merging Two Sorted Lists</h5>
+<ol>
+<li>
+<p>initialize pointers</p>
+</li>
+<li>
+<p><code>prevPtr</code> points to NULL</p>
+</li>
+<li><code>currPtr</code> points to beginning of list1</li>
+<li>
+<p><code>tempPtr</code> points to beginning of list2</p>
+</li>
+<li>
+<p>Loop through each element of list2 (using <code>tempPtr</code>)</p>
+</li>
+<li>
+<p>find the correct insertion point in list 1</p>
+<ul>
+<li>walk the pointers until <code>tempPtr-&gt;data</code> is greater than <code>currentPtr-&gt;data</code></li>
+</ul>
+</li>
+<li>
+<p>Insert the node</p>
+<ul>
+<li>
+<p>if <code>prevPtr</code> is <code>NULL</code> then insert at head by</p>
+</li>
+<li>
+<p>pointing the List2 pointer to the <code>tempPtr-&gt;next</code> node</p>
+</li>
+<li>updating the <code>tempPtr-&gt;next</code> node to point to the List1 pointer</li>
+<li>
+<p>updating the List1 pointer to point to the <code>tempPtr</code></p>
+</li>
+<li>
+<p>otherwise:</p>
+</li>
+<li>
+<p>pointing the List2 pointer to the <code>tempPtr-&gt;next</code> node</p>
+</li>
+<li>updating the <code>prevPtr&gt;next</code> node to point to the <code>tempPtr</code> </li>
+<li>updating the <code>tempPtr-&gt;next</code> to point to the <code>currentPtr</code></li>
+</ul>
+</li>
+<li>
+<p>Advance the pointers</p>
+<ul>
+<li>move <code>prevPtr</code> to the <code>tempPtr</code> node</li>
+<li>move <code>tempPtr</code> to the List2 pointer.</li>
+</ul>
+</li>
+</ol>
 <details class="example" open="open">
 <summary>Merge (visual)</summary>
 <p><div style="max-width: 500px; margin: 0 auto;">
