@@ -11,10 +11,8 @@
         <link rel="canonical" href="https://gdoyle87.github.io/COMP2801/wk_seven/">
       
       
-        <link rel="prev" href="../wk_six/">
+        <link rel="prev" href="../midterm/">
       
-      
-        <link rel="next" href="../midterm/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -389,6 +387,28 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../midterm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Midterm Study Notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -496,28 +516,6 @@
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../midterm/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Midterm Study Notes
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -645,41 +643,83 @@ permutations.</p>
 </ul>
 </div>
 <h3 id="determining-big-o-complexity">Determining Big-O Complexity</h3>
-<p><strong>Drop Constants</strong></p>
+<div class="admonition tip">
+<p class="admonition-title">Rules of Thumb</p>
+<div class="grid cards print-3" markdown>
 <ul>
-<li><code>O(2n)</code> becomes <code>O(n)</code></li>
-<li><code>O(n + 100)</code> becomes <code>O(n)</code></li>
-<li>Big-O measures growth as <code>n → ∞</code>, so fixed factors don’t matter.</li>
-</ul>
-<hr />
-<p><strong>Add Sequential Operations</strong></p>
-<p>If code runs one after another, add their costs and then simplify.
-- <code>O(n) + O(n)</code> becomes <code>O(2n)</code> which simplifies to <code>O(n)</code>.</p>
-<hr />
-<p><strong>Multiply Nested Loops</strong></p>
-<p>Inner loop inside outer loop multiplies their costs.
-- Example: <code>n</code> loop inside <code>n</code> loop → <code>O(n * n)</code> → <code>O(n²)</code>.
-- If inner loop depends on the outer loop (1 to i): total work = <code>1 + 2 + ... + n = O(n²)</code>.
-        - Always consider the worst case of these inner loops (<code>n-1</code>, etc.)</p>
-<hr />
-<p><strong>Different Input Sizes</strong></p>
-<p>If loops use different variables of different sizes do not combine:</p>
-<pre><code>- Sequential → `O(n + m)`
-- Nested → `O(n * m)`
-</code></pre>
+<li>
+<p><strong>Drop Constants</strong><br />
+    Big-O ignores fixed factors.  </p>
 <ul>
-<li>Only combine if they represent the <em>same input size</em>.</li>
+<li><code>O(2n)</code> → <code>O(n)</code>  </li>
+<li><code>O(n + 100)</code> → <code>O(n)</code></li>
 </ul>
-<hr />
-<p><strong>Keep the Dominant Term</strong></p>
-<p>When adding complexities of different orders, keep the largest.</p>
-<pre><code>- `O(n² + n)` → `O(n²)`
-- `O(n³ + n log n)` → `O(n³)`
-</code></pre>
-<hr />
-<p><strong>Recognize Logarithmic Behavior</strong></p>
-<p>Appears when the work shrinks by a constant factor (halves) each step.
-- Examples: binary search, heaps, balanced trees, divide-and-conquer recursion depth.</p>
+</li>
+<li>
+<p><strong>Add Sequential Operations</strong><br />
+    When operations run <strong>one after another</strong>, add them, then simplify.  </p>
+<ul>
+<li><code>O(n) + O(n)</code> → <code>O(2n)</code> → <code>O(n)</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Multiply Nested Loops</strong><br />
+    Inner loop work multiplies with outer loop work.  </p>
+<ul>
+<li><code>O(n) * O(n)</code> → <code>O(n²)</code><br />
+If inner loop runs <code>1..i</code>:  </li>
+<li><code>1 + 2 + ... + n = O(n²)</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Different Input Sizes</strong><br />
+    Don’t combine unrelated inputs.  </p>
+<ul>
+<li>Sequential: <code>O(n + m)</code>  </li>
+<li>Nested: <code>O(n * m)</code><br />
+Only merge when they refer to the <strong>same dataset</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Keep the Dominant Term</strong><br />
+    When adding complexities of different orders, keep only the largest.  </p>
+<ul>
+<li><code>O(n² + n)</code> → <code>O(n²)</code>  </li>
+<li><code>O(n³ + n log n)</code> → <code>O(n³)</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Recognize Logarithmic Behavior</strong><br />
+    Appears when a problem size <strong>shrinks by a constant factor</strong> (e.g., halves).  </p>
+<ul>
+<li>Binary search  </li>
+<li>Heaps  </li>
+<li>Balanced trees  </li>
+<li>Divide-and-conquer recursion depth</li>
+</ul>
+</li>
+<li>
+<p><strong>Typical Recursion Patterns</strong>  </p>
+<ul>
+<li>Divide &amp; conquer: <code>T(n)=2T(n/2)+O(n)</code> → <code>O(n log n)</code>  </li>
+<li>Linear recursion: <code>T(n)=T(n-1)+O(1)</code> → <code>O(n)</code>  </li>
+<li>Tree recursion: <code>T(n)=T(n-1)+T(n-1)</code> → <code>O(2ⁿ)</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Loop Work = Loop Count × Inner Cost</strong>  </p>
+<ul>
+<li>Loop doing constant work → <code>O(n)</code>  </li>
+<li>Loop doing <code>O(log n)</code> work → <code>O(n log n)</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Big-O Is an Upper Bound</strong><br />
+    Always ask: <em>“How many times </em><em>could</em><em> this run as n grows?”</em></p>
+</li>
+</ul>
+</div>
+</div>
 <hr />
 <h2 id="selection-sort">Selection Sort</h2>
 <p>The <em>selection sort</em> algorithm sorts an array by repeatedly finding the smallest 
@@ -691,10 +731,10 @@ position at the front.</p>
    and swap it with the first element of that unsorted portion.</li>
 <li>Continue this process until the entire array is sorted.</li>
 </ol>
-<details class="note">
+<details class="note" open="open">
 <summary>Selection Sort Animation (C++ Version)</summary>
 <p><iframe src="https://liveexample.pearsoncmg.com/dsanimation/SelectionSortWithCpp.html"
-        width="650" height="450"
+        width="650" height="650"
         frameborder="0"
         allowfullscreen></iframe></p>
 <p><strong>Attribution:</strong><br />
@@ -715,7 +755,7 @@ and inserts it into the correct position within the <strong>sorted</strong> port
 <details class="note">
 <summary>Insertion Sort Animation (C++ Version)</summary>
 <p><iframe src="https://liveexample.pearsoncmg.com/dsanimation/InsertionSortWithCpp.html"
-        width="650" height="450"
+        width="650" height="650"
         frameborder="0"
         allowfullscreen></iframe></p>
 <p><strong>Attribution:</strong><br />
