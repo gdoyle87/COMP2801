@@ -323,6 +323,38 @@ state after insertions or deletions.
 
 ##### Merging Two Sorted Lists
 
+1. initialize pointers
+
+    1. `prevPtr` points to NULL
+    2. `currPtr` points to beginning of list1
+    3. `tempPtr` points to beginning of list2
+
+2. Loop through each element of list2 (using `tempPtr`)
+
+    1. find the correct insertion point in list 1
+    
+        1. walk the pointers until `tempPtr->data` is less than or equal to `currentPtr->data` or `currentPtr` becomes `NULL`
+
+    2. Insert the node
+
+        1. if `prevPtr` is `NULL` then insert at head by
+      
+            1. pointing the List2 pointer to the `tempPtr->next` node
+            2. updating the `tempPtr->next` node to point to the List1 pointer
+            3. updating the List1 pointer to point to the `tempPtr`
+
+        2. otherwise:
+
+            1. pointing the List2 pointer to the `tempPtr->next` node
+            2. updating the `prevPtr>next` node to point to the `tempPtr` 
+            3. updating the `tempPtr->next` to point to the `currentPtr`
+  
+    3. Advance the pointers
+    
+        1. move `prevPtr` to the `tempPtr` node
+        2. move `tempPtr` to the List2 pointer.
+
+
 ???+ example "Merge (visual)"
 
     <div style="max-width: 500px; margin: 0 auto;">
