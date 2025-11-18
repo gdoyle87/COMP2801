@@ -657,32 +657,33 @@ permutations.</p>
 </li>
 <li>
 <p><strong>Add Sequential Operations</strong><br />
-    When operations run <strong>one after another</strong>, add them, then simplify.  </p>
+    If code runs <em>one after another</em>, add their costs, then simplify.  </p>
 <ul>
 <li><code>O(n) + O(n)</code> → <code>O(2n)</code> → <code>O(n)</code></li>
 </ul>
 </li>
 <li>
 <p><strong>Multiply Nested Loops</strong><br />
-    Inner loop work multiplies with outer loop work.  </p>
+    Inner loop work multiplies outer loop work.  </p>
 <ul>
 <li><code>O(n) * O(n)</code> → <code>O(n²)</code><br />
-If inner loop runs <code>1..i</code>:  </li>
-<li><code>1 + 2 + ... + n = O(n²)</code></li>
+If the inner loop runs <code>1..i</code>, the total is  </li>
+<li><code>1 + 2 + ... + n = O(n²)</code><br />
+Always consider the worst case.</li>
 </ul>
 </li>
 <li>
 <p><strong>Different Input Sizes</strong><br />
-    Don’t combine unrelated inputs.  </p>
+    Don’t merge unrelated inputs.  </p>
 <ul>
-<li>Sequential: <code>O(n + m)</code>  </li>
-<li>Nested: <code>O(n * m)</code><br />
-Only merge when they refer to the <strong>same dataset</strong>.</li>
+<li>Sequential → <code>O(n + m)</code>  </li>
+<li>Nested → <code>O(n * m)</code><br />
+Only combine when they represent the <strong>same dataset</strong>.</li>
 </ul>
 </li>
 <li>
 <p><strong>Keep the Dominant Term</strong><br />
-    When adding complexities of different orders, keep only the largest.  </p>
+    Keep only the highest-growth part.  </p>
 <ul>
 <li><code>O(n² + n)</code> → <code>O(n²)</code>  </li>
 <li><code>O(n³ + n log n)</code> → <code>O(n³)</code></li>
@@ -690,32 +691,8 @@ Only merge when they refer to the <strong>same dataset</strong>.</li>
 </li>
 <li>
 <p><strong>Recognize Logarithmic Behavior</strong><br />
-    Appears when a problem size <strong>shrinks by a constant factor</strong> (e.g., halves).  </p>
-<ul>
-<li>Binary search  </li>
-<li>Heaps  </li>
-<li>Balanced trees  </li>
-<li>Divide-and-conquer recursion depth</li>
-</ul>
-</li>
-<li>
-<p><strong>Typical Recursion Patterns</strong>  </p>
-<ul>
-<li>Divide &amp; conquer: <code>T(n)=2T(n/2)+O(n)</code> → <code>O(n log n)</code>  </li>
-<li>Linear recursion: <code>T(n)=T(n-1)+O(1)</code> → <code>O(n)</code>  </li>
-<li>Tree recursion: <code>T(n)=T(n-1)+T(n-1)</code> → <code>O(2ⁿ)</code></li>
-</ul>
-</li>
-<li>
-<p><strong>Loop Work = Loop Count × Inner Cost</strong>  </p>
-<ul>
-<li>Loop doing constant work → <code>O(n)</code>  </li>
-<li>Loop doing <code>O(log n)</code> work → <code>O(n log n)</code></li>
-</ul>
-</li>
-<li>
-<p><strong>Big-O Is an Upper Bound</strong><br />
-    Always ask: <em>“How many times </em><em>could</em><em> this run as n grows?”</em></p>
+    Happens when work <strong>shrinks by a constant factor</strong>, usually halving.<br />
+    Examples: binary search, heaps, balanced trees, divide-and-conquer depth.</p>
 </li>
 </ul>
 </div>
