@@ -598,48 +598,58 @@ represent the number of inputs:</p>
 <div class="admonition example">
 <p class="admonition-title">Common Complexities</p>
 <ul>
+<li><code>O(1)</code> Constant Time</li>
+<li>Execution time stays the same even as <code>n</code> increases</li>
 <li>
-<p><code>O(1)</code> Constant Time
-        -  Execution time stays the same even as <code>n</code> increases
-        -  Example: direct array access</p>
+<p>Example: direct array access</p>
 </li>
 <li>
-<p><code>O(log n)</code> Logarithmic Time
-        - Doubling <code>n</code> only adds another constant amount of time.
-        - Example: binary search</p>
+<p><code>O(log n)</code> Logarithmic Time</p>
+</li>
+<li>Doubling <code>n</code> only adds another constant amount of time.</li>
+<li>
+<p>Example: binary search</p>
 </li>
 <li>
-<p><code>O(n)</code> Linear Time
-        - Directly proportional to <code>n</code>. 
-        - Example: simple loop through elements of an array.</p>
+<p><code>O(n)</code> Linear Time</p>
+</li>
+<li>Directly proportional to <code>n</code>. </li>
+<li>
+<p>Example: simple loop through elements of an array.</p>
 </li>
 <li>
-<p><code>O(n log n)</code> Log Linear Time
-        - Combination of linear and logarithmic behaviour
-        - Example: Merge sort, heapsort, quicksort (average case).</p>
+<p><code>O(n log n)</code> Log Linear Time</p>
+</li>
+<li>Combination of linear and logarithmic behaviour</li>
+<li>
+<p>Example: Merge sort, heapsort, quicksort (average case).</p>
 </li>
 <li>
-<p><code>O(n²)</code> Quadratic Time
-        - Grows exponentially as <code>n</code> increases in a quadratic way (square of <code>n</code>).
-        - Example: Nested loops, naive matrix multiplication, bubble sort.</p>
+<p><code>O(n²)</code> Quadratic Time</p>
+</li>
+<li>Grows exponentially as <code>n</code> increases in a quadratic way (square of <code>n</code>).</li>
+<li>
+<p>Example: Nested loops, naive matrix multiplication, bubble sort.</p>
 </li>
 <li>
-<p><code>O(n³)</code> Cubic Time
-        - Grows exponentially as <code>n</code> increases in a cubic way (cube of <code>n</code>).
-        - Example: Floyd-Warshall shortest path algorithm.</p>
+<p><code>O(n³)</code> Cubic Time</p>
+</li>
+<li>Grows exponentially as <code>n</code> increases in a cubic way (cube of <code>n</code>).</li>
+<li>
+<p>Example: Floyd–Warshall shortest path algorithm.</p>
 </li>
 <li>
-<p><code>O(2ⁿ)</code> Exponential Time
-        - Algorithms that consider every subset or combination.
-        - Examples: Brute-force traveling salesman, subset generation.   </p>
+<p><code>O(2ⁿ)</code> Exponential Time</p>
+</li>
+<li>Algorithms that consider every subset or combination.</li>
+<li>
+<p>Examples: Brute-force traveling salesman, subset generation.</p>
 </li>
 <li>
-<p><code>O(n!)</code> Factorial Time
-        - Grows faster than any exponential function; work explodes as n
-increases because it considers all possible permutations of n items 
-        - Example: Brute-force travelling salesperson problem by checking all
-permutations.</p>
+<p><code>O(n!)</code> Factorial Time</p>
 </li>
+<li>Grows faster than any exponential function; work explodes as <code>n</code> increases because it considers all possible permutations of <code>n</code> items</li>
+<li>Example: Brute-force traveling salesperson problem by checking all permutations.</li>
 </ul>
 </div>
 <h3 id="determining-big-o-complexity">Determining Big-O Complexity</h3>
