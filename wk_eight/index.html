@@ -693,17 +693,15 @@ array called the <strong>open file table</strong>. Each element in that array co
 </ul>
 <p>We can then use the <code>FILE</code> pointers <code>stdin</code>, <code>stdout</code>, and <code>stderr</code> to interact
 with these streams.</p>
-<div class="admonition note inline end">
+<p>Files in C have no inherent concept of structured data or records at the
+language level; the programmer must explicitly define and manage the file’s
+structure. </p>
+<div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This "structure" refers to the logical organization of file
 contents and should not be confused with the <code>FILE</code> struct used by the
 standard I/O library.</p>
 </div>
-<p>Files in C have no inherent concept of structured data or records at the
-language level; the programmer must explicitly define and manage the file’s
-structure. </p>
-<div style="clear: both;"></div>
-
 <hr />
 <h2 id="file-access-methods">File Access Methods</h2>
 <p>In C, there are two primary ways to access data in a file: <strong>sequential
