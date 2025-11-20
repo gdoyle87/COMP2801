@@ -44,13 +44,19 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.details
 
+#extra_javascript:
+#  - https://cdn.jsdelivr.net/npm/asciinema-player@2.6.1/resources/public/js/asciinema-player.js
+#  - js/ll_stepper.js
+#
+#extra_css:
+#  - https://cdn.jsdelivr.net/npm/asciinema-player@2.6.1/resources/public/css/asciinema-player.css
+#  - styles/print.css
+
 extra_javascript:
-  # - https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.js
-  # - js/asciinema-init.js
-  - https://cdn.jsdelivr.net/npm/asciinema-player@2.6.1/resources/public/js/asciinema-player.js
+  - https://cdn.jsdelivr.net/npm/asciinema-player@3.12.1/dist/bundle/asciinema-player.min.js
+  - js/asciinema-init.js
   - js/ll_stepper.js
 
 extra_css:
-  # - https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.css
-  - https://cdn.jsdelivr.net/npm/asciinema-player@2.6.1/resources/public/css/asciinema-player.css
+  - https://cdn.jsdelivr.net/npm/asciinema-player@3.12.1/dist/bundle/asciinema-player.css
   - styles/print.css

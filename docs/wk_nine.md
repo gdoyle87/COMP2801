@@ -22,13 +22,24 @@ program as the first argument
 `char *argv[]` stands for the **arg**ument **v**ector. It is an array of strings
 representing the different arguments passed (including the name of the program).
 
+???+ example
+    <asciinema-player class="asciinema-player"
+      src="../casts/cli.cast"
+      cols="80"
+      rows="24"
+      preload="true"
+      autoplay="false">
+    </asciinema-player> 
 
-<div class="asciicast" data-src="../casts/cli.cast" id="cli-cast"></div>
-other:
-<asciinema-player
-  src="../casts/cli.cast"
-  cols="80"
-  rows="24"
-  preload="true"
-  autoplay="false">
-</asciinema-player>
+    ```c
+    #include <stdio.h>
+    
+    int main(int argc, char *argv[])
+    {
+      for (int i = 0; i < argc; ++i)
+      {
+        printf("Argument %d: %-10s\n", i + 1, argv[i]);
+      }
+    }
+     
+    ```
