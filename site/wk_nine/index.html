@@ -8,26 +8,26 @@
       
       
       
-        <link rel="canonical" href="https://gdoyle87.github.io/COMP2801/">
+        <link rel="canonical" href="https://gdoyle87.github.io/COMP2801/wk_nine/">
+      
+      
+        <link rel="prev" href="../wk_eight/">
       
       
       
-        <link rel="next" href="wk_one/">
-      
-      
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
     
     
       
-        <title>COMP2801</title>
+        <title>Week 9 - CLI, calloc and realloc, and other random stuff - COMP2801</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.84d31ad4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,9 +48,9 @@
     
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/asciinema-player@2.6.1/resources/public/css/asciinema-player.css">
     
-      <link rel="stylesheet" href="styles/print.css">
+      <link rel="stylesheet" href="../styles/print.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#comp2801-application-development-with-c" class="md-skip">
+        <a href="#week-9" class="md-skip">
           Skip to content
         </a>
       
@@ -92,7 +92,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="COMP2801" class="md-header__button md-logo" aria-label="COMP2801" data-md-component="logo">
+    <a href=".." title="COMP2801" class="md-header__button md-logo" aria-label="COMP2801" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Week 9 - CLI, calloc and realloc, and other random stuff
             
           </span>
         </div>
@@ -218,7 +218,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="COMP2801" class="md-nav__button md-logo" aria-label="COMP2801" data-md-component="logo">
+    <a href=".." title="COMP2801" class="md-nav__button md-logo" aria-label="COMP2801" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -228,6 +228,226 @@
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_one/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 1 - Formatted Output in C
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_two/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 2 - scanf and Recursion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_three/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 3 - Structures and typedef
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_four/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 4 - Unions, Bit manipulations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_five/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 5 - Linked Lists and Trees
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_six/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 6 - Stacks and Queues
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../midterm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Midterm Study Notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_seven/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 7 - Big O Notation, Selection Sort, Insertion Sort
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_eight/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 8 - Files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
     
       
       
@@ -250,7 +470,7 @@
   
   
   <span class="md-ellipsis">
-    Home
+    Week 9 - CLI, calloc and realloc, and other random stuff
     
   </span>
   
@@ -258,12 +478,12 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="." class="md-nav__link md-nav__link--active">
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    Home
+    Week 9 - CLI, calloc and realloc, and other random stuff
     
   </span>
   
@@ -286,9 +506,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#command-line-arguments-in-c" class="md-nav__link">
     <span class="md-ellipsis">
-      Overview
+      Command Line Arguments in C
     </span>
   </a>
   
@@ -298,226 +518,6 @@
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="wk_one/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Week 1 - Formatted Output in C
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="wk_two/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Week 2 - scanf and Recursion
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="wk_three/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Week 3 - Structures and typedef
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="wk_four/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Week 4 - Unions, Bit manipulations
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="wk_five/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Week 5 - Linked Lists and Trees
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="wk_six/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Week 6 - Stacks and Queues
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="midterm/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Midterm Study Notes
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="wk_seven/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Week 7 - Big O Notation, Selection Sort, Insertion Sort
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="wk_eight/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Week 8 - Files
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="wk_nine/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Week 9 - CLI, calloc and realloc, and other random stuff
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -582,23 +582,32 @@
 
 
 
-<h1 id="comp2801-application-development-with-c">COMP2801 - Application Development with C</h1>
-<h2 id="overview">Overview</h2>
-<p>For full course information <a href="https://www.bcit.ca/courses/application-development-with-c-comp-2801/">bcit.ca</a>.
-<br>Course taken in <strong>Fall 2025 term</strong> (<a href="https://www.bcit.ca/outlines/20253051984/">outline</a>) with <strong>Bob Langelaan</strong>.</p>
-<ul>
-<li>Midterm and Final <strong><em>in-person</em></strong></li>
-<li>4 quizzes, one each in weeks 3, 5, 8, and 11<ul>
-<li>right at the start of class</li>
-</ul>
-</li>
-<li>8 labs<ul>
-<li>must be submitted to get a mark for labs</li>
-</ul>
-</li>
-<li>There will be 4 assignments</li>
-</ul>
-<p>The course continues from <a href="https://gdoyle87.github.io/COMP2701/">COMP2701</a> and just follows <a href="https://deitel.com/c-how-to-program-9-e/">C How to Program -- Ninth Edition</a>.</p>
+<h1 id="week-9">Week 9</h1>
+<p>This week covers CLI arguments (as well as some basic shell operations), 
+<code>calloc()</code> and <code>realloc()</code>, and a bunch of other random topics that seems to
+just be here to say it was covered..</p>
+<h2 id="command-line-arguments-in-c">Command Line Arguments in C</h2>
+<p>In C, we can grab arguments from the command line when running a program.
+To do this, we can supply two arguments to our main function:
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+
+<span class="c1">// or equivanlently</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+</code></pre></div></p>
+<p><code>int argc</code> stands for the <strong>arg</strong>ument <strong>c</strong>ount and always includes the name of the 
+program as the first argument</p>
+<p><code>char *argv[]</code> stands for the <strong>arg</strong>ument <strong>v</strong>ector. It is an array of strings
+representing the different arguments passed (including the name of the program).</p>
+<div class="asciicast" data-src="../casts/cli.cast" id="cli-cast"></div>
+<p>other:
+<asciinema-player
+  src="../casts/cli.cast"
+  cols="80"
+  rows="24"
+  preload="true"
+  autoplay="false">
+</asciinema-player></p>
 
 
 
@@ -647,14 +656,14 @@
     
     
       
-      <script id="__config" type="application/json">{"base": ".", "features": ["toc.integrate", "navigation.expand", "navigation.sections"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["toc.integrate", "navigation.expand", "navigation.sections"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/asciinema-player@2.6.1/resources/public/js/asciinema-player.js"></script>
       
-        <script src="js/ll_stepper.js"></script>
+        <script src="../js/ll_stepper.js"></script>
       
     
   </body>

@@ -11,7 +11,7 @@ nav:
   - Midterm Study Notes: midterm.md
   - Week 7 - Big O Notation, Selection Sort, Insertion Sort: wk_seven.md
   - Week 8 - Files: wk_eight.md
-  - Week 9 - CLI, calloc and realloc, and other random stuff: wk_eight.md
+  - Week 9 - CLI, calloc and realloc, and other random stuff: wk_nine.md
   - COMP 2701: https://gdoyle87.github.io/COMP2701
   - Other Notes: https://gdoyle87.github.io/
 
@@ -45,9 +45,12 @@ markdown_extensions:
   - pymdownx.details
 
 extra_javascript:
-  - https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.js
+  # - https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.js
+  # - js/asciinema-init.js
+  - https://cdn.jsdelivr.net/npm/asciinema-player@2.6.1/resources/public/js/asciinema-player.js
   - js/ll_stepper.js
 
 extra_css:
-  - https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.css
+  # - https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.css
+  - https://cdn.jsdelivr.net/npm/asciinema-player@2.6.1/resources/public/css/asciinema-player.css
   - styles/print.css
