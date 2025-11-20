@@ -601,7 +601,17 @@ program as the first argument</p>
 representing the different arguments passed (including the name of the program).</p>
 <details class="example" open="open">
 <summary>Example</summary>
-<p><asciinema-player
+<p><div id="asciicast-cli"></div>
+<script>
+  AsciinemaPlayer.create('../casts/cli.cast', document.getElementById('asciicast-cli'), {
+    cols: 80,
+    rows: 24,
+    preload: true,
+    autoPlay: false,
+    poster: 'data:text/plain,▶ Click to play the demo'  // Optional: shows text on black bg before play
+  });
+</script>
+<asciinema-player
   src="../casts/cli.cast"
   cols="80"
   rows="24"
