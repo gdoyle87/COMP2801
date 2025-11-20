@@ -1,0 +1,9 @@
+.ap-player {
+  font-size: 12.5px !important;   /* perfect balance */
+  line-height: 1.35 !important;
+  max-width: 100% !important;
+}
+
+.asciinema-player {
+  max-height: 480px !important;  /* optional safety net */
+}
