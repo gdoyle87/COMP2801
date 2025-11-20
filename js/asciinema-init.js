@@ -1,22 +1,30 @@
-// The player script loads, but Material delays when custom elements are upgraded.
-// This ensures AsciinemaPlayer.create() runs after everything is ready.
-
+// Enhanced init for Material for MkDocs + GitHub Pages + Admonitions
 document.addEventListener("DOMContentLoaded", () => {
-  // Small delay to let Material finish its own initialization
   setTimeout(() => {
-    document.querySelectorAll(".asciinema-player").forEach((el) => {
+    // Scan for any element with a .cast src (covers <asciinema-player> or divs)
+    document.querySelectorAll('[src*=".cast"]').forEach((el) => {
       if (!el.dataset.asciinemaInitialized) {
         const src = el.getAttribute("src");
+        if (!src) return;
+
         const opts = {
-          cols: el.getAttribute("cols") || undefined,
-          rows: el.getAttribute("rows") || undefined,
+          cols: parseInt(el.getAttribute("cols")) || undefined,
+          rows: parseInt(el.getAttribute("rows")) || undefined,
           autoplay: el.hasAttribute("autoplay") || false,
           loop: el.hasAttribute("loop") || false,
+          preload: el.hasAttribute("preload") || false,  // Now handles preload="true"
           poster: el.getAttribute("poster") || undefined,
+          // Add startFrom if needed: startFrom: parseInt(el.getAttribute("start-from")) || 0,
         };
-        AsciinemaPlayer.create(src, el, opts);
-        el.dataset.asciinemaInitialized = "true";
+
+        try {
+          AsciinemaPlayer.create(src, el, opts);
+          el.dataset.asciinemaInitialized = "true";
+          console.log("Asciinema initialized:", src);  // Debug: check console
+        } catch (error) {
+          console.error("Asciinema init failed for", src, error);
+        }
       }
     });
-  }, 100);
+  }, 250);  // Bumped for admonitions
 });
