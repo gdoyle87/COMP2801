@@ -1,9 +1,8 @@
-.ap-player {
-  font-size: 12.5px !important;   /* perfect balance */
-  line-height: 1.35 !important;
+/* STOP the player from stretching to fill the admonition */
+.admonition .asciinema-player,
+.admonition .ap-wrapper,
+.admonition .ap-player {
+  width: auto !important;
   max-width: 100% !important;
-}
-
-.asciinema-player {
-  max-height: 480px !important;  /* optional safety net */
+  display: inline-block !important;
 }
