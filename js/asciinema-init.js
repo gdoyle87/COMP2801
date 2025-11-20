@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const el = document.getElementById("demo-cast");
+  const el = document.getElementById("cli-cast");
   if (!el || !window.AsciinemaPlayer) return;
 
   AsciinemaPlayer.create("casts/cli.cast", el, {
