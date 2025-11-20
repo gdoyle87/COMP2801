@@ -1,0 +1,1454 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://gdoyle87.github.io/COMP2801/wk_five/">
+      
+      
+        <link rel="prev" href="../wk_four/">
+      
+      
+        <link rel="next" href="../wk_six/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Week 5 - Linked Lists and Trees - COMP2801</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.css">
+    
+      <link rel="stylesheet" href="../styles/print.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#week-5" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="COMP2801" class="md-header__button md-logo" aria-label="COMP2801" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            COMP2801
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Week 5 - Linked Lists and Trees
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="COMP2801" class="md-nav__button md-logo" aria-label="COMP2801" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    COMP2801
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_one/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 1 - Formatted Output in C
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_two/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 2 - scanf and Recursion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_three/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 3 - Structures and typedef
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_four/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 4 - Unions, Bit manipulations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Week 5 - Linked Lists and Trees
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 5 - Linked Lists and Trees
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#self-referential-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-Referential Structures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Self-Referential Structures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nodes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linked-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linked Lists
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linked Lists">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traversing-a-linked-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traversing a Linked List
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arrays-vs-linked-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arrays vs Linked Lists
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Arrays vs Linked Lists">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-linked-lists-are-useful" class="md-nav__link">
+    <span class="md-ellipsis">
+      When Linked Lists Are Useful
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-arrays-are-useful" class="md-nav__link">
+    <span class="md-ellipsis">
+      When Arrays Are Useful
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Considerations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Summary
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inserting-into-a-linked-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inserting into a Linked List
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Inserting into a Linked List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-insertion-in-an-unsorted-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Insertion in an Unsorted List
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-insertion-in-a-sorted-linked-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Insertion in a Sorted Linked List
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deleting-a-node-from-a-linked-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deleting a Node from a Linked List
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deleting a Node from a Linked List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-deleting-the-first-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Deleting the First Node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-deleting-a-node-elsewhere" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Deleting a Node Elsewhere
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-if-the-list-is-empty-and-printing-the-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checking if the List is Empty and Printing the List
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Checking if the List is Empty and Printing the List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checking-if-the-list-is-empty" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checking if the List is Empty
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#printing-the-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Printing the List
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merging-two-sorted-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      Merging Two Sorted Lists
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trees
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trees">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-terminology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Terminology
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Terminology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#other-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other Notes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-search-tree-bst" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binary Search Tree (BST)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Binary Search Tree (BST)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preorder-traversal-root-left-right" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preorder Traversal (Root → Left → Right)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inorder-traversal-left-root-right" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inorder Traversal (Left → Root → Right)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postorder-traversal-left-right-root" class="md-nav__link">
+    <span class="md-ellipsis">
+      Postorder Traversal (Left → Right → Root)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pointer-to-pointer-parameters-and-the-insertnode-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pointer-to-Pointer Parameters and the insertNode Example
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pointer-to-Pointer Parameters and the insertNode Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-treeptr-leftptr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why &amp;((*treePtr)-&gt;leftPtr)?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_six/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 6 - Stacks and Queues
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../midterm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Midterm Study Notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_seven/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 7 - Big O Notation, Selection Sort, Insertion Sort
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_eight/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 8 - Files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://gdoyle87.github.io/COMP2701" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    COMP 2701
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://gdoyle87.github.io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Other Notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="week-5">Week 5</h1>
+<p>This week was an introduction to self-referential structures, linked lists, and
+trees.</p>
+<h2 id="self-referential-structures">Self-Referential Structures</h2>
+<p>A structure cannot contain a member of <em>its own type</em> directly, because this
+would require the compiler to know the full size of the structure before its
+layout is complete. However, a structure <strong>can</strong> contain a pointer to its own
+type. This allows structures to reference other structures of the same type.</p>
+<p>This pattern is called a <strong>self-referential structure</strong>.</p>
+<h3 id="nodes">Nodes</h3>
+<p>A <strong>node</strong> is a fundamental building block used in several data structures
+(including linked lists, stacks, queues, and trees). A node stores its own data
+and one or more pointers that describe how to reach other nodes.</p>
+<p>Because these pointers refer to other nodes of the <em>same type</em>, nodes are
+self-referential.</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">node</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="n">nextPtr</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<h3 id="linked-lists">Linked Lists</h3>
+<p>A <strong>linked list</strong> is a linear collection of self-referential <strong>nodes</strong> connected
+by pointer links.</p>
+<p>Unlike an array, a linked list does not require contiguous memory. Each node is
+allocated separately, and each node stores:</p>
+<ul>
+<li>Its <strong>data</strong></li>
+<li>A pointer to the <strong>next</strong> node in the list (<code>nextPtr</code>)</li>
+</ul>
+<p>The list is accessed through a pointer to the <strong>first node</strong>, commonly called
+the <strong>head</strong>. If the list is empty, the head pointer is set to <code>NULL</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">node</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="n">nextPtr</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><img alt="Basic Linked List" src="../images/basic_linked_list.png" /></p>
+<p>The last node in the list has a <code>nextPtr</code> of <code>NULL</code>, indicating that no further
+nodes follow.</p>
+<h4 id="traversing-a-linked-list">Traversing a Linked List</h4>
+<p>To process each element, we use a pointer that starts at the head and moves from
+node to node until <code>NULL</code> is reached.</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">;</span>
+
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span>
+<span class="w">    </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">nextPtr</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="arrays-vs-linked-lists">Arrays vs Linked Lists</h4>
+<p>Both arrays and linked lists store collections of data, but they differ in how
+memory is managed and how elements are accessed.</p>
+<h5 id="when-linked-lists-are-useful">When Linked Lists Are Useful</h5>
+<ul>
+<li>A <strong>linked list</strong> is appropriate when the number of data items is <strong>unknown
+  or changes over time</strong>.</li>
+<li>Linked lists are <strong>dynamic</strong>: nodes can be added or removed as needed at
+  runtime.</li>
+<li>Useful when elements will be frequently <strong>inserted or deleted</strong>, especially
+  in the <strong>middle</strong> of the sequence.</li>
+</ul>
+<h5 id="when-arrays-are-useful">When Arrays Are Useful</h5>
+<ul>
+<li>Arrays are <strong>fixed-size</strong> data structures. The size is determined when the
+  array is created.</li>
+<li>Arrays allow direct (constant-time) access to <strong><em>any</em></strong> element because
+  elements are stored <strong>contiguously</strong> in memory.</li>
+<li>Best when the total number of elements is <strong>known in advance</strong> and <strong>fast
+  indexing</strong> is required.</li>
+</ul>
+<h5 id="memory-considerations">Memory Considerations</h5>
+<ul>
+<li>Arrays may reserve <strong>more space than needed</strong> if sized too large.</li>
+<li>Linked lists only use memory for the nodes currently stored, but <strong>each node
+  requires extra memory for a pointer</strong>, and dynamic allocation involves
+  overhead.</li>
+</ul>
+<h5 id="performance-summary">Performance Summary</h5>
+<table>
+<thead>
+<tr>
+<th>Operation / Property</th>
+<th>Array</th>
+<th>Linked List</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Size</td>
+<td>Fixed at creation</td>
+<td>Grows and shrinks dynamically</td>
+</tr>
+<tr>
+<td>Memory Layout</td>
+<td>Contiguous</td>
+<td>Distributed (each node separately)</td>
+</tr>
+<tr>
+<td>Access by Index</td>
+<td>O(1) direct access</td>
+<td>O(n) traversal</td>
+</tr>
+<tr>
+<td>Insert/Delete at Middle</td>
+<td>Potentially expensive (shift)</td>
+<td>Efficient with pointer adjustments</td>
+</tr>
+<tr>
+<td>Extra Memory Required</td>
+<td>Only for elements</td>
+<td>Pointer stored in each node</td>
+</tr>
+</tbody>
+</table>
+<h4 id="inserting-into-a-linked-list">Inserting into a Linked List</h4>
+<p>There are two common cases for inserting a new node into a singly linked list:</p>
+<ol>
+<li>When the list <strong>does not need to maintain sorted order</strong> (unsorted insertion)</li>
+<li>When the list <strong>must remain sorted</strong> after insertion (sorted insertion)</li>
+</ol>
+<hr />
+<h5 id="1-insertion-in-an-unsorted-list">1. Insertion in an Unsorted List</h5>
+<p>The simplest approach is to insert the new node <strong>at the beginning</strong> of the list.
+This avoids traversal and runs in <strong>O(1)</strong> time.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Allocate memory for the new node.</li>
+<li>Store the data in the new node.</li>
+<li>Set the new node’s <code>nextPtr</code> to point to the current <strong>head</strong>.</li>
+<li>Update the head to point to the new node.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">newPtr</span><span class="o">-&gt;</span><span class="n">nextPtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">;</span>
+<span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newPtr</span><span class="p">;</span>
+</code></pre></div>
+<details class="example" open="open">
+<summary>Unsorted linked list visual</summary>
+<p><div style="max-width: 500px; margin: 0 auto;">
+  <div class="ll-stepper"
+       data-base="../images/unsorted_linked_list/"
+       data-frames="frame_01.png,frame_02.png,frame_03.png,frame_04.png,frame_05.png,frame_06.png">
+  </div>
+</div></p>
+</details>
+<hr />
+<h5 id="2-insertion-in-a-sorted-linked-list">2. Insertion in a Sorted Linked List</h5>
+<p>When the list is sorted, we must find the <strong>correct position</strong> for the new node
+so the ordering is preserved.</p>
+<p>We use two traversal pointers:</p>
+<ul>
+<li><code>previousPtr</code> (tracks the node <em>before</em> the insertion point)</li>
+<li><code>currentPtr</code> (used to walk the list)</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Allocate memory for the new node. If allocation fails, do not modify the list.</li>
+<li>Store the new data in the node and set its <code>nextPtr</code> to <code>NULL</code> initially.</li>
+<li>
+<p>Initialize traversal pointers:</p>
+</li>
+<li>
+<p><code>previousPtr = NULL</code></p>
+</li>
+<li>
+<p><code>currentPtr = head</code></p>
+</li>
+<li>
+<p>Traverse the list to locate the correct insertion point:</p>
+</li>
+<li>
+<p>While <code>currentPtr != NULL</code> <strong>and</strong> the new value is greater than
+     <code>currentPtr-&gt;data</code>:</p>
+<ul>
+<li><code>previousPtr = currentPtr</code></li>
+<li><code>currentPtr = currentPtr-&gt;nextPtr</code></li>
+</ul>
+</li>
+<li>
+<p>Insert the new node:</p>
+</li>
+<li>
+<p><strong>If <code>previousPtr</code> is <code>NULL</code></strong>, insert at <strong>beginning</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">newPtr</span><span class="o">-&gt;</span><span class="n">nextPtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">;</span>
+<span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newPtr</span><span class="p">;</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>Otherwise</strong>, insert between <code>previousPtr</code> and <code>currentPtr</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">previousPtr</span><span class="o">-&gt;</span><span class="n">nextPtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newPtr</span><span class="p">;</span>
+<span class="n">newPtr</span><span class="o">-&gt;</span><span class="n">nextPtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">currentPtr</span><span class="p">;</span>
+</code></pre></div>
+</li>
+</ol>
+<details class="example" open="open">
+<summary>Sorted linked list visual</summary>
+<p><div style="max-width: 500px; margin: 0 auto;">
+  <div class="ll-stepper"
+       data-base="../images/sorted_linked_list/"
+       data-frames="frame_01.png,frame_02.png,frame_03.png,frame_04.png,frame_05.png,frame_06.png,frame_07.png,frame_08.png,frame_09.png">
+  </div>
+</div></p>
+</details>
+<hr />
+<h4 id="deleting-a-node-from-a-linked-list">Deleting a Node from a Linked List</h4>
+<p>Deletion removes a node and reconnects the surrounding nodes so the list remains intact. Two common cases exist: deleting the <strong>first node</strong> and deleting a node <strong>elsewhere</strong> in the list.</p>
+<hr />
+<h5 id="1-deleting-the-first-node">1. Deleting the First Node</h5>
+<p>When the first node is removed, the <strong>head pointer</strong> must be updated to point to the second node.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Assign a temporary pointer to the current head node.</li>
+<li>Move the head pointer to the next node.</li>
+<li>Free the memory of the removed node.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">ListNodePtr</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">;</span>
+<span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="o">-&gt;</span><span class="n">nextPtr</span><span class="p">;</span>
+<span class="n">free</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
+</code></pre></div>
+<details class="example" open="open">
+<summary>Delete from start (visual)</summary>
+<p><div style="max-width: 500px; margin: 0 auto;">
+  <div class="ll-stepper"
+       data-base="../images/delete_start_linked_list/"
+       data-frames="frame_01.png,frame_02.png,frame_03.png">
+  </div>
+</div></p>
+</details>
+<hr />
+<h5 id="2-deleting-a-node-elsewhere">2. Deleting a Node Elsewhere</h5>
+<p>When deleting from the middle or end, traversal pointers are used to find the node <strong>preceding</strong> the one to remove.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>
+<p>Traverse the list using two pointers:</p>
+</li>
+<li>
+<p><code>previousPtr</code> tracks the node before the one to delete.</p>
+</li>
+<li>
+<p><code>currentPtr</code> tracks the node being inspected.</p>
+</li>
+<li>
+<p>Stop when <code>currentPtr</code> points to the node to remove.</p>
+</li>
+<li>Update <code>previousPtr-&gt;nextPtr</code> to skip over the deleted node.</li>
+<li>Free the deleted node.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">previousPtr</span><span class="o">-&gt;</span><span class="n">nextPtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">currentPtr</span><span class="o">-&gt;</span><span class="n">nextPtr</span><span class="p">;</span>
+<span class="n">free</span><span class="p">(</span><span class="n">currentPtr</span><span class="p">);</span>
+</code></pre></div>
+<details class="example" open="open">
+<summary>Delete elsewhere (visual)</summary>
+<p><div style="max-width: 500px; margin: 0 auto;">
+  <div class="ll-stepper"
+       data-base="../images/delete_elsewhere_linked_list/"
+       data-frames="frame_01.png,frame_02.png,frame_03.png,frame_04.png,frame_05.png">
+  </div>
+</div></p>
+</details>
+<hr />
+<p>Deleting requires careful pointer management to ensure that the remaining nodes stay properly linked and no memory leaks occur.</p>
+<h4 id="checking-if-the-list-is-empty-and-printing-the-list">Checking if the List is Empty and Printing the List</h4>
+<p>These utility functions help inspect a linked list without modifying it.</p>
+<hr />
+<h5 id="checking-if-the-list-is-empty">Checking if the List is Empty</h5>
+<p>The <strong><code>isEmpty</code></strong> function determines whether a linked list contains any
+nodes.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">isEmpty</span><span class="p">(</span><span class="n">ListNodePtr</span><span class="w"> </span><span class="n">sPtr</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">sPtr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h5 id="printing-the-list">Printing the List</h5>
+<p>The <strong><code>printList</code></strong> function traverses the list and displays its contents. If
+the list is empty, it reports that to the user; otherwise, it prints each
+node’s data value in sequence.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">printList</span><span class="p">(</span><span class="n">ListNodePtr</span><span class="w"> </span><span class="n">currentPtr</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isEmpty</span><span class="p">(</span><span class="n">currentPtr</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;List is empty.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;The list is:&quot;</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">currentPtr</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%c --&gt; &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">currentPtr</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span>
+<span class="w">            </span><span class="n">currentPtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">currentPtr</span><span class="o">-&gt;</span><span class="n">nextPtr</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;NULL</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This function is often used for debugging or visualizing the list’s current
+state after insertions or deletions.</p>
+<hr />
+<h5 id="merging-two-sorted-lists">Merging Two Sorted Lists</h5>
+<ol>
+<li>
+<p>initialize pointers</p>
+<ol>
+<li><code>prevPtr</code> points to NULL</li>
+<li><code>currPtr</code> points to beginning of list1</li>
+<li><code>tempPtr</code> points to beginning of list2</li>
+</ol>
+</li>
+<li>
+<p>Loop through each element of list2 (using <code>tempPtr</code>)</p>
+<ol>
+<li>
+<p>find the correct insertion point in list 1</p>
+<ol>
+<li>walk the pointers until <code>tempPtr-&gt;data</code> is less than or equal to <code>currentPtr-&gt;data</code> or <code>currentPtr</code> becomes <code>NULL</code></li>
+</ol>
+</li>
+<li>
+<p>Insert the node</p>
+<ol>
+<li>
+<p>if <code>prevPtr</code> is <code>NULL</code> then insert at head by</p>
+<ol>
+<li>pointing the List2 pointer to the <code>tempPtr-&gt;next</code> node</li>
+<li>updating the <code>tempPtr-&gt;next</code> node to point to the List1 pointer</li>
+<li>updating the List1 pointer to point to the <code>tempPtr</code></li>
+</ol>
+</li>
+<li>
+<p>otherwise:</p>
+<ol>
+<li>pointing the List2 pointer to the <code>tempPtr-&gt;next</code> node</li>
+<li>updating the <code>prevPtr&gt;next</code> node to point to the <code>tempPtr</code> </li>
+<li>updating the <code>tempPtr-&gt;next</code> to point to the <code>currentPtr</code></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>Advance the pointers</p>
+<ol>
+<li>move <code>prevPtr</code> to the <code>tempPtr</code> node</li>
+<li>move <code>tempPtr</code> to the List2 pointer.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<details class="example" open="open">
+<summary>Merge (visual)</summary>
+<p><div style="max-width: 500px; margin: 0 auto;">
+  <div class="ll-stepper"
+       data-base="../images/merge_linked_lists/"
+       data-frames=" frame_01.png,frame_02.png,frame_03.png,frame_04.png,frame_05.png, frame_06.png,frame_07.png,frame_08.png,frame_09.png,frame_10.png, frame_11.png,frame_12.png,frame_13.png,frame_14.png,frame_15.png, frame_16.png,frame_17.png,frame_18.png,frame_19.png,frame_20.png, frame_21.png">
+  </div>
+</div></p>
+</details>
+<hr />
+<h3 id="trees">Trees</h3>
+<p>A <strong>tree</strong> is a nonlinear, two-dimensional data structure made up of <strong>nodes</strong>.
+Unlike linear structures such as arrays or linked lists, trees organize data
+hierarchically.</p>
+<p>Each <strong>node</strong> in a tree may contain multiple links to other nodes. In a
+<strong>binary tree</strong>, each node contains <strong>two links</strong>—commonly called the <strong>left</strong>
+and <strong>right</strong> child pointers. Either or both of these links can be <code>NULL</code>.</p>
+<p><img alt="Basic Tree Structure" src="../images/basic_tree.png" /></p>
+<hr />
+<h4 id="basic-terminology">Basic Terminology</h4>
+<ul>
+<li><strong>Root node</strong> – The topmost node in the tree. It serves as the entry point.</li>
+<li><strong>Child node</strong> – A node referenced by another node.</li>
+<li><strong>Parent node</strong> – A node that links to one or more children.</li>
+<li><strong>Left child</strong> – The first node in the left subtree of a parent.</li>
+<li><strong>Right child</strong> – The first node in the right subtree of a parent.</li>
+<li><strong>Siblings</strong> – Nodes that share the same parent.</li>
+<li><strong>Leaf node</strong> – A node with no children (both links are <code>NULL</code>).</li>
+</ul>
+<hr />
+<h5 id="other-notes">Other Notes</h5>
+<ul>
+<li>Not setting a leaf node’s links to <code>NULL</code> can lead to runtime errors.</li>
+<li>A tree may be empty (no root node) or contain a hierarchy of nodes connected
+  by pointers.</li>
+<li>In computer science diagrams, trees are typically drawn with the <strong>root at the
+  top</strong>, opposite of how trees appear in nature.</li>
+</ul>
+<h4 id="binary-search-tree-bst">Binary Search Tree (BST)</h4>
+<p>A <strong>binary search tree (BST)</strong> is a special type of binary tree that stores
+<strong>unique values</strong> and maintains a specific ordering property:</p>
+<ul>
+<li>All values in the <strong>left subtree</strong> of a node are <strong>less than</strong> the value in
+  the node’s parent.</li>
+<li>All values in the <strong>right subtree</strong> are <strong>greater than</strong> the value in the
+  node’s parent.</li>
+</ul>
+<p>This ordering allows efficient <strong>search</strong>, <strong>insertion</strong>, and <strong>deletion</strong>
+operations.</p>
+<p><img alt="Binary Search Tree Example" src="../images/bst_example.png" /></p>
+<p>In the example above, the tree has nine values. Notice that:</p>
+<ul>
+<li>Every left child is smaller than its parent.</li>
+<li>Every right child is larger than its parent.</li>
+<li>The <strong>shape of a BST</strong> depends on the <strong>order of insertion</strong>. Inserting the
+  same numbers in a different order can produce a completely different tree
+  structure.</li>
+</ul>
+<p>This property enables fast lookups—on average <strong>O(log n)</strong> time—but in the
+worst case (such as inserting sorted data without balancing) performance can
+degenerate to <strong>O(n)</strong>.</p>
+<h5 id="preorder-traversal-root-left-right">Preorder Traversal (Root → Left → Right)</h5>
+<p>In a <strong>preorder traversal</strong>, each node is visited before its subtrees:</p>
+<ol>
+<li>Visit the root.</li>
+<li>Traverse the left subtree.</li>
+<li>Traverse the right subtree.</li>
+</ol>
+<p>This means the root is always processed first.</p>
+<details class="example" open="open">
+<summary>Pre-order Traversal Visual</summary>
+<p><div style="text-align: center;">
+<video controls autoplay loop muted style="max-width: 500px; border-radius: 8px;">
+<source src="../images/preorder_traversal.webm" type="video/webm">
+Your browser does not support the video tag.
+</video>
+</div></p>
+</details>
+<hr />
+<h5 id="inorder-traversal-left-root-right">Inorder Traversal (Left → Root → Right)</h5>
+<p>In an <strong>inorder traversal</strong>, the order ensures that nodes are visited in <strong>sorted order</strong> for a binary search tree:</p>
+<ol>
+<li>Traverse the left subtree.</li>
+<li>Visit the root.</li>
+<li>Traverse the right subtree.</li>
+</ol>
+<p>This traversal is often used to output data in ascending order.</p>
+<details class="example" open="open">
+<summary>In-order Traversal Visual</summary>
+<p><div style="text-align: center;">
+<video controls autoplay loop muted style="max-width: 500px; border-radius: 8px;">
+<source src="../images/inorder_traversal.webm" type="video/webm">
+Your browser does not support the video tag.
+</video>
+</div></p>
+</details>
+<hr />
+<h5 id="postorder-traversal-left-right-root">Postorder Traversal (Left → Right → Root)</h5>
+<p>In a <strong>postorder traversal</strong>, subtrees are processed <strong>before</strong> the parent node:</p>
+<ol>
+<li>Traverse the left subtree.</li>
+<li>Traverse the right subtree.</li>
+<li>Visit the root.</li>
+</ol>
+<p>This traversal is useful for <strong>deleting</strong> or <strong>freeing</strong> nodes, since children are handled before their parent.</p>
+<details class="example" open="open">
+<summary>Post-order Traversal Visual</summary>
+<p><div style="text-align: center;">
+<video controls autoplay loop muted style="max-width: 500px; border-radius: 8px;">
+<source src="../images/postorder_traversal.webm" type="video/webm">
+Your browser does not support the video tag.
+</video>
+</div></p>
+</details>
+<hr />
+<h4 id="pointer-to-pointer-parameters-and-the-insertnode-example">Pointer-to-Pointer Parameters and the <code>insertNode</code> Example</h4>
+<p>The <strong>pointer-to-pointer</strong> pattern is required when a function must <strong>modify a pointer owned by the caller</strong> (e.g., the tree’s root or a child link). Passing the address of that pointer lets the function assign to it directly.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">insertNode</span><span class="p">(</span><span class="n">TreeNodePtr</span><span class="w"> </span><span class="o">*</span><span class="n">treePtr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">treePtr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">*</span><span class="n">treePtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="w"> </span><span class="o">**</span><span class="n">treePtr</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">treePtr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="p">(</span><span class="o">*</span><span class="n">treePtr</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<span class="w">            </span><span class="p">(</span><span class="o">*</span><span class="n">treePtr</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">leftPtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<span class="w">            </span><span class="p">(</span><span class="o">*</span><span class="n">treePtr</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">rightPtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d not inserted. No memory available.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">treePtr</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">insertNode</span><span class="p">(</span><span class="o">&amp;</span><span class="p">((</span><span class="o">*</span><span class="n">treePtr</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">leftPtr</span><span class="p">),</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">treePtr</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">insertNode</span><span class="p">(</span><span class="o">&amp;</span><span class="p">((</span><span class="o">*</span><span class="n">treePtr</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">rightPtr</span><span class="p">),</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;dup</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><code>treePtr</code> has type <code>TreeNode **</code> (pointer to a <code>TreeNode *</code>).</li>
+<li><code>*treePtr</code> is the actual <code>TreeNode *</code> (root or a child link).</li>
+<li><code>(*treePtr)-&gt;member</code> accesses a field of the node that <code>*treePtr</code> points to.</li>
+</ul>
+<hr />
+<h5 id="why-treeptr-leftptr">Why <code>&amp;((*treePtr)-&gt;leftPtr)</code>?</h5>
+<p>When you recurse left or right, you must pass <strong>the address of the child pointer</strong> so the callee can update that pointer in place.</p>
+<ul>
+<li><code>(*treePtr)-&gt;leftPtr</code> has type <code>TreeNode *</code> (a child link).</li>
+<li><code>&amp;((*treePtr)-&gt;leftPtr)</code> therefore has type <code>TreeNode **</code> — exactly what <code>insertNode</code> expects.</li>
+</ul>
+<p>This is the critical difference: you are <strong>not</strong> passing the address of the node; you are passing the <strong>address of the pointer that stores the child link</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Types at each step</span>
+<span class="n">TreeNodePtr</span><span class="w">  </span><span class="n">left</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">treePtr</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">leftPtr</span><span class="p">;</span><span class="w">   </span><span class="c1">// TreeNode *</span>
+<span class="n">TreeNodePtr</span><span class="w"> </span><span class="o">*</span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="p">((</span><span class="o">*</span><span class="n">treePtr</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">leftPtr</span><span class="p">);</span><span class="w"> </span><span class="c1">// TreeNode **</span>
+<span class="n">insertNode</span><span class="p">(</span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">);</span><span class="w">                   </span><span class="c1">// matches parameter type</span>
+</code></pre></div>
+<p><strong>Operator precedence and parentheses</strong></p>
+<ul>
+<li><code>-&gt;</code> binds tighter than unary <code>&amp;</code>, so <code>&amp;(*treePtr)-&gt;leftPtr</code> would be parsed the same as <code>&amp;((*treePtr)-&gt;leftPtr)</code>.</li>
+<li>The extra parentheses are kept for readability and to avoid misreading the expression as <code>&amp;*treePtr</code> (which simplifies to <code>treePtr</code>, not the child field’s address).</li>
+</ul>
+<p><strong>Contrast:</strong></p>
+<ul>
+<li><code>&amp;*treePtr</code> → <code>treePtr</code> (type <code>TreeNode **</code>), the address-of followed by dereference cancels out.</li>
+<li><code>&amp;((*treePtr)-&gt;leftPtr)</code> → address <strong>of the left child pointer field</strong> inside the node pointed to by <code>*treePtr</code>.</li>
+</ul>
+<p>A helpful way to read it:</p>
+<ol>
+<li><code>*treePtr</code> → the current node pointer.</li>
+<li><code>(*treePtr)-&gt;leftPtr</code> → the left child pointer stored in that node.</li>
+<li><code>&amp;((*treePtr)-&gt;leftPtr)</code> → the address of that child pointer (so we can assign to it inside the callee).</li>
+</ol>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["toc.integrate", "navigation.expand", "navigation.sections"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/asciinema-player@3.0.1/dist/bundle/asciinema-player.js"></script>
+      
+        <script src="../js/ll_stepper.js"></script>
+      
+    
+  </body>
+</html>

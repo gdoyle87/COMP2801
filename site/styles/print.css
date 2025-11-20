@@ -1,0 +1,173 @@
+/* ===== CLEAN, COMPACT PRINT (Material for MkDocs) ===== */
+@media print {
+  /* Page + base */
+  @page { size: letter;  margin: 10mm 8mm 12mm 8mm; }
+  html, body { background: #fff !important; color: #000; }
+  body { font-size: 10.5pt; line-height: 1.3; margin:0; padding:0; }
+
+  /* Force light palette for print */
+  :root { color-scheme: light; }
+  [data-md-color-scheme] {
+    --md-default-fg-color: #000;
+    --md-default-bg-color: #fff;
+  }
+
+  /* Remove chrome, use full width */
+  .md-header, .md-sidebar, .md-footer, .md-nav, .md-tabs { display: none !important; }
+  .md-main__inner { margin: 0 !important; }
+  .md-content { max-width: none !important; margin:0; padding:0; }
+
+  /* Tighter vertical rhythm */
+  .md-typeset { line-height: 1.3; }
+  .md-typeset p,
+  .md-typeset ul,
+  .md-typeset ol,
+  .md-typeset blockquote { margin: 6pt 0 !important; }
+  .md-typeset li { margin: 2pt 0 !important; }
+
+  /* Headings as clear section boundaries (less air) */
+  .md-typeset h1 {
+    break-before: page;
+    margin: 10pt 0 6pt;
+    padding-top: 4pt;
+    border-top: 1.2pt solid #000;
+  }
+  .md-typeset h1:first-of-type { break-before: auto; border-top: none; padding-top: 0; }
+  .md-typeset h2 { margin: 10pt 0 6pt; }
+  .md-typeset h3 { margin: 8pt 0 4pt; }
+
+  /* Manual page break helper */
+  .page-break { 
+    display: block;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    break-before: page;
+    page-break-before: always; /* legacy fallback */
+    }
+
+  /* ===== TABLES: compact, bordered, no inside breaks ===== */
+  .md-typeset .md-typeset__table { display: block; overflow: visible !important; }
+  .md-typeset table {
+    width: 100% !important;
+    border-collapse: collapse !important;   /* prevents double lines */
+    table-layout: fixed;                    /* wrap long content */
+    font-size: 9pt;                         /* smaller */
+    line-height: 1.2;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .md-typeset thead th,
+  .md-typeset tbody td {
+    border: 0.5pt solid #444 !important;
+    padding: 2pt 4pt !important;            /* tighter cell padding */
+    vertical-align: top;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+  }
+  .md-typeset thead th { background: #f2f2f2 !important; }
+  .md-typeset tr { break-inside: avoid; }   /* keep rows intact */
+
+  /* ===== CODE BLOCKS: single border, no “weird lines”, no splits ===== */
+  /* Remove any inner borders/shadows first */
+  .highlight, .highlight pre, .md-typeset pre, .md-typeset pre > code {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+  /* Apply one clean border on the outer pre only */
+  .md-typeset pre {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    background: #fafafa !important;
+    border: 0.6pt solid #444 !important;
+    padding: 6pt 8pt !important;
+    font-size: 9pt;             /* slightly smaller monospace */
+    line-height: 1.25;
+    white-space: pre-wrap;      /* allow soft wrapping over page */
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+  /* Inline code: compact and legible */
+  .md-typeset code {
+    background: #f3f3f3 !important;
+    border: 0.4pt solid #bbb;
+    padding: 0 1.5pt;
+    font-size: 9pt;
+  }
+
+  /* Admonitions: clear but compact, kept together */
+  .md-typeset .admonition,
+  .md-typeset details {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border: 0.6pt solid #444 !important;
+    background: #fff !important;
+    padding: 6pt 8pt !important;
+    margin: 8pt 0 !important;
+  }
+  .md-typeset .admonition-title { font-weight: 700; margin-bottom: 3pt; }
+
+  /* Images/figures */
+  /* Scale image containers (figures) in print */
+@media print {
+  .md-typeset img[src$="basic_linked_list.png"],
+  .md-typeset img[src$="basic_tree.png"] {
+    width: 60% !important;
+    max-width: 60% !important;
+    height: auto !important;
+    margin: 4pt auto !important;
+  }
+
+  /* if they’re wrapped in <a class="md-image"> or <figure>, shrink container too */
+  .md-typeset a.md-image:has(> img[src$="basic_linked_list.png"]),
+  .md-typeset a.md-image:has(> img[src$="basic_tree.png"]),
+  .md-typeset figure:has(> img[src$="basic_linked_list.png"]),
+  .md-typeset figure:has(> img[src$="basic_tree.png"]) {
+    width: 60% !important;
+    max-width: 60% !important;
+    margin: 4pt auto !important;
+  }
+}
+  .md-typeset hr {
+    margin-top: 4pt !important;
+    margin-bottom: 4pt !important;
+    border: none;
+    border-top: 0.6pt solid #444;  /* subtle line */
+  }
+
+  /* Optional: show link targets in print */
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 8.5pt; }
+
+  /* Tighter grid + 3 columns on Letter */
+  .md-typeset .grid.cards.print-3 {
+    /* 3-up; switch to 2-up automatically if space is tight */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6pt; /* tighter gaps */
+  }
+
+  /* Card box: compact, no shadow, thin border, don’t split across pages */
+  .md-typeset .grid.cards.print-3 > ul > li {
+    padding: 6pt 7pt;
+    border: 0.5pt solid #bbb;
+    border-radius: 3pt;
+    box-shadow: none !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Trim inner spacing */
+  .md-typeset .grid.cards.print-3 p { margin: 4pt 0; }
+  .md-typeset .grid.cards.print-3 pre { margin: 4pt 0; font-size: 8.8pt; }
+  .md-typeset .grid.cards.print-3 code { font-size: 8.8pt; }
+  .md-typeset .grid.cards.print-3 h2,
+  .md-typeset .grid.cards.print-3 h3 { margin: 0 0 4pt; }
+
+  /* If a page is narrow (e.g., big margins), fall back to 2 columns */
+  @page { size: Letter; } /* you already set margins elsewhere */
+  .md-typeset .grid.cards.print-3 {
+    /* Let the browser collapse columns if needed */
+    grid-auto-flow: row;
+  }
+}
+

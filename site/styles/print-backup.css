@@ -1,0 +1,91 @@
+/* ===== PRINT LAYOUT (Material for MkDocs) ===== */
+@media print {
+  /* Page setup */
+  @page { size: A4; margin: 18mm 16mm; }
+  html { background: #fff !important; }
+  body { color: #000; font-size: 11pt; }
+
+  /* Force light palette for print (avoids dark backgrounds) */
+  :root { color-scheme: light; }
+  [data-md-color-scheme] { --md-default-fg-color: #000; --md-default-bg-color: #fff; }
+
+  /* Hide site chrome; use full width for content */
+  .md-header, .md-sidebar, .md-footer, .md-nav, .md-tabs { display: none !important; }
+  .md-main__inner { margin: 0 !important; }
+  .md-content { max-width: none !important; }
+
+  /* Headings & section boundaries */
+  .md-typeset h1 { break-before: page; border-top: 2pt solid #000; padding-top: 6pt; }
+  .md-typeset h1:first-of-type { break-before: auto; border-top: none; padding-top: 0; }
+  .md-typeset h2 { margin-top: 14pt; border-top: 1pt solid #000; padding-top: 6pt; }
+
+  /* Utility class you can use in Markdown: <div class="page-break"></div> */
+  .page-break { break-before: page; }
+
+  /* Tables: borders, compact size, wrap long text, avoid page breaks inside */
+  .md-typeset .md-typeset__table { display: block; overflow: visible !important; }
+  .md-typeset table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 10pt;           /* slightly smaller for print */
+    table-layout: fixed;       /* enables wrapping */
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .md-typeset thead th,
+  .md-typeset tbody td {
+    border: 0.6pt solid #444 !important;
+    padding: 4pt 6pt !important;
+    vertical-align: top;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+  }
+  .md-typeset thead th { background: #f1f1f1 !important; }
+
+  /* Code blocks: don’t split across pages; allow soft wrapping if needed */
+  .md-typeset pre, .md-typeset pre > code, .highlight, .highlight pre {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    white-space: pre-wrap;      /* allows wrapping instead of clipping */
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    border: 0.6pt solid #444 !important;
+    background: #fafafa !important;
+    padding: 6pt 8pt !important;
+    font-size: 9.5pt;
+  }
+
+  /* Inline code contrast in print */
+  .md-typeset code {
+    background: #f3f3f3 !important;
+    border: 0.4pt solid #bbb;
+    padding: 0 2pt;
+  }
+
+  /* Admonitions: clear boundaries and keep together */
+  .md-typeset .admonition,
+  .md-typeset details {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border: 1pt solid #444 !important;
+    background: #fff !important;
+  }
+  .md-typeset .admonition-title { font-weight: 700; }
+
+  /* Images/figures: scale and avoid splitting */
+  .md-typeset img, .md-typeset figure {
+    max-width: 100% !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Lists & blockquotes: avoid awkward breaks */
+  .md-typeset ul, .md-typeset ol, .md-typeset blockquote, .md-typeset p {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Links: optional—show URL in parentheses for print */
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; }
+}
+
