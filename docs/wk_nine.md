@@ -23,14 +23,6 @@ program as the first argument
 representing the different arguments passed (including the name of the program).
 
 ???+ example
-    <asciinema-player class="asciinema-player"
-      src="../casts/cli.cast"
-      cols="80"
-      rows="24"
-      preload="true"
-      autoplay="false">
-    </asciinema-player> 
-
     ```c
     #include <stdio.h>
     
@@ -41,5 +33,17 @@ representing the different arguments passed (including the name of the program).
         printf("Argument %d: %-10s\n", i + 1, argv[i]);
       }
     }
-     
     ```
+
+    <asciinema-player class="asciinema-player"
+      src="../casts/cli.cast"
+      cols="120"
+      rows="12"
+      preload="true"
+      autoplay="false"
+      speed="1.2">
+    </asciinema-player> 
+
+---
+
+

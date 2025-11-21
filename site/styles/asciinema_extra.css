@@ -1,0 +1,8 @@
+/* STOP the player from stretching to fill the admonition */
+.admonition .asciinema-player,
+.admonition .ap-wrapper,
+.admonition .ap-player {
+  width: auto !important;
+  max-width: 100% !important;
+  display: inline-block !important;
+}
