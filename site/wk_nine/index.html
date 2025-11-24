@@ -516,6 +516,57 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#shell-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell Operators
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shell Operators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#output-redirection-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output redirection operator &gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-append-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output append operator &gt;&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-redirection-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input redirection operator &lt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pipe-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pipe operator |
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -597,8 +648,9 @@ To do this, we can supply two arguments to our main function:
 
 <span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span>
 </code></pre></div></p>
-<p><code>int argc</code> stands for the <strong>arg</strong>ument <strong>c</strong>ount and always includes the name of the 
-program as the first argument</p>
+<p><code>int argc</code> stands for the <strong>arg</strong>ument <strong>c</strong>ount and always includes the name
+of the program as the first counted element (a program <em>always</em> has at
+least one argument as a result).</p>
 <p><code>char *argv[]</code> stands for the <strong>arg</strong>ument <strong>v</strong>ector. It is an array of strings
 representing the different arguments passed (including the name of the program).</p>
 <details class="example" open="open">
@@ -615,6 +667,69 @@ representing the different arguments passed (including the name of the program).
 </code></pre></div>
 <p><asciinema-player class="asciinema-player"
   src="../casts/cli.cast"
+  cols="120"
+  rows="12"
+  preload="true"
+  autoplay="false"
+  speed="1.2">
+</asciinema-player> </p>
+</details>
+<hr />
+<h2 id="shell-operators">Shell Operators</h2>
+<p>These operators belong to the command-line environment, not to C. They behave
+the same idea-wise in Unix shells (bash, zsh, etc.) and in Windows
+CMD/PowerShell, even if some details differ. These operators let you combine,
+chain, and repurpose command-line programs by directing where their input comes
+from and where their output goes, making them far more flexible to use at the
+terminal.</p>
+<h3 id="output-redirection-operator">Output redirection operator <code>&gt;</code></h3>
+<p>Sends a program’s stdout to a file, replacing the file if it already exists.</p>
+<details class="note" open="open">
+<summary>Output redirection operator <code>&gt;</code> Example</summary>
+<p><asciinema-player class="asciinema-player"
+  src="../casts/redirect_1_overwrite.cast"
+  cols="120"
+  rows="12"
+  preload="true"
+  autoplay="false"
+  speed="1.2">
+</asciinema-player> </p>
+</details>
+<hr />
+<h3 id="output-append-operator">Output append operator <code>&gt;&gt;</code></h3>
+<p>Appends stdout to the end of a file instead of overwriting it.</p>
+<details class="note" open="open">
+<summary>Output append redirection operator <code>&gt;&gt;</code> Example</summary>
+<p><asciinema-player class="asciinema-player"
+  src="../casts/redirect_2_append.cast"
+  cols="120"
+  rows="12"
+  preload="true"
+  autoplay="false"
+  speed="1.2">
+</asciinema-player> </p>
+</details>
+<hr />
+<h3 id="input-redirection-operator">Input redirection operator <code>&lt;</code></h3>
+<p>Uses a file as stdin for the program.</p>
+<details class="note" open="open">
+<summary>Input redirection operator <code>&lt;</code> Example</summary>
+<p><asciinema-player class="asciinema-player"
+  src="../casts/redirect_3_stdin.cast"
+  cols="120"
+  rows="12"
+  preload="true"
+  autoplay="false"
+  speed="1.2">
+</asciinema-player> </p>
+</details>
+<hr />
+<h3 id="pipe-operator">Pipe operator <code>|</code></h3>
+<p>Connects the <code>stdout</code> of one program to the <code>stdin</code> of another.</p>
+<details class="note" open="open">
+<summary>Pipe operator <code>|</code> Example</summary>
+<p><asciinema-player class="asciinema-player"
+  src="../casts/redirect_4_pipe.cast"
   cols="120"
   rows="12"
   preload="true"
