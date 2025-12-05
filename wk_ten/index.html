@@ -573,9 +573,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#index-files" class="md-nav__link">
+  <a href="#creating-index-files" class="md-nav__link">
     <span class="md-ellipsis">
-      Index Files
+      Creating Index Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-an-index-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using an Index File
     </span>
   </a>
   
@@ -583,15 +592,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-an-index-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      Using an Index File
-    </span>
-  </a>
   
 </li>
       
@@ -727,7 +727,7 @@ information about the data and each record’s key and its byte offset, an index
 value, which allows a program reading the data to jump directly to the required
 record.</p>
 <p>Think of it like the index in a textbook.</p>
-<h3 id="index-files">Index Files</h3>
+<h3 id="creating-index-files">Creating Index Files</h3>
 <p>Index files typically have two parts to them.</p>
 <ol>
 <li>
@@ -752,15 +752,14 @@ This usually includes:</p>
 </ol>
 <div class="admonition info">
 <p class="admonition-title">Creating an Index File</p>
-<p>This is the typical process for creating an index file for a given data file.</p>
-<ol>
-<li>Read the data file sequentially.</li>
-<li>For each record, record its key and the file position where it starts.</li>
-<li>Store all (key, offset) pairs in an array.</li>
-<li>Sort this array by key (using qsort).</li>
-<li>Write the index header.</li>
-<li>Write all index records in sorted order.</li>
-</ol>
+<p>This is the typical process for creating an index file for a given data file.
+<div class="highlight"><pre><span></span><code>1. Read the data file sequentially.
+2. For each record, record its key and the file position where it starts.
+3. Store all (key, offset) pairs in an array.
+4. Sort this array by key (using qsort).
+5. Write the index header.
+6. Write all index records in sorted order.
+</code></pre></div></p>
 <p>This produces a compact structure the program can search quickly.</p>
 </div>
 <div class="admonition abstract">
@@ -781,7 +780,7 @@ This usually includes:</p>
 </code></pre></div></p>
 </div>
 <hr />
-<h2 id="using-an-index-file">Using an Index File</h2>
+<h3 id="using-an-index-file">Using an Index File</h3>
 <p>Once the index file is created, the program can use it to quickly locate and
 load specific records from the data file without scanning.</p>
 <div class="admonition info">
