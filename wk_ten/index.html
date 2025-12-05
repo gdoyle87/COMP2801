@@ -730,24 +730,26 @@ record.</p>
 <h3 id="index-files">Index Files</h3>
 <p>Index files typically have two parts to them.</p>
 <ol>
-<li><strong>Index Header</strong></li>
-</ol>
+<li>
+<p><strong>Index Header</strong></p>
 <p>The header contains general information needed to read and interpret the index.
-  This usually includes:</p>
+This usually includes:</p>
 <ul>
-<li>the number of records</li>
-<li>the size or format of each key</li>
-<li>any identifying information linking this index to the corresponding data file</li>
+<li>the number of records  </li>
+<li>the size or format of each key  </li>
+<li>any identifying information linking this index to the corresponding data file  </li>
 </ul>
 <p>The header does not contain any actual record data.</p>
-<ol>
-<li><strong>Index Records</strong></li>
-</ol>
+</li>
+<li>
+<p><strong>Index Records</strong></p>
 <p>Each index record stores two pieces of information:</p>
 <ul>
-<li>the key for the record</li>
+<li>the key for the record  </li>
 <li>the byte offset of that record in the data file</li>
 </ul>
+</li>
+</ol>
 <div class="admonition info">
 <p class="admonition-title">Creating an Index File</p>
 <p>This is the typical process for creating an index file for a given data file.</p>
