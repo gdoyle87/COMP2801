@@ -604,30 +604,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#other-topics_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Other Topics
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Other Topics">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#variable-argument-lists_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Variable Argument Lists
-    </span>
-  </a>
-  
-</li>
-        
           <li class="md-nav__item">
   <a href="#constant-literal-suffixes" class="md-nav__link">
     <span class="md-ellipsis">
@@ -859,6 +835,7 @@ that all bytes are set to zero.</p>
 arguments as they are multiplied together and all bits set to 0 so passing them 
 in the wrong order will still produce a correct result. </p>
 </div>
+<hr />
 <h2 id="realloc"><code>realloc</code></h2>
 <p><code>realloc</code> is used to resize a previously allocated block of memory. It takes two
 arguments:</p>
@@ -891,38 +868,9 @@ temporary pointer first.</p>
 <p><code>realloc</code> may move the memory block to a different address. After calling
   <code>realloc</code>, always use the returned pointer and never the original one.</p>
 <h2 id="other-topics">Other Topics</h2>
-<p>These topics were covered in class but received minimal emphasis.</p>
-<h3 id="variable-argument-lists">Variable Argument Lists</h3>
-<p>You can use variable argument lists to create functions with an unspecified number 
-of arguments. This is similar to <code>*args</code> and <code>**kwargs</code> in python.</p>
-<p>To use variable argument lists you must include <code>&lt;stdarg.h&gt;</code> and then put an 
-ellipsis(<code>...</code>) at the end of the parameter list for your function. </p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdarg.h&gt;</span>
-
-<span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">va_list</span><span class="w"> </span><span class="n">args</span><span class="p">;</span>
-<span class="w">    </span><span class="n">va_start</span><span class="p">(</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
-
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">va_arg</span><span class="p">(</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="n">va_end</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">total</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Key functions/macros from <stdarg.h>:</p>
-<ul>
-<li><code>va_list</code> — type used to hold the argument list state</li>
-<li><code>va_start(list, last_named_param)</code> — initialize iteration</li>
-<li><code>va_arg(list, type)</code> — retrieve next argument</li>
-<li><code>va_end(list)</code> — clean up when done</li>
-</ul>
-<h2 id="other-topics_1">Other Topics</h2>
 <p>These topics were covered in class but received very minimal emphasis.</p>
 <hr />
-<h3 id="variable-argument-lists_1">Variable Argument Lists</h3>
+<h3 id="variable-argument-lists">Variable Argument Lists</h3>
 <p>Functions can accept an unspecified number of arguments using <code>&lt;stdarg.h&gt;</code>.
 This is similar to Python's <code>*args</code>, but C provides no runtime type
 information, so each argument's type must be known in advance.</p>
