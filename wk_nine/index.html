@@ -913,6 +913,9 @@ overflow.</p>
 <p>Integer and floating-point literals can be suffixed to control their type. This
 matters when matching function prototypes, avoiding overflow, or controlling
 storage size.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">long</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">    </span><span class="c1">// &#39;5&#39; is an int literal; it is implicitly promoted to long</span>
+<span class="kt">long</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5L</span><span class="p">;</span><span class="w">   </span><span class="c1">// &#39;5L&#39; is a long literal; no promotion occurs</span>
+</code></pre></div>
 <p>Common suffixes:</p>
 <table>
 <thead>
