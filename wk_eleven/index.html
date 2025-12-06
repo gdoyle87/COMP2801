@@ -781,7 +781,7 @@
 <h1 id="week-11">Week 11</h1>
 <p>This week covers the <strong>C preprocessor</strong>, <strong>conditional compilation</strong>, and the
 basics of <strong>multi-file programs</strong>. Sort of odd that these were left to the
-final week in a course called <em>Application Development in C</em>. </p>
+final week in a course called <em>Application Development in C</em>.</p>
 <hr />
 <h2 id="the-c-preprocessor">The C Preprocessor</h2>
 <p>The <strong>C Preprocessor</strong> is a program that processes the source code before it is
@@ -797,15 +797,26 @@ whitespace characters before them on a line.</p>
 <h3 id="the-build-process">The Build Process</h3>
 <p>The preprocessor is the first step in converting a source file to an executable.</p>
 <pre class="mermaid"><code>graph TD
-    A[Source File] --&gt; B(Preprocessor);
-    B --&gt; C[Preprocessed File];
-    C --&gt; D(Compiler);
-    D --&gt; E[Object File];
-    subgraph Linking
-        E --&gt; F(Linker);
-        G[Library Code] --&gt; F;
+    %% Define Styles
+    classDef file fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
+    classDef process fill:#fff3e0,stroke:#e65100,stroke-width:2px,rx:10,ry:10;
+
+    subgraph Preprocessing [Preprocessing Phase]
+        direction TB
+        A[Source File]:::file --&gt; B(Preprocessor):::process
+        B --&gt; C[Preprocessed File]:::file
     end
-    F --&gt; H[Executable File];</code></pre>
+
+    C --&gt; D(Compiler):::process
+    D --&gt; E[Object File]:::file
+
+    subgraph Linking [Linking Phase]
+        direction TB
+        E --&gt; F(Linker):::process
+        G[Library Code]:::file --&gt; F
+    end
+
+    F --&gt; H[Executable File]:::file</code></pre>
 <hr />
 <h2 id="include-directive"><code>#include</code> Directive</h2>
 <p>The <code>#include</code> directive causes a copy of the specified file to be included in
@@ -852,43 +863,24 @@ checking</strong> is performed. A macro without arguments is treated like a symb
 constant.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Macros vs. Functions</p>
+</div>
 <p>A macro performs a <strong>text substitution</strong> and does <strong>no data type
 checking</strong>, unlike functions.</p>
-</div>
 <details class="example" open="open">
 <summary>Area Macro and the Importance of Parentheses</summary>
-<p>Always use parentheses around arguments and the entire macro body to avoid potential precedence issues after substitution.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Definition</th>
-<th style="text-align: left;">Call</th>
-<th style="text-align: left;">Preprocessor Expansion</th>
-<th style="text-align: left;">Issue</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><code>#define CIRCLE_AREA( x ) ( PI *(x)*(x))</code></td>
-<td style="text-align: left;"><code>area=CIRCLE_AREA(4);</code></td>
-<td style="text-align: left;"><code>area=(3.14159*(4)*(4));</code></td>
-<td style="text-align: left;"><strong>Correct</strong></td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>#define CIRCLE_AREA(x) PI * x * x</code></td>
-<td style="text-align: left;"><code>area = CIRCLE_AREA( c + 2);</code></td>
-<td style="text-align: left;"><code>area=3.14159*c+2*c+2</code></td>
-<td style="text-align: left;"><strong>Incorrect</strong> (Due to operator precedence)</td>
-</tr>
-</tbody>
-</table>
 </details>
+<p>Always use parentheses around arguments and the entire macro body to avoid potential precedence issues after substitution.</p>
+<pre><code>| Definition | Call | Preprocessor Expansion | Issue |
+| :--- | :--- | :--- | :--- |
+| `#define CIRCLE_AREA( x ) ( PI *(x)*(x))` | `area=CIRCLE_AREA(4);` | `area=(3.14159*(4)*(4));` | **Correct** |
+| `#define CIRCLE_AREA(x) PI * x * x` | `area = CIRCLE_AREA( c + 2);` | `area=3.14159*c+2*c+2` | **Incorrect** (Due to operator precedence) |
+</code></pre>
 <h3 id="undef-and-continuation"><code>#undef</code> and Continuation</h3>
 <ul>
 <li><strong><code>#undef</code></strong>: Undefines a symbolic constant or macro. If undefined, it can
-later be redefined.</li>
+  later be redefined.</li>
 <li><strong>Continuation</strong>: Place a backslash (<code>\</code>) at the end of a line to continue on
-another line in a macro definition.</li>
+  another line in a macro definition.</li>
 </ul>
 <hr />
 <h2 id="conditional-compilation">Conditional Compilation</h2>
@@ -936,26 +928,28 @@ The structure is similar to the <code>if</code> statement in C.</p>
 </table>
 <div class="admonition info">
 <p class="admonition-title">Note on Evaluation</p>
+</div>
 <p>Preprocessor directives cannot evaluate complex expressions like <code>sizeof</code>,
 cast expressions, or enumeration constants.</p>
-</div>
 <details class="example" open="open">
 <summary>Header Guards (Preventing Multiple Inclusion)</summary>
+</details>
 <p>This pattern ensures a header file's contents are only processed once,
 preventing redefinition errors when the header is included in multiple source
 files.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#ifndef MY_HEADER_H</span>
-<span class="cp">#define MY_HEADER_H</span>
+<pre><code>```c
+#ifndef MY_HEADER_H
+#define MY_HEADER_H
 
-<span class="c1">// ... contents of the header file</span>
+// ... contents of the header file
 
-<span class="cp">#endif</span>
-</code></pre></div>
-</details>
+#endif
+```
+</code></pre>
 <hr />
 <h3 id="debugging-with-conditional-compilation">Debugging with Conditional Compilation</h3>
 <p>A frequent use case is enabling or disabling debug code.</p>
-<p><div class="highlight"><pre><span></span><code><span class="cp">#define DEBUG </span><span class="c1">// Define DEBUG to enable the code block below.</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#define DEBUG </span><span class="c1">// Define DEBUG to enable the code block below.</span>
 
 <span class="c1">// ... some program logic</span>
 
@@ -966,7 +960,7 @@ files.</p>
 
 <span class="c1">// ... more program logic</span>
 </code></pre></div>
-To turn off the debug statements, simply remove or comment out the initial
+<p>To turn off the debug statements, simply remove or comment out the initial
 <code>#define DEBUG</code>. The debugging statements are then ignored by the compiler.</p>
 <hr />
 <h2 id="multi-source-file-programs">Multi-Source File Programs</h2>
