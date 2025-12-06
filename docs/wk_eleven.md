@@ -23,8 +23,18 @@ whitespace characters before them on a line.
 
 The preprocessor is the first step in converting a source file to an executable.
 
-`Source File` → `Preprocessor` → `Preprocessed File` → `Compiler` → `Object
-File` (linked with Library Code) → `Linker` → `Executable File`
+```mermaid
+graph TD
+    A[Source File] --> B(Preprocessor);
+    B --> C[Preprocessed File];
+    C --> D(Compiler);
+    D --> E[Object File];
+    subgraph Linking
+        E --> F(Linker);
+        G[Library Code] --> F;
+    end
+    F --> H[Executable File];
+```
 
 ---
 
