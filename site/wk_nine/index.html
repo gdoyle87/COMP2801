@@ -14,6 +14,8 @@
         <link rel="prev" href="../wk_eight/">
       
       
+        <link rel="next" href="../wk_ten/">
+      
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
@@ -567,10 +569,123 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#calloc" class="md-nav__link">
+    <span class="md-ellipsis">
+      calloc
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#realloc" class="md-nav__link">
+    <span class="md-ellipsis">
+      realloc
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other Topics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Other Topics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variable-argument-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variable Argument Lists
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constant-literal-suffixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constant Literal Suffixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exit-and-atexit" class="md-nav__link">
+    <span class="md-ellipsis">
+      exit and atexit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#goto" class="md-nav__link">
+    <span class="md-ellipsis">
+      goto
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_ten/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 10 - Function Pointers and Index Files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_eleven/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 11 - Preprocessor and Multi-file Programs
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -737,6 +852,222 @@ terminal.</p>
   speed="1.2">
 </asciinema-player> </p>
 </details>
+<hr />
+<h2 id="calloc"><code>calloc</code></h2>
+<p><code>calloc</code> is like <code>malloc</code>, but it initializes all allocated memory to zero. It
+takes two arguments:</p>
+<ul>
+<li>The number of elements</li>
+<li>The size of each element in bytes</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">num_elements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">myZeroedArray</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calloc</span><span class="p">(</span><span class="n">num_elements</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+<span class="cm">/* The memory layout of myZeroedArray would look like this (assuming returned</span>
+<span class="cm">   block starts at address 0x1000):</span>
+
+<span class="cm">   Address     | Value (in binary)</span>
+<span class="cm">   --------------------------------------------------------------</span>
+<span class="cm">   0x1000      | 00000000 00000000 00000000 00000000   (first int)</span>
+<span class="cm">   0x1004      | 00000000 00000000 00000000 00000000   (second int)</span>
+<span class="cm">   0x1008      | 00000000 00000000 00000000 00000000   (third int)</span>
+<span class="cm">   0x100C      | 00000000 00000000 00000000 00000000   (fourth int)</span>
+<span class="cm">*/</span>
+</code></pre></div>
+Unlike malloc, where memory is allocated but not initialized, calloc ensures
+that all bytes are set to zero.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Bob mentioned that, in practice, you don't need to remember the order of the
+arguments as they are multiplied together and all bits set to 0 so passing them 
+in the wrong order will still produce a correct result. </p>
+</div>
+<hr />
+<h2 id="realloc"><code>realloc</code></h2>
+<p><code>realloc</code> is used to resize a previously allocated block of memory. It takes two
+arguments:</p>
+<ul>
+<li>A pointer to a block of memory previously allocated with <code>malloc</code>, <code>calloc</code>,
+  or <code>realloc</code></li>
+<li>The new desired size in bytes</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">num_elements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="n">num_elements</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+
+<span class="cm">/* Later, we decide we need space for 8 ints instead of 4: */</span>
+<span class="n">num_elements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">newArr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">realloc</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="w"> </span><span class="n">num_elements</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+
+<span class="cm">/* After this call:</span>
+<span class="cm">   - If the block can be extended in place, `newArr` will have the same address</span>
+<span class="cm">     as `arr`.</span>
+<span class="cm">   - If it cannot be extended, a new block is allocated elsewhere, the old data</span>
+<span class="cm">     is copied to it, and `arr` is freed automatically.</span>
+<span class="cm">   - The newly allocated portion (the extra bytes) is *not initialized*.</span>
+<span class="cm">*/</span>
+</code></pre></div>
+<p>If <code>realloc</code> fails, it returns NULL and the original pointer remains valid.
+To avoid losing access to the old memory, it's common to assign the result to a
+temporary pointer first.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>realloc</code> may move the memory block to a different address. After calling
+<code>realloc</code>, always use the returned pointer and never the original one.</p>
+</div>
+<hr />
+<h2 id="other-topics">Other Topics</h2>
+<p>These topics were covered in class but received very minimal emphasis.</p>
+<h3 id="variable-argument-lists">Variable Argument Lists</h3>
+<p>Functions can accept an unspecified number of arguments using <code>&lt;stdarg.h&gt;</code>.
+This is similar to Python's <code>*args</code>, but C provides no runtime type
+information, so each argument's type must be known in advance.</p>
+<p>To define such a function, end the parameter list with <code>...</code> and use
+<code>&lt;stdarg.h&gt;</code> macros to iterate through the unnamed arguments.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdarg.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">va_list</span><span class="w"> </span><span class="n">args</span><span class="p">;</span>
+<span class="w">    </span><span class="n">va_start</span><span class="p">(</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">va_arg</span><span class="p">(</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">va_end</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">total</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Key concepts:</p>
+<ul>
+<li><strong><code>va_list</code></strong>: object used to traverse unnamed arguments</li>
+<li><strong><code>va_start(list, last_named_param)</code></strong>: initialize traversal</li>
+<li><strong><code>va_arg(list, type)</code></strong>: read the next argument as the given type</li>
+<li><strong><code>va_end(list)</code></strong>: finalize traversal</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Notes</p>
+<ul>
+<li>Arguments must be read in the order they were passed.</li>
+<li>Using the wrong type with <code>va_arg</code> is undefined behavior.</li>
+<li>Commonly used in wrappers around <code>printf</code>-style functionality.</li>
+</ul>
+</div>
+<hr />
+<h3 id="constant-literal-suffixes">Constant Literal Suffixes</h3>
+<p>Suffixes help control literal type, avoid implicit promotions, and prevent
+overflow.</p>
+<p>Integer and floating-point literals can be suffixed to control their type. This
+matters when matching function prototypes, avoiding overflow, or controlling
+storage size.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">long</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">    </span><span class="c1">// &#39;5&#39; is an int literal; it is implicitly promoted to long</span>
+<span class="kt">long</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5L</span><span class="p">;</span><span class="w">   </span><span class="c1">// &#39;5L&#39; is a long literal; no promotion occurs</span>
+</code></pre></div>
+<p>Common suffixes:</p>
+<table>
+<thead>
+<tr>
+<th>Literal</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>integers</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>U</code></td>
+<td>Unsigned int</td>
+</tr>
+<tr>
+<td><code>L</code></td>
+<td>Long int</td>
+</tr>
+<tr>
+<td><code>UL</code> or <code>LU</code></td>
+<td>Unsigned long</td>
+</tr>
+<tr>
+<td><code>LL</code></td>
+<td>Long long</td>
+</tr>
+<tr>
+<td><code>ULL</code></td>
+<td>Unsigned long long</td>
+</tr>
+<tr>
+<td><strong>floats</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>F</code></td>
+<td>Float (otherwise double)</td>
+</tr>
+<tr>
+<td><code>L</code></td>
+<td>Long double</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Typical Uses</p>
+<ul>
+<li>Prevent overflow in intermediate expressions.</li>
+<li>Match functions that expect <code>float</code>.</li>
+<li>Ensure constants match fixed-width integer types.</li>
+</ul>
+</div>
+<hr />
+<h3 id="exit-and-atexit"><code>exit</code> and <code>atexit</code></h3>
+<p><code>exit</code> terminates the program and runs any cleanup functions previously
+registered with <code>atexit</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">exit</span><span class="p">(</span><span class="n">EXIT_SUCCESS</span><span class="p">);</span>
+<span class="n">exit</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">);</span>
+</code></pre></div>
+<p>Before termination, <code>exit</code> will:</p>
+<ul>
+<li>flush open output streams</li>
+<li>close files</li>
+<li>call all functions registered with <code>atexit</code></li>
+</ul>
+<p><code>atexit</code> registers a function to run automatically when <code>exit</code> is invoked:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">cleanup</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Cleaning up...</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">atexit</span><span class="p">(</span><span class="n">cleanup</span><span class="p">);</span>
+<span class="w">    </span><span class="n">exit</span><span class="p">(</span><span class="n">EXIT_SUCCESS</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Notes</p>
+<ul>
+<li>Functions run in reverse order of registration (LIFO).</li>
+<li>Useful in library code or for guaranteed cleanup.</li>
+</ul>
+</div>
+<hr />
+<h3 id="goto"><code>goto</code></h3>
+<p><code>goto</code> transfers control to a labeled statement within the same function.</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">error_condition</span><span class="p">)</span>
+<span class="w">    </span><span class="k">goto</span><span class="w"> </span><span class="n">cleanup</span><span class="p">;</span>
+
+<span class="nl">cleanup</span><span class="p">:</span>
+<span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">ptr</span><span class="p">);</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Key Points</p>
+<ul>
+<li>Labels must be inside the same function.</li>
+<li>No automatic cleanup occurs; stack variables are not unwound.</li>
+<li>Useful for unified cleanup blocks and breaking out of nested structures.</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Avoid using <code>goto</code> for normal control flow; reserve it for cleanup/error paths.</p>
+</div>
 
 
 

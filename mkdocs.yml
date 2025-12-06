@@ -12,6 +12,8 @@ nav:
   - Week 7 - Big O Notation, Selection Sort, Insertion Sort: wk_seven.md
   - Week 8 - Files: wk_eight.md
   - Week 9 - CLI, calloc and realloc, and other random stuff: wk_nine.md
+  - Week 10 - Function Pointers and Index Files: wk_ten.md
+  - Week 11 - Preprocessor and Multi-file Programs: wk_eleven.md
   - COMP 2701: https://gdoyle87.github.io/COMP2701
   - Other Notes: https://gdoyle87.github.io/
 
