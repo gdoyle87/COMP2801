@@ -870,24 +870,26 @@ checking</strong>, unlike functions.</p>
 <details class="example" open="open">
 <summary>Area Macro and the Importance of Parentheses</summary>
 <p>Always use parentheses around arguments and the entire macro body to avoid potential precedence issues after substitution.</p>
-<div class="admonition failure">
-<p class="admonition-title">Failure</p>
-<p><div class="highlight"><pre><span></span><code><span class="cp">#define PI 3.14159</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#define PI 3.14159</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">area</span><span class="p">;</span>
+
+<span class="c1">// --- FAILURE: Missing Parentheses ---</span>
 <span class="cp">#define CIRCLE_AREA(x) PI * x * x</span>
-<span class="n">area</span><span class="o">=</span><span class="n">CIRCLE_AREA</span><span class="p">(</span><span class="n">c</span><span class="o">+</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="n">area</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CIRCLE_AREA</span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="c1">// Expansion: area = 3.14159 * c + 2 * c + 2; </span>
+<span class="c1">// Result: Incorrect logic due to operator precedence</span>
+
+<span class="cp">#undef CIRCLE_AREA </span><span class="c1">// Undefine the macro so we can redefine it</span>
+
+<span class="c1">// --- SUCCESS: Correct Parentheses ---</span>
+<span class="cp">#define CIRCLE_AREA(x) (PI * (x) * (x))</span>
+
+<span class="n">area</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CIRCLE_AREA</span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="c1">// Expansion: area = (3.14159 * (c + 2) * (c + 2));</span>
+<span class="c1">// Result: Correct calculation</span>
 </code></pre></div>
-This will expand to <code>area=3.14159*c+2*c+2</code> which is incorrect due to order of operations.</p>
-</div>
-<div class="admonition success">
-<p class="admonition-title">Success</p>
-<p><div class="highlight"><pre><span></span><code><span class="cp">#define PI 3.14159</span>
-<span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="cp">#define CIRCLE_AREA( x ) ( PI *(x)*(x)) </span>
-<span class="n">area</span><span class="o">=</span><span class="n">CIRCLE_AREA</span><span class="p">(</span><span class="n">c</span><span class="o">+</span><span class="mi">2</span><span class="p">);</span>
-</code></pre></div>
-This will expand to <code>area=3.14159*4*4</code> which is correct.</p>
-</div>
 </details>
 <h3 id="undef"><code>#undef</code></h3>
 <ul>
