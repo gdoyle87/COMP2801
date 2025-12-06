@@ -1205,14 +1205,21 @@ Must accept two <code>const void *</code> arguments. You must cast them to point
 <hr />
 <h2 id="preprocessor-multi-file-programs">Preprocessor &amp; Multi-File Programs</h2>
 <h3 id="the-preprocessor">The Preprocessor</h3>
-<p>Processes source code before the compiler.
-* <strong><code>#include</code></strong>: Inclusion of files (Headers).
-* <strong><code>#define</code></strong>: Creates symbolic constants or Macros.
-    * Macros perform <strong>text substitution</strong> (no type checking).
-    * !!! warning
-        Use parentheses around arguments in macros to avoid precedence issues.
-* <strong><code>#undef</code></strong>: Undefines a macro.
-* <strong>System Specifics:</strong> You can use <code>#ifdef</code> to handle OS-specific includes (e.g., <code>_WIN32</code> vs <code>_MSC_VER</code>).</p>
+<p>Processes source code before the compiler.</p>
+<ul>
+<li><strong><code>#include</code></strong>: Inclusion of files (Headers).</li>
+<li><strong><code>#define</code></strong>: Creates symbolic constants or Macros.<ul>
+<li>Macros perform <strong>text substitution</strong> (no type checking).</li>
+<li>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+   Use parentheses around arguments in macros to avoid precedence issues.</div>
+</li>
+</ul>
+</li>
+<li><strong><code>#undef</code></strong>: Undefines a macro.</li>
+<li><strong>System Specifics:</strong> You can use <code>#ifdef</code> to handle OS-specific includes (e.g., <code>_WIN32</code> vs <code>_MSC_VER</code>).</li>
+</ul>
 <p><strong>Conditional Compilation</strong>
 Used for debugging or header guards.
 <div class="highlight"><pre><span></span><code><span class="cp">#ifndef MY_HEADER_H </span><span class="c1">// Header Guard</span>
