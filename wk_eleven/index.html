@@ -1,0 +1,1125 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://gdoyle87.github.io/COMP2801/wk_eleven/">
+      
+      
+        <link rel="prev" href="../wk_ten/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Week 11 - Preprocessor and Multi-file Programs - COMP2801</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/asciinema-player@3.12.1/dist/bundle/asciinema-player.css">
+    
+      <link rel="stylesheet" href="../styles/print.css">
+    
+      <link rel="stylesheet" href="../styles/asciinema_extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#week-11" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="COMP2801" class="md-header__button md-logo" aria-label="COMP2801" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            COMP2801
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Week 11 - Preprocessor and Multi-file Programs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="COMP2801" class="md-nav__button md-logo" aria-label="COMP2801" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    COMP2801
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_one/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 1 - Formatted Output in C
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_two/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 2 - scanf and Recursion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_three/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 3 - Structures and typedef
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_four/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 4 - Unions, Bit manipulations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_five/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 5 - Linked Lists and Trees
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_six/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 6 - Stacks and Queues
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../midterm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Midterm Study Notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_seven/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 7 - Big O Notation, Selection Sort, Insertion Sort
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_eight/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 8 - Files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_nine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 9 - CLI, calloc and realloc, and other random stuff
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wk_ten/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 10 - Function Pointers and Index Files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Week 11 - Preprocessor and Multi-file Programs
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 11 - Preprocessor and Multi-file Programs
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-c-preprocessor" class="md-nav__link">
+    <span class="md-ellipsis">
+      The C Preprocessor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The C Preprocessor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-build-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Build Process
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#include-directive" class="md-nav__link">
+    <span class="md-ellipsis">
+      #include Directive
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#define-and-macros" class="md-nav__link">
+    <span class="md-ellipsis">
+      #define and Macros
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="#define and Macros">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symbolic-constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symbolic Constants
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#macros-with-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Macros with Arguments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#undef-and-continuation" class="md-nav__link">
+    <span class="md-ellipsis">
+      #undef and Continuation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditional-compilation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conditional Compilation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conditional Compilation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#directives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-with-conditional-compilation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging with Conditional Compilation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-source-file-programs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Source File Programs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-Source File Programs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sharing-global-variables-extern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sharing Global Variables: extern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limiting-scope-static-keyword" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limiting Scope: static Keyword
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compiling-multi-file-programs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compiling Multi-File Programs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage Classes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://gdoyle87.github.io/COMP2701" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    COMP 2701
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://gdoyle87.github.io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Other Notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="week-11">Week 11</h1>
+<p>This week covers the <strong>C preprocessor</strong>, <strong>conditional compilation</strong>, and the
+basics of <strong>multi-file programs</strong>. Sort of odd that these were left to the
+final week in a course called <em>Application Development in C</em>. </p>
+<hr />
+<h2 id="the-c-preprocessor">The C Preprocessor</h2>
+<p>The <strong>C Preprocessor</strong> is a program that processes the source code before it is
+passed to the compiler. Its main functions are:</p>
+<ul>
+<li><strong>Inclusion</strong> of other files.</li>
+<li><strong>Definition</strong> of symbolic constants and macros.</li>
+<li><strong>Conditional compilation</strong> of program code.</li>
+<li>Conditional execution of preprocessor directives.</li>
+</ul>
+<p>Preprocessor directives always begin with a hash sign (<code>#</code>) and can only have
+whitespace characters before them on a line.</p>
+<h3 id="the-build-process">The Build Process</h3>
+<p>The preprocessor is the first step in converting a source file to an executable.</p>
+<p><code>Source File</code> → <code>Preprocessor</code> → <code>Preprocessed File</code> → <code>Compiler</code> → <code>Object
+File</code> (linked with Library Code) → <code>Linker</code> → <code>Executable File</code></p>
+<hr />
+<h2 id="include-directive"><code>#include</code> Directive</h2>
+<p>The <code>#include</code> directive causes a copy of the specified file to be included in
+place of the directive itself. This is typically used to incorporate <strong>header
+files</strong> that contain common declarations like function prototypes and <code>struct</code>
+definitions.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Format</th>
+<th style="text-align: left;">Search Location</th>
+<th style="text-align: left;">Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>**#include &lt;filename&gt;**</code></td>
+<td style="text-align: left;">Searches <strong>standard library</strong> for the file.</td>
+<td style="text-align: left;">Use for standard library files.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>**#include "filename"**</code></td>
+<td style="text-align: left;">Searches the <strong>current directory</strong>, then the standard library.</td>
+<td style="text-align: left;">Use for user-defined files.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="define-and-macros"><code>#define</code> and Macros</h2>
+<p>The <code>#define</code> directive is used to create <strong>symbolic constants</strong> and
+<strong>macros</strong>.</p>
+<h3 id="symbolic-constants">Symbolic Constants</h3>
+<p>When the program is compiled, all occurrences of the symbolic constant are
+replaced with the replacement text. Once a symbolic constant is created, it
+<strong>cannot be redefined</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Format: #define identifier replacement-text</span>
+<span class="cp">#define PI 3.14159</span>
+</code></pre></div>
+<h3 id="macros-with-arguments">Macros with Arguments</h3>
+<p>A <strong>macro</strong> is an operation defined in a <code>#define</code> directive. A macro with
+arguments has its arguments substituted for the replacement text when the macro
+is expanded. Macros perform a <strong>text substitution</strong>, meaning <strong>no data type
+checking</strong> is performed. A macro without arguments is treated like a symbolic
+constant.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Macros vs. Functions</p>
+<p>A macro performs a <strong>text substitution</strong> and does <strong>no data type
+checking</strong>, unlike functions.</p>
+</div>
+<details class="example" open="open">
+<summary>Area Macro and the Importance of Parentheses</summary>
+<p>Always use parentheses around arguments and the entire macro body to avoid potential precedence issues after substitution.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Definition</th>
+<th style="text-align: left;">Call</th>
+<th style="text-align: left;">Preprocessor Expansion</th>
+<th style="text-align: left;">Issue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>#define CIRCLE_AREA( x ) ( PI *(x)*(x))</code></td>
+<td style="text-align: left;"><code>area=CIRCLE_AREA(4);</code></td>
+<td style="text-align: left;"><code>area=(3.14159*(4)*(4));</code></td>
+<td style="text-align: left;"><strong>Correct</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>#define CIRCLE_AREA(x) PI * x * x</code></td>
+<td style="text-align: left;"><code>area = CIRCLE_AREA( c + 2);</code></td>
+<td style="text-align: left;"><code>area=3.14159*c+2*c+2</code></td>
+<td style="text-align: left;"><strong>Incorrect</strong> (Due to operator precedence)</td>
+</tr>
+</tbody>
+</table>
+</details>
+<h3 id="undef-and-continuation"><code>#undef</code> and Continuation</h3>
+<ul>
+<li><strong><code>#undef</code></strong>: Undefines a symbolic constant or macro. If undefined, it can
+later be redefined.</li>
+<li><strong>Continuation</strong>: Place a backslash (<code>\</code>) at the end of a line to continue on
+another line in a macro definition.</li>
+</ul>
+<hr />
+<h2 id="conditional-compilation">Conditional Compilation</h2>
+<p><strong>Conditional compilation</strong> is used to control which parts of the program code
+or which preprocessor directives are included or excluded before compilation.
+The structure is similar to the <code>if</code> statement in C.</p>
+<hr />
+<h3 id="directives">Directives</h3>
+<p>Every starting <code>#if</code>, <code>#ifdef</code>, or <code>#ifndef</code> must end with an <code>#endif</code>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Directive</th>
+<th style="text-align: left;">Equivalent</th>
+<th style="text-align: left;">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>**#if** constant-expression</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Compiles the block if the expression is non-zero.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>**#ifdef** name</code></td>
+<td style="text-align: left;"><code>#if defined(name)</code></td>
+<td style="text-align: left;">Compiles the block if the name is defined.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>**#ifndef** name</code></td>
+<td style="text-align: left;"><code>#if !defined(name)</code></td>
+<td style="text-align: left;">Compiles the block if the name is <strong>not</strong> defined.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>**#else**</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Alternative block if the preceding condition is false.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>**#elif**</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Else-if condition for checking multiple conditions.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Note on Evaluation</p>
+<p>Preprocessor directives cannot evaluate complex expressions like <code>sizeof</code>,
+cast expressions, or enumeration constants.</p>
+</div>
+<details class="example" open="open">
+<summary>Header Guards (Preventing Multiple Inclusion)</summary>
+<p>This pattern ensures a header file's contents are only processed once,
+preventing redefinition errors when the header is included in multiple source
+files.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#ifndef MY_HEADER_H</span>
+<span class="cp">#define MY_HEADER_H</span>
+
+<span class="c1">// ... contents of the header file</span>
+
+<span class="cp">#endif</span>
+</code></pre></div>
+</details>
+<hr />
+<h3 id="debugging-with-conditional-compilation">Debugging with Conditional Compilation</h3>
+<p>A frequent use case is enabling or disabling debug code.</p>
+<p><div class="highlight"><pre><span></span><code><span class="cp">#define DEBUG </span><span class="c1">// Define DEBUG to enable the code block below.</span>
+
+<span class="c1">// ... some program logic</span>
+
+<span class="cp">#ifdef DEBUG</span>
+<span class="w">    </span><span class="c1">// This code only compiles if DEBUG is defined</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;DEBUG: Variable x = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
+<span class="cp">#endif</span>
+
+<span class="c1">// ... more program logic</span>
+</code></pre></div>
+To turn off the debug statements, simply remove or comment out the initial
+<code>#define DEBUG</code>. The debugging statements are then ignored by the compiler.</p>
+<hr />
+<h2 id="multi-source-file-programs">Multi-Source File Programs</h2>
+<p>Large programs are often split across multiple source files. A function
+definition must exist entirely within one file (it cannot be split across
+files), but it can be called from others.</p>
+<h3 id="sharing-global-variables-extern">Sharing Global Variables: <code>extern</code></h3>
+<p>Global variables are accessible to functions within the same file by default.
+To use a global variable defined in one file in a <em>different</em> file, you must
+use the <code>extern</code> keyword.</p>
+<ul>
+<li><strong><code>extern</code></strong>: Declares that a variable is defined in another file (External
+  Linkage).</li>
+<li><strong>Function Prototypes</strong>: Can be used in other files without an <code>extern</code>
+  statement; you simply need a prototype in each file that uses the function
+  (usually via a header file).</li>
+</ul>
+<details class="example" open="open">
+<summary>Using <code>extern</code> vs <code>static</code></summary>
+<p><strong>File 1 (<code>one.c</code>)</strong>
+<div class="highlight"><pre><span></span><code><span class="k">extern</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"> </span><span class="c1">// DECLARATION: Refers to &#39;value&#39; defined in two.c</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">val2</span><span class="p">;</span><span class="w">         </span><span class="c1">// DEFINITION: Global variable with external linkage</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>File 2 (<code>two.c</code>)</strong>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w">        </span><span class="c1">// DEFINITION: The actual storage for &#39;value&#39;</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">val2</span><span class="p">;</span><span class="w">  </span><span class="c1">// DEFINITION: Global variable with INTERNAL linkage</span>
+<span class="w">                  </span><span class="c1">// (only visible in two.c)</span>
+</code></pre></div></p>
+</details>
+<h3 id="limiting-scope-static-keyword">Limiting Scope: <code>static</code> Keyword</h3>
+<p>When the <strong><code>static</code></strong> keyword is used outside of all functions (at file scope),
+it specifies that the variable or function has <strong>internal linkage</strong>. This means
+it can only be used in the file in which it is defined, effectively hiding it
+from other source files.</p>
+<h3 id="compiling-multi-file-programs">Compiling Multi-File Programs</h3>
+<p>Compiling every file in a large project is tedious if small changes have been
+made to only one file.</p>
+<ul>
+<li><strong>Make Utility</strong>: On UNIX systems, the <code>make</code> utility is used to manage
+  multi-file projects. It checks timestamps and recompiles only the files that
+  have changed, linking them with the existing object files.</li>
+</ul>
+<hr />
+<h2 id="storage-classes">Storage Classes</h2>
+<p>The <strong>storage class</strong> of a variable determines three key properties:</p>
+<ol>
+<li><strong>Duration (Lifetime)</strong>: When the variable is created and destroyed.</li>
+<li><strong>Scope</strong>: Where the variable can be referenced.</li>
+<li><strong>Linkage</strong>: Whether the variable is accessible across multiple files.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Storage Class</th>
+<th style="text-align: left;">Duration</th>
+<th style="text-align: left;">Scope</th>
+<th style="text-align: left;">Linkage</th>
+<th style="text-align: left;">Declaration Location</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>automatic</code></strong></td>
+<td style="text-align: left;">Automatic</td>
+<td style="text-align: left;">Block</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">In a block (keyword <code>auto</code> is optional).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>register</code></strong></td>
+<td style="text-align: left;">Automatic</td>
+<td style="text-align: left;">Block</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">In a block with keyword <code>register</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>static</code></strong> (Block)</td>
+<td style="text-align: left;">Static</td>
+<td style="text-align: left;">Block</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">In a block with keyword <code>static</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>static</code></strong> (File)</td>
+<td style="text-align: left;">Static</td>
+<td style="text-align: left;">File</td>
+<td style="text-align: left;">Internal</td>
+<td style="text-align: left;">Outside all functions with keyword <code>static</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>extern</code></strong></td>
+<td style="text-align: left;">Static</td>
+<td style="text-align: left;">File</td>
+<td style="text-align: left;">External</td>
+<td style="text-align: left;">Outside all functions (implied or explicit).</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["toc.integrate", "navigation.expand", "navigation.sections"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/asciinema-player@3.12.1/dist/bundle/asciinema-player.min.js"></script>
+      
+        <script src="../js/asciinema-init.js"></script>
+      
+        <script src="../js/ll_stepper.js"></script>
+      
+    
+  </body>
+</html>
