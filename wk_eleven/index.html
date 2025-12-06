@@ -796,8 +796,16 @@ passed to the compiler. Its main functions are:</p>
 whitespace characters before them on a line.</p>
 <h3 id="the-build-process">The Build Process</h3>
 <p>The preprocessor is the first step in converting a source file to an executable.</p>
-<p><code>Source File</code> → <code>Preprocessor</code> → <code>Preprocessed File</code> → <code>Compiler</code> → <code>Object
-File</code> (linked with Library Code) → <code>Linker</code> → <code>Executable File</code></p>
+<pre class="mermaid"><code>graph TD
+    A[Source File] --&gt; B(Preprocessor);
+    B --&gt; C[Preprocessed File];
+    C --&gt; D(Compiler);
+    D --&gt; E[Object File];
+    subgraph Linking
+        E --&gt; F(Linker);
+        G[Library Code] --&gt; F;
+    end
+    F --&gt; H[Executable File];</code></pre>
 <hr />
 <h2 id="include-directive"><code>#include</code> Directive</h2>
 <p>The <code>#include</code> directive causes a copy of the specified file to be included in
