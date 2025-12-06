@@ -643,6 +643,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#data-type-sizes-fseek-offsets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Type Sizes &amp; fseek Offsets
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -852,37 +861,37 @@
 <div class="grid cards print-3" markdown>
 <ul>
 <li>
-<p><strong>$O(1)$ Constant</strong>
-    Time stays the same regardless of $n$ (e.g., array access).</p>
+<p><strong><code>O(1)</code> Constant</strong>
+    Time stays the same regardless of <code>n</code> (e.g., array access).</p>
 </li>
 <li>
-<p><strong>$O(\log n)$ Logarithmic</strong>
-    Doubling $n$ adds constant time (e.g., Binary Search).</p>
+<p><strong><code>O(\log n)</code> Logarithmic</strong>
+    Doubling <code>n</code> adds constant time (e.g., Binary Search).</p>
 </li>
 <li>
-<p><strong>$O(n)$ Linear</strong>
-    Proportional to $n$ (e.g., simple loop).</p>
+<p><strong><code>O(n)</code> Linear</strong>
+    Proportional to <code>n</code> (e.g., simple loop).</p>
 </li>
 <li>
-<p><strong>$O(n \log n)$ Log Linear</strong>
+<p><strong><code>O(n \log n)</code> Log Linear</strong>
     Linear and logarithmic combined (e.g., Merge sort).</p>
 </li>
 <li>
-<p><strong>$O(n^2)$ Quadratic</strong>
-    Grows as square of $n$ (e.g., nested loops).</p>
+<p><strong><code>O(n^2)</code> Quadratic</strong>
+    Grows as square of <code>n</code> (e.g., nested loops).</p>
 </li>
 <li>
-<p><strong>$O(n!)$ Factorial</strong>
+<p><strong><code>O(n!)</code> Factorial</strong>
     Work explodes; considers all permutations.</p>
 </li>
 </ul>
 </div>
 </div>
 <p><strong>Rules of Thumb:</strong>
-1.  <strong>Drop Constants:</strong> $O(2n) \rightarrow O(n)$.
-2.  <strong>Add Sequential Operations:</strong> $O(n) + O(n) \rightarrow O(n)$.
+1.  <strong>Drop Constants:</strong> <code>O(2n) -&gt; O(n)</code>.
+2.  <strong>Add Sequential Operations:</strong> <code>O(n) + O(n) -&gt; O(n)</code>.
 3.  <strong>Multiply Nested Loops:</strong> Inner loop work multiplies outer loop work.
-4.  <strong>Keep Dominant Term:</strong> $O(n^3 + n \log n) \rightarrow O(n^3)$.</p>
+4.  <strong>Keep Dominant Term:</strong> <code>O(n^3 + n \log n) -&gt; O(n^3)</code>.</p>
 <h3 id="sorting-algorithms">Sorting Algorithms</h3>
 <table>
 <thead>
@@ -1039,18 +1048,55 @@ To find the byte offset of a specific record ID (e.g., account number):</p>
 <span class="p">}</span>
 </code></pre></div>
 </div>
+<h3 id="data-type-sizes-fseek-offsets">Data Type Sizes &amp; <code>fseek</code> Offsets</h3>
+<p><div class="highlight"><pre><span></span><code><span class="c1">// Move back one record size from current position</span>
+<span class="n">fseek</span><span class="p">(</span><span class="n">fPtr</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="k">sizeof</span><span class="p">(</span><span class="n">ClientData</span><span class="p">),</span><span class="w"> </span><span class="n">SEEK_CUR</span><span class="p">);</span>
+<span class="n">fwrite</span><span class="p">(</span><span class="o">&amp;</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">ClientData</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">fPtr</span><span class="p">);</span>
+</code></pre></div>
+When calculating offsets for <code>fseek</code>, knowing the size of data types is crucial. While sizes can be implementation-defined, these are the standard expectations for this course:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Typical Size</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>char</code></strong></td>
+<td style="text-align: left;"><strong>1 byte</strong></td>
+<td style="text-align: left;">Smallest addressable unit.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>int</code></strong></td>
+<td style="text-align: left;"><strong>4 bytes</strong></td>
+<td style="text-align: left;">Standard integer size (usually).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>double</code></strong></td>
+<td style="text-align: left;"><strong>8 bytes</strong></td>
+<td style="text-align: left;">Standard floating-point precision.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">The Golden Rule: Never Hardcode Struct Sizes</p>
+<p><strong>Do not</strong> manually add up members (e.g., <code>4 + 1 + 8 = 13</code>) to guess a struct's size.</p>
+<p>Compilers often insert <strong>padding bytes</strong> between members to align data in memory. A struct with 13 bytes of variables might actually occupy <strong>16 bytes</strong> in memory due to alignment requirements.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// WRONG: Hardcoding risks being off due to hidden padding</span>
+<span class="n">fseek</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="n">SEEK_SET</span><span class="p">);</span><span class="w"> </span>
+
+<span class="c1">// CORRECT: Let the compiler calculate the exact size</span>
+<span class="n">fseek</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Client</span><span class="p">),</span><span class="w"> </span><span class="n">SEEK_SET</span><span class="p">);</span><span class="w"> </span>
+</code></pre></div>
+</div>
 <p><strong>The "Update Record" Pattern</strong>
-To modify a specific record in a binary file, you must strictly follow this sequence:
 1.  <code>fseek</code> to the record location.
 2.  <code>fread</code> the record into a struct.
 3.  Modify the struct in memory.
 4.  <code>fseek</code> <strong>back</strong> to the start of that same record (often using <code>SEEK_CUR</code> with a negative offset).
 5.  <code>fwrite</code> the updated struct over the old data.</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1">// Move back one record size from current position</span>
-<span class="n">fseek</span><span class="p">(</span><span class="n">fPtr</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="k">sizeof</span><span class="p">(</span><span class="n">ClientData</span><span class="p">),</span><span class="w"> </span><span class="n">SEEK_CUR</span><span class="p">);</span>
-<span class="n">fwrite</span><span class="p">(</span><span class="o">&amp;</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">ClientData</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">fPtr</span><span class="p">);</span>
-</code></pre></div>
-**</p>
 <hr />
 <h2 id="cli-shell-memory">CLI, Shell &amp; Memory</h2>
 <h3 id="cli-shell-operators">CLI &amp; Shell Operators</h3>
