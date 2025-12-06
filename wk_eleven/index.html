@@ -613,9 +613,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#undef-and-continuation" class="md-nav__link">
+  <a href="#undef" class="md-nav__link">
     <span class="md-ellipsis">
-      #undef and Continuation
+      #undef
     </span>
   </a>
   
@@ -834,12 +834,12 @@ definitions.</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>**#include &lt;filename&gt;**</code></td>
+<td style="text-align: left;"><strong><code>#include &lt;filename&gt;</code></strong></td>
 <td style="text-align: left;">Searches <strong>standard library</strong> for the file.</td>
 <td style="text-align: left;">Use for standard library files.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>**#include "filename"**</code></td>
+<td style="text-align: left;"><strong><code>#include "filename"</code></strong></td>
 <td style="text-align: left;">Searches the <strong>current directory</strong>, then the standard library.</td>
 <td style="text-align: left;">Use for user-defined files.</td>
 </tr>
@@ -864,24 +864,41 @@ checking</strong> is performed. A macro without arguments is treated like a symb
 constant.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Macros vs. Functions</p>
-</div>
 <p>A macro performs a <strong>text substitution</strong> and does <strong>no data type
 checking</strong>, unlike functions.</p>
+</div>
 <details class="example" open="open">
 <summary>Area Macro and the Importance of Parentheses</summary>
-</details>
 <p>Always use parentheses around arguments and the entire macro body to avoid potential precedence issues after substitution.</p>
-<pre><code>| Definition | Call | Preprocessor Expansion | Issue |
-| :--- | :--- | :--- | :--- |
-| `#define CIRCLE_AREA( x ) ( PI *(x)*(x))` | `area=CIRCLE_AREA(4);` | `area=(3.14159*(4)*(4));` | **Correct** |
-| `#define CIRCLE_AREA(x) PI * x * x` | `area = CIRCLE_AREA( c + 2);` | `area=3.14159*c+2*c+2` | **Incorrect** (Due to operator precedence) |
-</code></pre>
-<h3 id="undef-and-continuation"><code>#undef</code> and Continuation</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Definition</th>
+<th style="text-align: left;">Call</th>
+<th style="text-align: left;">Preprocessor Expansion</th>
+<th style="text-align: left;">Issue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>#define CIRCLE_AREA( x ) ( PI *(x)*(x))</code></td>
+<td style="text-align: left;"><code>area=CIRCLE_AREA(4);</code></td>
+<td style="text-align: left;"><code>area=(3.14159*(4)*(4));</code></td>
+<td style="text-align: left;"><strong>Correct</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>#define CIRCLE_AREA(x) PI * x * x</code></td>
+<td style="text-align: left;"><code>area = CIRCLE_AREA( c + 2);</code></td>
+<td style="text-align: left;"><code>area=3.14159*c+2*c+2</code></td>
+<td style="text-align: left;"><strong>Incorrect</strong> (Due to operator precedence)</td>
+</tr>
+</tbody>
+</table>
+</details>
+<h3 id="undef"><code>#undef</code></h3>
 <ul>
 <li><strong><code>#undef</code></strong>: Undefines a symbolic constant or macro. If undefined, it can
   later be redefined.</li>
-<li><strong>Continuation</strong>: Place a backslash (<code>\</code>) at the end of a line to continue on
-  another line in a macro definition.</li>
 </ul>
 <hr />
 <h2 id="conditional-compilation">Conditional Compilation</h2>
@@ -929,24 +946,22 @@ The structure is similar to the <code>if</code> statement in C.</p>
 </table>
 <div class="admonition info">
 <p class="admonition-title">Note on Evaluation</p>
-</div>
 <p>Preprocessor directives cannot evaluate complex expressions like <code>sizeof</code>,
 cast expressions, or enumeration constants.</p>
+</div>
 <details class="example" open="open">
 <summary>Header Guards (Preventing Multiple Inclusion)</summary>
-</details>
 <p>This pattern ensures a header file's contents are only processed once,
 preventing redefinition errors when the header is included in multiple source
 files.</p>
-<pre><code>```c
-#ifndef MY_HEADER_H
-#define MY_HEADER_H
+<div class="highlight"><pre><span></span><code><span class="cp">#ifndef MY_HEADER_H</span>
+<span class="cp">#define MY_HEADER_H</span>
 
-// ... contents of the header file
+<span class="c1">// ... contents of the header file</span>
 
-#endif
-```
-</code></pre>
+<span class="cp">#endif</span>
+</code></pre></div>
+</details>
 <hr />
 <h3 id="debugging-with-conditional-compilation">Debugging with Conditional Compilation</h3>
 <p>A frequent use case is enabling or disabling debug code.</p>
