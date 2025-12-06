@@ -797,9 +797,10 @@ whitespace characters before them on a line.</p>
 <h3 id="the-build-process">The Build Process</h3>
 <p>The preprocessor is the first step in converting a source file to an executable.</p>
 <pre class="mermaid"><code>graph TD
-%% Define Styles - Darker fills with White text for contrast in both modes
-    classDef file fill:#1565C0,stroke:#90CAF9,stroke-width:2px,color:#ffffff;
-    classDef process fill:#E65100,stroke:#FFCC80,stroke-width:2px,rx:10,ry:10,color:#ffffff;
+    %% Define Styles - Transparent fill, thick colored strokes
+    %% The text color will inherit from your site theme (Light/Dark)
+    classDef file fill:transparent,stroke:#2196F3,stroke-width:3px;
+    classDef process fill:transparent,stroke:#FF9800,stroke-width:3px,rx:10,ry:10;
 
     subgraph Preprocessing [Preprocessing Phase]
         direction TB
