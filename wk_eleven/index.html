@@ -612,101 +612,8 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#undef" class="md-nav__link">
-    <span class="md-ellipsis">
-      #undef
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conditional-compilation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conditional Compilation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Conditional Compilation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#directives" class="md-nav__link">
-    <span class="md-ellipsis">
-      Directives
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#debugging-with-conditional-compilation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Debugging with Conditional Compilation
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#multi-source-file-programs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Multi-Source File Programs
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Multi-Source File Programs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sharing-global-variables-extern" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sharing Global Variables: extern
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#limiting-scope-static-keyword" class="md-nav__link">
-    <span class="md-ellipsis">
-      Limiting Scope: static Keyword
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#compiling-multi-file-programs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Compiling Multi-File Programs
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#storage-classes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Storage Classes
-    </span>
-  </a>
   
 </li>
       
@@ -870,26 +777,24 @@ checking</strong>, unlike functions.</p>
 <details class="example" open="open">
 <summary>Area Macro and the Importance of Parentheses</summary>
 <p>Always use parentheses around arguments and the entire macro body to avoid potential precedence issues after substitution.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#define PI 3.14159</span>
-<span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="kt">double</span><span class="w"> </span><span class="n">area</span><span class="p">;</span>
-
-<span class="c1">// --- FAILURE: Missing Parentheses ---</span>
-<span class="cp">#define CIRCLE_AREA(x) PI * x * x</span>
-
-<span class="n">area</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CIRCLE_AREA</span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
-<span class="c1">// Expansion: area = 3.14159 * c + 2 * c + 2; </span>
-<span class="c1">// Result: Incorrect logic due to operator precedence</span>
-
-<span class="cp">#undef CIRCLE_AREA </span><span class="c1">// Undefine the macro so we can redefine it</span>
-
-<span class="c1">// --- SUCCESS: Correct Parentheses ---</span>
-<span class="cp">#define CIRCLE_AREA(x) (PI * (x) * (x))</span>
-
-<span class="n">area</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CIRCLE_AREA</span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
-<span class="c1">// Expansion: area = (3.14159 * (c + 2) * (c + 2));</span>
-<span class="c1">// Result: Correct calculation</span>
-</code></pre></div>
+<p>```c</p>
+<h1 id="define-pi-314159">define PI 3.14159</h1>
+<p>int c = 2;
+double area;</p>
+<p>// --- FAILURE: Missing Parentheses ---</p>
+<h1 id="define-circle_areax-pi-x-x">define CIRCLE_AREA(x) PI * x * x</h1>
+<p>area = CIRCLE_AREA(c + 2);
+// Expansion: area = 3.14159 * c + 2 * c + 2; 
+// Logic:     (3.14159 * 2) + (2 * 2) + 2
+// Result:    12.28318 (Incorrect)</p>
+<h1 id="undef-circle_area-undefine-the-macro-so-we-can-redefine-it">undef CIRCLE_AREA // Undefine the macro so we can redefine it</h1>
+<p>// --- SUCCESS: Correct Parentheses ---</p>
+<h1 id="define-circle_areax-pi-x-x_1">define CIRCLE_AREA(x) (PI * (x) * (x))</h1>
+<p>area = CIRCLE_AREA(c + 2);
+// Expansion: area = (3.14159 * (c + 2) * (c + 2));
+// Logic:     3.14159 * 4 * 4
+// Result:    50.26544 (Correct)
+<code></code>        </p>
 </details>
 <h3 id="undef"><code>#undef</code></h3>
 <ul>
