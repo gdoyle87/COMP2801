@@ -887,11 +887,13 @@
 </ul>
 </div>
 </div>
-<p><strong>Rules of Thumb:</strong>
-1.  <strong>Drop Constants:</strong> <code>O(2n) -&gt; O(n)</code>.
-2.  <strong>Add Sequential Operations:</strong> <code>O(n) + O(n) -&gt; O(n)</code>.
-3.  <strong>Multiply Nested Loops:</strong> Inner loop work multiplies outer loop work.
-4.  <strong>Keep Dominant Term:</strong> <code>O(n^3 + n log n) -&gt; O(n^3)</code>.</p>
+<p><strong>Rules of Thumb:</strong></p>
+<ol>
+<li><strong>Drop Constants:</strong> <code>O(2n) -&gt; O(n)</code>.</li>
+<li><strong>Add Sequential Operations:</strong> <code>O(n) + O(n) -&gt; O(n)</code>.</li>
+<li><strong>Multiply Nested Loops:</strong> Inner loop work multiplies outer loop work.</li>
+<li><strong>Keep Dominant Term:</strong> <code>O(n^3 + n log n) -&gt; O(n^3)</code>.</li>
+</ol>
 <h3 id="sorting-algorithms">Sorting Algorithms</h3>
 <table>
 <thead>
@@ -905,21 +907,23 @@
 <tr>
 <td style="text-align: left;"><strong>Selection Sort</strong></td>
 <td style="text-align: left;">1. Find the smallest element in the <strong>unsorted</strong> region.<br>2. Swap it with the first element of that region.<br>3. Repeat until sorted.</td>
-<td style="text-align: left;">$O(n^2)$</td>
+<td style="text-align: left;"><code>O(n^2)</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Insertion Sort</strong></td>
 <td style="text-align: left;">1. Take next element from <strong>unsorted</strong>.<br>2. Compare with <strong>sorted</strong> portion and shift larger elements right.<br>3. Insert into correct position.</td>
-<td style="text-align: left;">$O(n^2)$</td>
+<td style="text-align: left;"><code>O(n^2)</code></td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2 id="files-streams">Files &amp; Streams</h2>
 <h3 id="file-stream-model">File &amp; Stream Model</h3>
-<p>Files are sequential streams of bytes with no inherent structure.
-* <strong>Standard Streams:</strong> <code>stdin</code>, <code>stdout</code>, <code>stderr</code> are opened automatically.
-* <strong>Practical Note:</strong> Always check if <code>fopen</code> returns <code>NULL</code> before proceeding.</p>
+<p>Files are sequential streams of bytes with no inherent structure.</p>
+<ul>
+<li><strong>Standard Streams:</strong> <code>stdin</code>, <code>stdout</code>, <code>stderr</code> are opened automatically.</li>
+<li><strong>Practical Note:</strong> Always check if <code>fopen</code> returns <code>NULL</code> before proceeding.</li>
+</ul>
 <div class="admonition example">
 <p class="admonition-title">Example: Reading a Text File</p>
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
@@ -962,9 +966,11 @@
 </div>
 <h3 id="sequential-access-text-files">Sequential Access (Text Files)</h3>
 <p>Used for processing records in order. <strong>Warning:</strong> Text files cannot be safely modified in place because changing field lengths shifts all subsequent data.</p>
-<p><strong>Functions:</strong>
-* <code>fscanf</code>: Parses formatted text. Returns the number of items successfully read.
-* <code>rewind(fp)</code>: Resets file pointer to the start, allowing you to scan a file multiple times.</p>
+<p><strong>Functions:</strong></p>
+<ul>
+<li><code>fscanf</code>: Parses formatted text. Returns the number of items successfully read.</li>
+<li><code>rewind(fp)</code>: Resets file pointer to the start, allowing you to scan a file multiple times.</li>
+</ul>
 <h3 id="random-access-binary-files">Random Access (Binary Files)</h3>
 <p>Allows jumping to specific positions; ideal for fixed-size records like <code>structs</code>.</p>
 <table>
@@ -1100,16 +1106,20 @@ When calculating offsets for <code>fseek</code>, knowing the size of data types 
 <hr />
 <h2 id="cli-shell-memory">CLI, Shell &amp; Memory</h2>
 <h3 id="cli-shell-operators">CLI &amp; Shell Operators</h3>
-<p><strong>Arguments:</strong> <code>int main(int argc, char *argv[])</code>
-* <code>argc</code>: Argument count (includes program name).
-* <code>argv</code>: Argument Vector (array of strings).</p>
-<p><strong>Input Validation &amp; Conversion</strong>
-* <strong>Validation:</strong> Always check <code>argc</code> first to ensure the user provided the correct number of arguments.
-* <strong>Safe Conversion:</strong> Prefer <code>strtol</code> over <code>atoi</code> for converting strings to integers. <code>strtol</code> allows you to detect non-numeric characters via an <code>end</code> pointer.
+<p><strong>Arguments:</strong> <code>int main(int argc, char *argv[])</code></p>
+<ul>
+<li><code>argc</code>: Argument count (includes program name).</li>
+<li><code>argv</code>: Argument Vector (array of strings).</li>
+</ul>
+<p><strong>Input Validation &amp; Conversion</strong></p>
+<ul>
+<li><strong>Validation:</strong> Always check <code>argc</code> first to ensure the user provided the correct number of arguments.</li>
+<li><strong>Safe Conversion:</strong> Prefer <code>strtol</code> over <code>atoi</code> for converting strings to integers. <code>strtol</code> allows you to detect non-numeric characters via an <code>end</code> pointer.
     <div class="highlight"><pre><span></span><code><span class="kt">long</span><span class="w"> </span><span class="n">parsed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strtol</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="o">&amp;</span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">end</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* Error: String contained non-digits */</span><span class="w"> </span><span class="p">}</span>
-</code></pre></div>
-* <strong>Error Output:</strong> Use <code>fprintf(stderr, ...)</code> for error messages so they separate from standard output.</p>
+</code></pre></div></li>
+<li><strong>Error Output:</strong> Use <code>fprintf(stderr, ...)</code> for error messages so they separate from standard output.</li>
+</ul>
 <div class="admonition abstract">
 <p class="admonition-title">Shell Operators</p>
 <div class="grid cards print-3" markdown>
@@ -1166,15 +1176,19 @@ When calculating offsets for <code>fseek</code>, knowing the size of data types 
 <p><strong><code>qsort</code></strong> uses a callback function to compare elements.</p>
 <p><strong>Comparator Syntax:</strong>
 Must accept two <code>const void *</code> arguments. You must cast them to pointers of your specific data type (e.g., <code>Client *</code>) before accessing members.</p>
-<p><strong>Advanced Comparison Patterns:</strong>
-1.  <strong>Descending Order:</strong> Swap the subtraction order or multiply the result by <code>-1</code>.
-2.  <strong>Multi-Level Sorting:</strong> If the primary field is equal, sort by a secondary field.
+<p><strong>Other Comparison Patterns:</strong></p>
+<ol>
+<li><strong>Descending Order:</strong> Swap the subtraction order or multiply the result by <code>-1</code>.</li>
+<li>
+<p><strong>Multi-Level Sorting:</strong> If the primary field is equal, sort by a secondary field.
     <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strcmp</span><span class="p">(</span><span class="n">left</span><span class="o">-&gt;</span><span class="n">province</span><span class="p">,</span><span class="w"> </span><span class="n">right</span><span class="o">-&gt;</span><span class="n">province</span><span class="p">);</span>
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w"> </span><span class="c1">// Primary sort</span>
 <span class="k">return</span><span class="w"> </span><span class="n">strcmp</span><span class="p">(</span><span class="n">left</span><span class="o">-&gt;</span><span class="n">lastName</span><span class="p">,</span><span class="w"> </span><span class="n">right</span><span class="o">-&gt;</span><span class="n">lastName</span><span class="p">);</span><span class="w"> </span><span class="c1">// Secondary sort</span>
 </code></pre></div></p>
-<ol>
-<li><strong>Toggling Direction:</strong> You can use a global <code>DIRECTION</code> variable or multiplier to toggle between ASC/DESC within the same comparator function.</li>
+</li>
+<li>
+<p><strong>Toggling Direction:</strong> You can use a global <code>DIRECTION</code> variable or multiplier to toggle between ASC/DESC within the same comparator function.</p>
+</li>
 </ol>
 <h3 id="index-files">Index Files</h3>
 <p>Secondary file storing <code>(Key, Offset)</code> pairs to allow random access on data files without scanning.</p>
